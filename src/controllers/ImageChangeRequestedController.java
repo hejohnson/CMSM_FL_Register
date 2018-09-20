@@ -9,8 +9,6 @@ import java.util.Optional;
 
 import javax.imageio.ImageIO;
 
-import app.ImageAreaSelectorRectangleDragController;
-import app.ImageAreaSelectorRectangleStartController;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
