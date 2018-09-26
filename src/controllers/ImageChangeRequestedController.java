@@ -76,6 +76,9 @@ public class ImageChangeRequestedController implements EventHandler<ActionEvent>
 			
 			Alert cropper = new Alert(AlertType.CONFIRMATION);
 			cropper.initOwner(this.stage);
+			cropper.setGraphic(null);
+			cropper.setTitle("");
+			cropper.setHeaderText("");
 			
 			Image img = new Image(sourceFile.toURI().toString());
 			ImageView imageView = new ImageView(img);
@@ -93,7 +96,7 @@ public class ImageChangeRequestedController implements EventHandler<ActionEvent>
 	        // Add rectangle at the last, so it shows up on the top of other children
 	        Pane pane = new Pane( imageView, r );
 	        
-	        cropper.getDialogPane().setExpandableContent(pane);
+	        cropper.getDialogPane().setContent(pane);
 	        
 	        pane.setOnMousePressed(new ImageAreaSelectorRectangleStartController(r, p));
 	        pane.setOnMouseDragged(new ImageAreaSelectorRectangleDragController(r, p));

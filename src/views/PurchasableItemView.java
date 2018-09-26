@@ -52,7 +52,7 @@ public class PurchasableItemView extends VBox{
 	public void updateImage(Image image) {
 		imgView = new ImageView(image);
 		imgView.setPreserveRatio(true);
-		imgView.setFitHeight(96);
+		imgView.setFitWidth(this.stage.getWidth()/5);
 	}
 
 	public Stage getStage() {

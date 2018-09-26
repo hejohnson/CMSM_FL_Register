@@ -9,6 +9,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
+import javafx.scene.text.Text;
+import model.Item;
 import model.PurchasedItem;
 import views.ItemPurchaserView;
 import views.PurchasableItemView;
@@ -17,10 +20,12 @@ public class ItemPurchasedControllerScenario1 implements EventHandler<MouseEvent
 
 	private PurchasableItemView piv;
 	private ItemPurchaserView ipv;
+	private Text total;
 	
-	public ItemPurchasedControllerScenario1(ItemPurchaserView _ipv, PurchasableItemView _piv) {
+	public ItemPurchasedControllerScenario1(ItemPurchaserView _ipv, PurchasableItemView _piv, Text _total) {
 		this.piv = _piv;
 		this.ipv = _ipv;
+		this.total = _total;
 	}
 
 	@Override
@@ -32,8 +37,9 @@ public class ItemPurchasedControllerScenario1 implements EventHandler<MouseEvent
 		ImageView itemImage = this.piv.getImage();
 		itemImage.setPreserveRatio(true);
 		itemImage.setFitHeight(200);
-		
-		alert.getDialogPane().setExpandableContent(itemImage);
+		alert.setGraphic(null);
+		alert.getDialogPane().setContent(itemImage);
+		alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 
 		ButtonType buttonTypeOne = new ButtonType("1");
 		ButtonType buttonTypeTwo = new ButtonType("2");
@@ -45,22 +51,35 @@ public class ItemPurchasedControllerScenario1 implements EventHandler<MouseEvent
 
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == buttonTypeOne){
-		    ipv.purchaseItem(piv.getItem(), 1);
+		    this.purchaseItem(piv.getItem(), 1);
 		} else if (result.get() == buttonTypeTwo) {
 		    // ... user chose "Two"
-			ipv.purchaseItem(piv.getItem(), 2);
+			this.purchaseItem(piv.getItem(), 2);
 		} else if (result.get() == buttonTypeThree) {
 		    // ... user chose "Three"
-			ipv.purchaseItem(piv.getItem(), 3);
+			this.purchaseItem(piv.getItem(), 3);
 		} else if (result.get() == buttonTypeFour) {
 		    // ... user chose "Three"
-			ipv.purchaseItem(piv.getItem(), 4);
+			this.purchaseItem(piv.getItem(), 4);
 		} else if (result.get() == buttonTypeFive) {
 		    // ... user chose "Three"
-			ipv.purchaseItem(piv.getItem(), 5);
+			this.purchaseItem(piv.getItem(), 5);
 		} else {
 		    // ... user chose CANCEL or closed the dialog
 		}
+		
+	}
+	
+	public void purchaseItem(Item itm, int _qty) {
+		// increment total
+		//this.purchasedItems.add(new PurchasedItem(itm, _qty));
+//		Double totalCost = 0.0;
+//		for (PurchasedItem pitm:purchasedItems) {
+//			totalCost = totalCost + pitm.getTotalPrice();
+//		}
+		double currentTotal = Double.parseDouble(this.total.getText().substring(1));
+		Double totalCost = currentTotal + itm.getPrice()*_qty;
+		this.total.setText("$".concat(new Integer(totalCost.intValue()).toString()));
 		
 	}
 
