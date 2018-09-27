@@ -3,6 +3,7 @@ package app;
 import java.util.ArrayList;
 
 import controllers.ItemPurchasedControllerScenario1;
+import controllers.ItemPurchasedControllerScenario2;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -45,7 +46,8 @@ public class Register extends Application{
 	    
 	    ItemPurchaserView ipv = new ItemPurchaserView(allItems, purchasedItems, primaryStage);
         for (PurchasableItemView piv:ipv.getPurchasableItems()) {
-        	piv.setOnMouseClicked(new ItemPurchasedControllerScenario1(ipv, piv, total));
+        	//piv.setOnMouseClicked(new ItemPurchasedControllerScenario1(ipv, piv, total));
+        	piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, total));
         }
         
              
