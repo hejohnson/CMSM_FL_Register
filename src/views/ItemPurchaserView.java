@@ -27,7 +27,7 @@ public class ItemPurchaserView extends GridPane {
 		
 		this.setPadding(new Insets(20, 10, 10, 10));
 		
-		this.setGridLinesVisible(true);
+		//this.setGridLinesVisible(true);
 		
 		
 		
