@@ -74,8 +74,8 @@ public class Register extends Application{
 	    ItemPurchaserView ipv = new ItemPurchaserView(allItems, purchasedItems, primaryStage);
         for (PurchasableItemView piv:ipv.getPurchasableItems()) {
         	//piv.setOnMouseClicked(new ItemPurchasedControllerScenario1(ipv, piv, total));
-        	//piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, total));
-        	piv.setOnMouseClicked(new ItemPurchasedControllerScenario3(ipv, piv, total, totalBox));
+        	piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, total));
+        	//piv.setOnMouseClicked(new ItemPurchasedControllerScenario3(ipv, piv, total, totalBox));
         }
         
              
