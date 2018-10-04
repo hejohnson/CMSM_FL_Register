@@ -1,6 +1,9 @@
 package app;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 import controllers.ItemPurchasedControllerScenario1;
 import controllers.ItemPurchasedControllerScenario2;
@@ -8,6 +11,7 @@ import controllers.ItemPurchasedControllerScenario3;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.BorderStroke;
@@ -70,21 +74,33 @@ public class Register extends Application{
 	    totalTracker.getChildren().add(totalBox);
 	    
         root.setRight(totalTracker);
-	    
-	    ItemPurchaserView ipv = new ItemPurchaserView(allItems, purchasedItems, primaryStage);
-        for (PurchasableItemView piv:ipv.getPurchasableItems()) {
-        	//piv.setOnMouseClicked(new ItemPurchasedControllerScenario1(ipv, piv, total));
-        	piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, total));
-        	//piv.setOnMouseClicked(new ItemPurchasedControllerScenario3(ipv, piv, total, totalBox));
+        
+        String [] arrayData = {"Scenario 1", "Scenario 2", "Scenario 3"};
+        List<String> dialogData;
+        
+        dialogData = Arrays.asList(arrayData);
+
+        ChoiceDialog<String> dialog = new ChoiceDialog(dialogData.get(0), dialogData);
+        dialog.setTitle("Select a scenario");
+        dialog.setHeaderText("Select your choice");
+        dialog.initOwner(primaryStage);
+
+        Optional<String> result = dialog.showAndWait();
+        		
+        if (result.isPresent()) {
+
+        	ItemPurchaserView ipv = new ItemPurchaserView(allItems, purchasedItems, primaryStage);
+            for (PurchasableItemView piv:ipv.getPurchasableItems()) {
+            	if (result.get().equals("Scenario 1")) {
+            		piv.setOnMouseClicked(new ItemPurchasedControllerScenario1(ipv, piv, total));
+            	} else if (result.get().equals("Scenario 2")) {
+            		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, total));
+            	} else if (result.get().equals("Scenario 3")) {
+            		piv.setOnMouseClicked(new ItemPurchasedControllerScenario3(ipv, piv, total, totalBox));
+            	}
+            }
+            root.setCenter(ipv);
         }
-        
-             
-        
-        root.setCenter(ipv);
-        
-        
-        
-        
         
     }
 
