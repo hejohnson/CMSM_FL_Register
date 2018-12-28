@@ -29,8 +29,10 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import model.AllItems;
 import model.PurchasedItem;
+import model.Receipt;
 import views.ItemPurchaserView;
 import views.PurchasableItemView;
+import views.ReceiptView;
 
 public class Register extends Application{
 	
@@ -55,52 +57,60 @@ public class Register extends Application{
         primaryStage.setFullScreen(true);        
 	    primaryStage.show();
 	    
-	    VBox totalTracker = new VBox();
-	    BorderPane totalBox = new BorderPane();
-	    
-	    Text total = new Text("$0");
-	    total.setFont(Font.font("Verdana", FontWeight.BOLD, 48));
-	    
-	    
-	    totalTracker.setMinWidth(150);
-	    totalTracker.setMaxWidth(150);
-	    totalTracker.setPrefWidth(150);
-	    
-	    totalBox.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-	    
-	    totalTracker.setAlignment(Pos.BOTTOM_CENTER);
-	    
-	    totalBox.setCenter(total);
-	    totalTracker.getChildren().add(totalBox);
-	    
-        root.setRight(totalTracker);
+//	    VBox totalTracker = new VBox();
+//	    BorderPane totalBox = new BorderPane();
+//	    
+//	    Text total = new Text("$0");
+//	    total.setFont(Font.font("Verdana", FontWeight.BOLD, 48));
+//	    
+//	    
+//	    totalTracker.setMinWidth(150);
+//	    totalTracker.setMaxWidth(150);
+//	    totalTracker.setPrefWidth(150);
+//	    
+//	    totalBox.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+//	    
+//	    totalTracker.setAlignment(Pos.BOTTOM_CENTER);
+//	    
+//	    totalBox.setCenter(total);
+//	    totalTracker.getChildren().add(totalBox);
+//	    
+	    Receipt r = new Receipt();
+	    ReceiptView rv = new ReceiptView(r);
+        root.setRight(rv);
         
-        String [] arrayData = {"Scenario 1", "Scenario 2", "Scenario 3"};
-        List<String> dialogData;
-        
-        dialogData = Arrays.asList(arrayData);
-
-        ChoiceDialog<String> dialog = new ChoiceDialog(dialogData.get(0), dialogData);
-        dialog.setTitle("Select a scenario");
-        dialog.setHeaderText("Select your choice");
-        dialog.initOwner(primaryStage);
-
-        Optional<String> result = dialog.showAndWait();
-        		
-        if (result.isPresent()) {
-
-        	ItemPurchaserView ipv = new ItemPurchaserView(allItems, purchasedItems, primaryStage);
-            for (PurchasableItemView piv:ipv.getPurchasableItems()) {
-            	if (result.get().equals("Scenario 1")) {
-            		piv.setOnMouseClicked(new ItemPurchasedControllerScenario1(ipv, piv, total));
-            	} else if (result.get().equals("Scenario 2")) {
-            		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, total));
-            	} else if (result.get().equals("Scenario 3")) {
-            		piv.setOnMouseClicked(new ItemPurchasedControllerScenario3(ipv, piv, total, totalBox));
-            	}
-            }
-            root.setCenter(ipv);
+        ItemPurchaserView ipv = new ItemPurchaserView(allItems, purchasedItems, primaryStage);
+        for (PurchasableItemView piv:ipv.getPurchasableItems()) {
+      		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, rv));
         }
+        root.setCenter(ipv);
+        
+//        String [] arrayData = {"Scenario 1", "Scenario 2", "Scenario 3"};
+//        List<String> dialogData;
+//        
+//        dialogData = Arrays.asList(arrayData);
+//
+//        ChoiceDialog<String> dialog = new ChoiceDialog(dialogData.get(0), dialogData);
+//        dialog.setTitle("Select a scenario");
+//        dialog.setHeaderText("Select your choice");
+//        dialog.initOwner(primaryStage);
+//
+//        Optional<String> result = dialog.showAndWait();
+//        		
+//        if (result.isPresent()) {
+//
+//        	ItemPurchaserView ipv = new ItemPurchaserView(allItems, purchasedItems, primaryStage);
+//            for (PurchasableItemView piv:ipv.getPurchasableItems()) {
+//            	if (result.get().equals("Scenario 1")) {
+//            		piv.setOnMouseClicked(new ItemPurchasedControllerScenario1(ipv, piv, total));
+//            	} else if (result.get().equals("Scenario 2")) {
+//            		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, total));
+//            	} else if (result.get().equals("Scenario 3")) {
+//            		piv.setOnMouseClicked(new ItemPurchasedControllerScenario3(ipv, piv, total, totalBox));
+//            	}
+//            }
+//            root.setCenter(ipv);
+//        }
         
     }
 
