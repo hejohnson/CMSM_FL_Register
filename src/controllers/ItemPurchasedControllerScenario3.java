@@ -48,7 +48,7 @@ public class ItemPurchasedControllerScenario3 implements EventHandler<MouseEvent
 		this.piv.setBackground(new Background(new BackgroundFill(Color.ORANGERED, CornerRadii.EMPTY, Insets.EMPTY)));
 		
 		Timer tm = new Timer();
-		tm.schedule(new ResetBackground(this.piv, this.totalBox), 2000);
+		//tm.schedule(new ResetBackground(this.piv, this.totalBox), 2000);
 		
 		
 		

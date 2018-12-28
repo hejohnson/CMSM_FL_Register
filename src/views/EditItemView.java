@@ -2,6 +2,7 @@ package views;
 
 import controllers.DeleteItemController;
 import controllers.ImageChangeRequestedController;
+import controllers.ItemCategoryChangedController;
 import controllers.ItemNameChangedController;
 import controllers.PriceChangedController;
 import controllers.PurchasableToggleController;
@@ -25,6 +26,9 @@ public class EditItemView extends HBox{
 	// Needs a place to display the name
 	private TextField nameField = new TextField();
 	
+	// Needs a place to display the name
+	private TextField categoryField = new TextField();
+	
 	// Needs a clickable picture of the item
 	private Button imageButton = new Button("");
 
@@ -45,6 +49,11 @@ public class EditItemView extends HBox{
 		this.nameField.setAlignment(Pos.CENTER);
 		this.nameField.setFont(textFieldFont);
 		this.nameField.setPrefWidth(48*12);
+		
+		this.categoryField.setText(this.item.getCategory());
+		this.categoryField.setAlignment(Pos.CENTER);
+		this.categoryField.setFont(textFieldFont);
+		this.categoryField.setPrefWidth(48*12);
 		
 		this.priceField.setText(String.format("%.2f", item.getPrice()));
 		this.priceField.setAlignment(Pos.CENTER);
@@ -68,13 +77,14 @@ public class EditItemView extends HBox{
 		deleteImage.setFitHeight(96);
 		this.deleteItemButton.setGraphic(deleteImage);
 		
-		this.getChildren().addAll(this.imageButton, this.nameField, this.priceField, this.purchasableCheckbox, this.deleteItemButton);
+		this.getChildren().addAll(this.imageButton, this.nameField, this.categoryField, this.priceField, this.purchasableCheckbox, this.deleteItemButton);
 		this.setAlignment(Pos.CENTER);
 	}
 	
 	public void initializeControllers() {
 		this.purchasableCheckbox.setOnAction(new PurchasableToggleController(this));
 		this.nameField.setOnKeyReleased(new ItemNameChangedController(this));
+		this.categoryField.setOnKeyReleased(new ItemCategoryChangedController(this));
 		this.priceField.setOnKeyReleased(new PriceChangedController(this));
 		this.imageButton.setOnAction(new ImageChangeRequestedController(this));
 		//this.deleteItemButton.setOnAction(new DeleteItemController(this));
@@ -99,6 +109,10 @@ public class EditItemView extends HBox{
 	
 	public String getCurrentName() {
 		return this.nameField.getText();
+	}
+	
+	public String getCurrentCategory() {
+		return this.categoryField.getText();
 	}
 	
 	public void updateImage(Image image) {

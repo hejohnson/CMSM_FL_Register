@@ -14,12 +14,14 @@ public class Item {
 	private double price;
 	private String imagePath;
 	private String name;
+	private String category;
 	
-	public Item(String _name, double _price, String _imagePath, boolean _purchasable) {
+	public Item(String _name, String _category, double _price, String _imagePath, boolean _purchasable) {
 		this.name = _name;
 		this.price = _price;
 		this.imagePath = _imagePath;
 		this.purchasable = _purchasable;
+		this.category = _category;
 	}
 
 	public Item() {
@@ -66,8 +68,18 @@ public class Item {
 		this.name = name;
 	}
 	
+	public String getCategory() {
+		return this.category;
+	}
+	
+	public void setCategory(String _cat) {
+		this.category = _cat;
+	}
+	
 	public String toString() {
 		String returnString = this.name;
+		returnString = returnString.concat(",");
+		returnString = returnString.concat(this.category);
 		returnString = returnString.concat(",");
 		returnString = returnString.concat(Double.toString(this.price));
 		returnString = returnString.concat(",");

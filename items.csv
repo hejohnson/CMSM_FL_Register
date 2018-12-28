@@ -1,4 +1,4 @@
-Banana,2.0,/images/IMG_6915.jpg,true
-Orange,1.0,/images/IMG_6912.jpg,true
-Watermelon,3.0,/images/IMG_6914.jpg,false
-Fish,4.0,/images/IMG_6911.jpg,true
+Banana,Fruit,2.0,/images/IMG_6915.jpg,true
+Orange,Veggie1,1.0,/images/IMG_6912.jpg,true
+Watermelon,Veggie2,3.0,/images/IMG_6914.jpg,false
+Fish,Other,4.0,/images/IMG_6911.jpg,true

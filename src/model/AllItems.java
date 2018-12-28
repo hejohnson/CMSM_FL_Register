@@ -5,10 +5,12 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.LinkedList;
 
 public class AllItems {
 	private LinkedList<Item> allItems = new LinkedList<Item>();
+	private HashSet<String> categories = new HashSet<String>();
 	String csvFile = "items.csv";
 	
 	public AllItems () {
@@ -27,10 +29,11 @@ public class AllItems {
                 // use comma as separator
             	//System.out.println(line);
                 String[] fields = line.split(cvsSplitBy);
-                Item newItem = new Item(fields[0], Double.parseDouble(fields[1]), fields[2], Boolean.parseBoolean(fields[3]));
+                Item newItem = new Item(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3], Boolean.parseBoolean(fields[4]));
                 //System.out.println(Boolean.toString(newItem.validatePath()));
                 //System.out.println(newItem.toString());
                 this.allItems.add(newItem);
+                this.categories.add(newItem.getCategory());
 
             }
 
@@ -53,6 +56,11 @@ public class AllItems {
 			returnString = returnString.concat(itm.toString());
 		}
 		return returnString;
+	}
+	
+	public LinkedList<String> getCategories() {
+		LinkedList<String> ll = new LinkedList<>(this.categories);
+		return ll;
 	}
 	
 	public boolean saveItems() {

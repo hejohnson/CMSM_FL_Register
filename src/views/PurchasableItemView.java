@@ -41,7 +41,7 @@ public class PurchasableItemView extends VBox{
 //		this.nameField.setFont(textFieldFont);
 //		this.nameField.prefHeight(48);
 //		
-		this.priceField.setText(String.format("%.2f", item.getPrice()));
+		this.priceField.setText(String.format("$%.2f", item.getPrice()));
 		this.priceField.setFont(textFieldFont);
 		this.priceField.prefHeight(48);
 		

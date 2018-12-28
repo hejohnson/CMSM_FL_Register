@@ -5,22 +5,20 @@ import java.util.TimerTask;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import views.PurchasableItemView;
+import views.ReceiptView;
 
 public class ResetBackground extends TimerTask {
-	private PurchasableItemView piv;
-	private BorderPane bp;
+	private ReceiptView rv;
 
-	public ResetBackground (PurchasableItemView _piv, BorderPane _bp) {
-		this.piv = _piv;
-		this.bp = _bp;
+	public ResetBackground (ReceiptView _rv) {
+		this.rv = _rv;
 	}
 	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 
-		this.bp.setBackground(Background.EMPTY);
-		this.piv.setBackground(Background.EMPTY);
+		this.rv.clearTotalBG();
 	}
 
 }

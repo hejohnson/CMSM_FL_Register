@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.Timer;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -33,6 +35,9 @@ public class PurchaseByImageController implements EventHandler<ActionEvent> {
 //		Double totalCost = currentTotal + this.item.getPrice()*this.qty;
 //		this.total.setText("$".concat(new Integer(totalCost.intValue()).toString()));
 		alert.close();
+		this.rv.setTotalBG();
+		Timer tm = new Timer();
+		tm.schedule(new ResetBackground(this.rv), 1000);
 	}
 
 }
