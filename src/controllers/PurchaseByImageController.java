@@ -30,6 +30,7 @@ public class PurchaseByImageController implements EventHandler<ActionEvent> {
 		
 		this.rv.getReceipt().purchaseItem(this.item, this.qty);
 		this.rv.update();
+//		this.rv.clearActiveBG();
 		
 //		double currentTotal = Double.parseDouble(this.total.getText().substring(1));
 //		Double totalCost = currentTotal + this.item.getPrice()*this.qty;

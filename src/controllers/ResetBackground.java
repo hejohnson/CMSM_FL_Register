@@ -19,6 +19,7 @@ public class ResetBackground extends TimerTask {
 		// TODO Auto-generated method stub
 
 		this.rv.clearTotalBG();
+		this.rv.clearActiveBG();
 	}
 
 }

@@ -41,14 +41,14 @@ public class ItemPurchasedControllerScenario2 implements EventHandler<MouseEvent
 		GridPane gp = new GridPane();
 		//gp.setGridLinesVisible(true);
 		
+		this.rv.setActiveBG(this.piv.getItem().getName());
+		
 		Pane spring = new Pane();
 		spring.setPrefWidth(176);
 		Pane spring2 = new Pane();
 		spring2.setPrefWidth(192);
 		
 		Image image = new Image(getClass().getResourceAsStream(this.piv.getItem().getImagePath()));
-		
-		
 		
 		for (int i = 1; i <= 5; i++) {
 			Button button = new Button();
