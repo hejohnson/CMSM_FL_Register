@@ -1,32 +1,23 @@
 package app;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.Timer;
 
-import controllers.ItemPurchasedControllerScenario1;
+import controllers.KeyExitController;
+import controllers.ActivityMonitorController;
 import controllers.ItemPurchasedControllerScenario2;
-import controllers.ItemPurchasedControllerScenario3;
+import controllers.Reset;
+import controllers.ResetBackground;
+import controllers.WelcomeClickedController;
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceDialog;
-import javafx.scene.layout.Border;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.AllItems;
 import model.PurchasedItem;
 import model.Receipt;
@@ -48,14 +39,33 @@ public class Register extends Application{
 	}
 	
 	@Override
-    public void start(Stage primaryStage) {
+    public void start(Stage welcomeStage) {
         
+		Stage registerStage = new Stage();
         
-        BorderPane root = new BorderPane();
+        BorderPane registerLayout = new BorderPane();
+        BorderPane welcomeLayout = new BorderPane();
         
-        primaryStage.setScene(new Scene(root));
-        primaryStage.setFullScreen(true);        
-	    primaryStage.show();
+        ImageView welcomeImage = new ImageView(new Image(getClass().getResourceAsStream("/images/welcomeImage.jpg")));
+        welcomeLayout.getChildren().add(welcomeImage);
+        
+        Scene registerScreen = new Scene(registerLayout);
+        Scene welcomeScreen = new Scene(welcomeLayout);
+        registerStage.setScene(registerScreen);
+        welcomeStage.setScene(welcomeScreen);
+        
+        //registerStage.setFullScreen(true);
+        registerStage.initStyle(StageStyle.UNDECORATED);
+        registerStage.setMaximized(true);
+	    registerStage.show();
+	    //registerStage.hide();
+	    
+	    welcomeStage.initStyle(StageStyle.UNDECORATED);
+	    welcomeStage.setMaximized(true);
+//        welcomeStage.setFullScreen(true);
+	    welcomeStage.show();
+	    welcomeStage.setAlwaysOnTop(true);
+	    
 	    
 //	    VBox totalTracker = new VBox();
 //	    BorderPane totalBox = new BorderPane();
@@ -77,13 +87,26 @@ public class Register extends Application{
 //	    
 	    Receipt r = new Receipt();
 	    ReceiptView rv = new ReceiptView(r);
-        root.setRight(rv);
+        registerLayout.setRight(rv);
         
-        ItemPurchaserView ipv = new ItemPurchaserView(allItems, purchasedItems, primaryStage);
+        ItemPurchaserView ipv = new ItemPurchaserView(allItems, purchasedItems, registerStage);
         for (PurchasableItemView piv:ipv.getPurchasableItems()) {
       		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, rv));
         }
-        root.setCenter(ipv);
+        registerLayout.setCenter(ipv);
+        
+        welcomeStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(welcomeStage, registerStage));
+        registerStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(registerStage, welcomeStage));
+//        ipv.setOnKeyPressed(new KeyExitController(registerStage));
+//        welcomeImage.setOnKeyPressed(new KeyExitController(welcomeStage));
+        
+        ActivityMonitorController amc = new ActivityMonitorController(rv, ipv, welcomeStage, registerStage); 
+        
+        registerStage.addEventFilter(MouseEvent.MOUSE_MOVED, amc);
+        
+//        registerLayout.setOnMouseMoved(amc);
+//        ipv.setOnMouseMoved(amc);
+	    welcomeLayout.setOnMousePressed(new WelcomeClickedController(welcomeStage, registerStage));
         
 //        String [] arrayData = {"Scenario 1", "Scenario 2", "Scenario 3"};
 //        List<String> dialogData;

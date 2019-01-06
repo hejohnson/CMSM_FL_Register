@@ -81,6 +81,11 @@ public class ItemPurchaserView extends TabPane {
 		return this.purchasableItems;
 	}
 
+	public void reset() {
+		this.getSelectionModel().select(0);
+		
+	}
+
 //	public void addItem(Item itm, int col, int row) {
 //		PurchasableItemView itemView = new PurchasableItemView(itm, this.stage);
 //		purchasableItems.add(itemView);

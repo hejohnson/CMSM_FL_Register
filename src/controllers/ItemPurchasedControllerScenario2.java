@@ -6,6 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -43,11 +44,6 @@ public class ItemPurchasedControllerScenario2 implements EventHandler<MouseEvent
 		
 		this.rv.setActiveBG(this.piv.getItem().getName());
 		
-		Pane spring = new Pane();
-		spring.setPrefWidth(176);
-		Pane spring2 = new Pane();
-		spring2.setPrefWidth(192);
-		
 		Image image = new Image(getClass().getResourceAsStream(this.piv.getItem().getImagePath()));
 		
 		for (int i = 1; i <= 5; i++) {
@@ -58,51 +54,12 @@ public class ItemPurchasedControllerScenario2 implements EventHandler<MouseEvent
 			//gp.add(button, (i<=3)?(int)(0.5*Math.pow(i, 2)+.5*i-1):((i%4)*4), (i<=3)?0:1, i, 1);			
 		}
 		
-//		gp.add(spring, 1, 0);
-//		gp.add(spring2, 4, 0);
-		
-//		Button buttonTypeOne = new Button();
-////		iv = new ImageView(new Image(getClass().getResourceAsStream(this.piv.getItem().getImagePath())));
-////		iv.setPreserveRatio(true);
-////		iv.setFitHeight(imageHeight);
-//		buttonTypeOne.setGraphic(this.getCombinedImage(image, imageHeight, 1));
-//		buttonTypeOne.setOnAction(new PurchaseByImageController(piv.getItem(), this.total, 1, alert));
-//		gp.add(buttonTypeOne, 0, 0);
-//		
-//		Button buttonTypeTwo = new Button();
-////		iv = new ImageView(new Image(getClass().getResourceAsStream(this.piv.getItem().getImagePath().concat("2"))));
-////		iv.setPreserveRatio(true);
-////		iv.setFitHeight(imageHeight);
-//		buttonTypeTwo.setGraphic(this.getCombinedImage(image, imageHeight, 2));
-//		buttonTypeTwo.setOnAction(new PurchaseByImageController(piv.getItem(), this.total, 2, alert));
-//		gp.add(buttonTypeTwo, 1, 0);
-//		
-//		Button buttonTypeThree = new Button();
-////		iv = new ImageView(new Image(getClass().getResourceAsStream(this.piv.getItem().getImagePath().concat("3"))));
-////		iv.setPreserveRatio(true);
-////		iv.setFitHeight(imageHeight);
-//		buttonTypeThree.setGraphic(this.getCombinedImage(image, imageHeight, 3));
-//		buttonTypeThree.setOnAction(new PurchaseByImageController(piv.getItem(), this.total, 3, alert));
-//		gp.add(buttonTypeThree, 5, 0);
-//		
-//		Button buttonTypeFour = new Button();
-////		iv = new ImageView(new Image(getClass().getResourceAsStream(this.piv.getItem().getImagePath().concat("4"))));
-////		iv.setPreserveRatio(true);
-////		iv.setFitHeight(imageHeight);
-//		buttonTypeFour.setGraphic(this.getCombinedImage(image, imageHeight, 4));
-//		buttonTypeFour.setOnAction(new PurchaseByImageController(piv.getItem(), this.total, 4, alert));
-//		gp.add(buttonTypeFour, 0, 1, 4, 1);
-//		
-//		Button buttonTypeFive = new Button();
-////		iv = new ImageView(new Image(getClass().getResourceAsStream(this.piv.getItem().getImagePath().concat("5"))));
-////		iv.setPreserveRatio(true);
-////		iv.setFitHeight(imageHeight);
-//		buttonTypeFive.setGraphic(this.getCombinedImage(image, imageHeight, 5));
-//		buttonTypeFive.setOnAction(new PurchaseByImageController(piv.getItem(), this.total, 5, alert));
-//		gp.add(buttonTypeFive, 2,1, 5, 1);
-		
 		alert.getDialogPane().setContent(gp);
 		alert.showAndWait();
+		
+		if (alert.getResult() == ButtonType.CANCEL) {
+			this.rv.clearActiveBG();
+		}
 
 		
 	}
