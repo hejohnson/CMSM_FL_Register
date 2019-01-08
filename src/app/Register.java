@@ -3,6 +3,7 @@ package app;
 import java.util.ArrayList;
 import java.util.Timer;
 
+import controller.TotalReceiptController;
 import controllers.KeyExitController;
 import controllers.ActivityMonitorController;
 import controllers.ItemPurchasedControllerScenario2;
@@ -94,6 +95,7 @@ public class Register extends Application{
       		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, rv));
         }
         registerLayout.setCenter(ipv);
+        rv.getShoppingCart().setOnMouseClicked(new TotalReceiptController(rv, ipv, welcomeStage, registerStage));
         
         welcomeStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(welcomeStage, registerStage));
         registerStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(registerStage, welcomeStage));

@@ -17,29 +17,20 @@ import views.TimeExpiringAlert;
 
 public class TimeExpiring extends TimerTask {
 	
-	private Stage rs;
-	private Stage ws;
-	private ActivityMonitorController amc;
-	private RunnableTimeExpiring rte;
+	private Cancelable tt;
 
-	public TimeExpiring (Stage _rs, Stage _ws, ActivityMonitorController _amc) {
-		this.rs = _rs;
-		this.amc = _amc;
-		this.ws = _ws;
-		this.rte = new RunnableTimeExpiring(this.rs, this.ws, this.amc);
+	public TimeExpiring (Cancelable _tt) {
+		this.tt = _tt;
 	}
 	
 	@Override
 	public void run() {
-		if (this.rs.isAlwaysOnTop()) {
-			Platform.runLater(this.rte);
-		}
-		
+		Platform.runLater(this.tt);	
 	}
 	
 	@Override
 	public boolean cancel() {
-		rte.cancel();
+		tt.cancel();
 		//System.out.println("Canceled tea");
 		return true;
 	}

@@ -100,4 +100,8 @@ public class ReceiptView extends BorderPane{
 			this.activePIV.clearActive();
 		}
 	}
+	
+	public Node getShoppingCart() {
+		return this.totalBox.getLeft();
+	}
 }

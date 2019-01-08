@@ -28,9 +28,9 @@ public class ActivityMonitorController implements EventHandler<MouseEvent> {
 		this.rs = registerStage;
 		this.ws = welcomeStage;
 		
-		te = new TimeExpiring(this.rs, this.ws, this);
+		te = new TimeExpiring(new WarnTimeExpiring(this.rs, this.ws, this));
 
-		tm2.schedule(te, 3000);
+		tm2.schedule(te, 20000);
 		//tm.schedule(new Reset(rv, ipv, ws, rs, te), 15000);
 	}
 
@@ -43,10 +43,10 @@ public class ActivityMonitorController implements EventHandler<MouseEvent> {
 		te.cancel();
 		tm2.cancel();
 		
-		te = new TimeExpiring(this.rs, this.ws, this);
+		te = new TimeExpiring(new WarnTimeExpiring(this.rs, this.ws, this));
 		
 		tm2 = new Timer();
-		tm2.schedule(te, 3000);
+		tm2.schedule(te, 20000);
 		
 		//tm = new Timer();
 		//tm.schedule(new Reset(rv, ipv, ws, rs, te), 15000);

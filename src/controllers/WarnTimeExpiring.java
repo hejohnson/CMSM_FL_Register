@@ -14,7 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import views.TimeExpiringAlert;
 
-public class RunnableTimeExpiring implements Runnable {
+public class WarnTimeExpiring implements Runnable, Cancelable {
 	
 	private Stage rs;
 	private Stage ws;
@@ -22,7 +22,7 @@ public class RunnableTimeExpiring implements Runnable {
 	private TimeExpiringAlert tea;
 	private Alert alert;
 
-	public RunnableTimeExpiring (Stage _rs, Stage _ws, ActivityMonitorController _amc) {
+	public WarnTimeExpiring (Stage _rs, Stage _ws, ActivityMonitorController _amc) {
 		this.rs = _rs;
 		this.ws = _ws;
 		this.amc = _amc;
@@ -33,26 +33,28 @@ public class RunnableTimeExpiring implements Runnable {
 	
 	@Override
 	public void run() {
+		if (this.rs.isAlwaysOnTop()) {
 		
-		alert.setTitle("");
-		alert.setHeaderText("");
-		alert.setGraphic(null);
-		
-		GridPane gp = new GridPane();
-		
-		Text timeLeft = new Text();
-		Integer time = 10;
-		timeLeft.setText("Time Remaining: ".concat(Integer.toString(time)));
-
-		gp.getChildren().add(timeLeft);
-		
-		Timer countdown = new Timer();
-		countdown.scheduleAtFixedRate(new TimeTick(timeLeft, this.rs, this.ws, alert, this.amc.getReceiptView(), this.amc.getIPV()), 1000, 1000);
-		
-		alert.getDialogPane().setContent(gp);
-		alert.showAndWait();
-		
-		countdown.cancel();
+			alert.setTitle("");
+			alert.setHeaderText("");
+			alert.setGraphic(null);
+			
+			GridPane gp = new GridPane();
+			
+			Text timeLeft = new Text();
+			Integer time = 10;
+			timeLeft.setText("Time Remaining: ".concat(Integer.toString(time)));
+	
+			gp.getChildren().add(timeLeft);
+			
+			Timer countdown = new Timer();
+			countdown.scheduleAtFixedRate(new TimeTick(timeLeft, this.rs, this.ws, alert, this.amc.getReceiptView(), this.amc.getIPV()), 1000, 1000);
+			
+			alert.getDialogPane().setContent(gp);
+			alert.showAndWait();
+			
+			countdown.cancel();
+		}
 		
 //		tea = new TimeExpiringAlert(this.amc);
 //		//tea.getDialogPane().setOnMouseMoved(amc);
@@ -60,10 +62,9 @@ public class RunnableTimeExpiring implements Runnable {
 //		tea.show();
 	}
 	
-	public boolean cancel() {
+	public void cancel() {
 		alert.close();
 		//System.out.println("Closed tea");
-		return true;
 	}
 
 }

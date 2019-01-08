@@ -35,9 +35,9 @@ public class RunnableSwitchWindows implements Runnable {
 	
 	@Override
 	public void run() {
+		this.al.close();
 		this.rs.setAlwaysOnTop(false);
 		this.ws.setAlwaysOnTop(true);
-		this.al.close();
 		this.rv.clear();
 		this.rv.getReceipt().clear();
 		this.ipv.reset();
