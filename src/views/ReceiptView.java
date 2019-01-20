@@ -13,8 +13,6 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import model.Item;
-import model.PurchasedItem;
 import model.Receipt;
 
 public class ReceiptView extends BorderPane{
@@ -71,6 +69,7 @@ public class ReceiptView extends BorderPane{
 	
 	public void clear() {
 		this.items.getChildren().clear();
+		totalValue.setText(String.format ("$%.2f", this.receipt.getTotal()));
 	}
 	
 	public Receipt getReceipt() {

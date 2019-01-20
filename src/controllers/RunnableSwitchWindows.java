@@ -1,26 +1,14 @@
 package controllers;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import views.ItemPurchaserView;
 import views.ReceiptView;
-import views.TimeExpiringAlert;
 
 public class RunnableSwitchWindows implements Runnable {
 	
 	private Stage rs;
 	private Stage ws;
-	private EventHandler<MouseEvent> amc;
-	private TimeExpiringAlert tea;
 	private Alert al;
 	private ReceiptView rv;
 	private ItemPurchaserView ipv;
@@ -38,8 +26,8 @@ public class RunnableSwitchWindows implements Runnable {
 		this.al.close();
 		this.rs.setAlwaysOnTop(false);
 		this.ws.setAlwaysOnTop(true);
-		this.rv.clear();
 		this.rv.getReceipt().clear();
+		this.rv.clear();
 		this.ipv.reset();
 	}
 

@@ -1,8 +1,6 @@
 package controller;
 
 import java.util.Timer;
-import java.util.TimerTask;
-
 import controllers.CloseAndReset;
 import controllers.TimeExpiring;
 import javafx.event.EventHandler;

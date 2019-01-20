@@ -1,10 +1,7 @@
 package controllers;
 
-import java.util.TimerTask;
-
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import views.ItemPurchaserView;
 import views.ReceiptView;

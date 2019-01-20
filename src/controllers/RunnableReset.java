@@ -1,13 +1,7 @@
 package controllers;
 
-import java.util.TimerTask;
-
-import javafx.application.Platform;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import views.ItemPurchaserView;
-import views.PurchasableItemView;
 import views.ReceiptView;
 
 public class RunnableReset implements Runnable {

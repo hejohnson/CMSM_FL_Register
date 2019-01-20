@@ -1,14 +1,11 @@
 package app;
 
 import java.util.ArrayList;
-import java.util.Timer;
-
 import controller.TotalReceiptController;
 import controllers.KeyExitController;
 import controllers.ActivityMonitorController;
+import controllers.ApplicationExitController;
 import controllers.ItemPurchasedControllerScenario2;
-import controllers.Reset;
-import controllers.ResetBackground;
 import controllers.WelcomeClickedController;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -17,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.AllItems;
@@ -90,7 +88,7 @@ public class Register extends Application{
 	    ReceiptView rv = new ReceiptView(r);
         registerLayout.setRight(rv);
         
-        ItemPurchaserView ipv = new ItemPurchaserView(allItems, purchasedItems, registerStage);
+        ItemPurchaserView ipv = new ItemPurchaserView(allItems, registerStage);
         for (PurchasableItemView piv:ipv.getPurchasableItems()) {
       		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, rv));
         }
@@ -99,6 +97,14 @@ public class Register extends Application{
         
         welcomeStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(welcomeStage, registerStage));
         registerStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(registerStage, welcomeStage));
+        
+        ArrayList<Rectangle> boxes = new ArrayList<Rectangle>();
+        boxes.add(new Rectangle(0,0,250,250));
+        boxes.add(new Rectangle(1030,0,250,250));
+        boxes.add(new Rectangle(0,775,250,250));
+        boxes.add(new Rectangle(1030,775,250,250));
+        
+        registerStage.addEventFilter(MouseEvent.MOUSE_PRESSED, new ApplicationExitController(welcomeStage, registerStage, boxes));
 //        ipv.setOnKeyPressed(new KeyExitController(registerStage));
 //        welcomeImage.setOnKeyPressed(new KeyExitController(welcomeStage));
         

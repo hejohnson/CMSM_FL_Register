@@ -1,33 +1,22 @@
 package views;
 import java.util.ArrayList;
-import java.util.LinkedList;
-
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.AllItems;
 import model.Item;
-import model.PurchasedItem;
 
 public class ItemPurchaserView extends TabPane {
 	
 	private AllItems allItems;
-	private ArrayList<PurchasedItem> purchasedItems;
 	private Stage stage;
 	private ArrayList<PurchasableItemView> purchasableItems = new ArrayList<PurchasableItemView>();
 	
-	public ItemPurchaserView(AllItems _allItems, ArrayList<PurchasedItem> _purchasedItems, Stage _stage) {
+	public ItemPurchaserView(AllItems _allItems, Stage _stage) {
 		this.allItems = _allItems;
 		this.stage = _stage;
-		this.purchasedItems = _purchasedItems;
 		//this.setHgap(10);
 		//this.setVgap(10);
 		

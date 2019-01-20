@@ -2,9 +2,6 @@ package controllers;
 
 import java.util.TimerTask;
 
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BorderPane;
-import views.PurchasableItemView;
 import views.ReceiptView;
 
 public class ResetBackground extends TimerTask {

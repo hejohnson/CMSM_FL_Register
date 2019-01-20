@@ -1,6 +1,5 @@
 package controllers;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 import javafx.event.EventHandler;
@@ -12,7 +11,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import model.Item;
-import model.PurchasedItem;
 import views.ItemPurchaserView;
 import views.PurchasableItemView;
 
