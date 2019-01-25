@@ -1,8 +1,7 @@
-package controller;
+package controllers;
 
 import java.util.Timer;
-import controllers.CloseAndReset;
-import controllers.TimeExpiring;
+
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

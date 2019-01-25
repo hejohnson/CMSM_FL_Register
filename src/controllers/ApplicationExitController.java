@@ -39,7 +39,7 @@ public class ApplicationExitController implements EventHandler<MouseEvent> {
 				}
 				this.res.cancel();
 				this.res = new RestartExitSequence(this);
-				this.timer.schedule(this.res, 2000);
+				this.timer.schedule(this.res, 5000);
 			}
 		}
 	}

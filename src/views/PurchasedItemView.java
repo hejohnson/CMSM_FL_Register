@@ -28,10 +28,10 @@ public class PurchasedItemView extends BorderPane {
 		
 		this.cr = new CornerRadii(10);
 		
-		this.setLeft(this.itemName);
-		this.setRight(this.itemSubtotal);
-		this.setBorder(new Border(new BorderStroke(Color.BLACK, 
-	            BorderStrokeStyle.SOLID, this.cr, BorderWidths.DEFAULT)));
+		this.setRight(this.itemName);
+		this.setLeft(this.itemSubtotal);
+//		this.setBorder(new Border(new BorderStroke(Color.BLACK, 
+//	            BorderStrokeStyle.SOLID, this.cr, BorderWidths.DEFAULT)));
 		this.setPadding(new Insets(10, 10, 10, 10));
 	}
 	
@@ -54,6 +54,6 @@ public class PurchasedItemView extends BorderPane {
 	
 	public void clearActive() {
 		// TODO Auto-generated method stub
-		this.setBackground(new Background(new BackgroundFill(Color.WHITE, this.cr, Insets.EMPTY)));
+		this.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, this.cr, Insets.EMPTY)));
 	}
 }

@@ -1,8 +1,10 @@
 package app;
 
 import java.util.ArrayList;
-import controller.TotalReceiptController;
+
+import controllers.TabClickController;
 import controllers.KeyExitController;
+import controllers.TotalReceiptController;
 import controllers.ActivityMonitorController;
 import controllers.ApplicationExitController;
 import controllers.ItemPurchasedControllerScenario2;
@@ -13,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -42,7 +45,7 @@ public class Register extends Application{
         
 		Stage registerStage = new Stage();
         
-        BorderPane registerLayout = new BorderPane();
+        AnchorPane registerLayout = new AnchorPane();
         BorderPane welcomeLayout = new BorderPane();
         
         ImageView welcomeImage = new ImageView(new Image(getClass().getResourceAsStream("/images/welcomeImage.jpg")));
@@ -86,13 +89,23 @@ public class Register extends Application{
 //	    
 	    Receipt r = new Receipt();
 	    ReceiptView rv = new ReceiptView(r);
-        registerLayout.setRight(rv);
+	    registerLayout.getChildren().add(rv);
+	    registerLayout.setBottomAnchor(rv, 90.0);
+	    registerLayout.setTopAnchor(rv, 150.0);
+        registerLayout.setRightAnchor(rv, 60.0);
         
-        ItemPurchaserView ipv = new ItemPurchaserView(allItems, registerStage);
+        ItemPurchaserView ipv = new ItemPurchaserView(allItems, registerStage, 200, 80);
         for (PurchasableItemView piv:ipv.getPurchasableItems()) {
       		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, rv));
         }
-        registerLayout.setCenter(ipv);
+        
+        ipv.setOnMouseClicked(new controllers.TabClickController(ipv, 200, 80));
+        registerLayout.getChildren().add(ipv);
+        registerLayout.setBottomAnchor(ipv, 0.0);
+	    registerLayout.setTopAnchor(ipv, 0.0);
+        registerLayout.setLeftAnchor(ipv, 0.0);
+        registerLayout.setRightAnchor(ipv, 0.0);
+        rv.toFront();
         rv.getShoppingCart().setOnMouseClicked(new TotalReceiptController(rv, ipv, welcomeStage, registerStage));
         
         welcomeStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(welcomeStage, registerStage));

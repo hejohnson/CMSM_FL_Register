@@ -8,10 +8,13 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.LinkedList;
 
+import javafx.scene.paint.Color;
+
 public class AllItems {
 	private LinkedList<Item> allItems = new LinkedList<Item>();
-	private HashSet<String> categories = new HashSet<String>();
-	String csvFile = "items.csv";
+	private LinkedList<Category> categories = new LinkedList<Category>();
+	String itemsFile = "items.csv";
+	String categoriesFile = "cats.csv";
 	
 	public AllItems () {
 		loadItems();
@@ -22,7 +25,7 @@ public class AllItems {
         String line = "";
         String cvsSplitBy = ",";
 		
-		try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(itemsFile))) {
 
             while ((line = br.readLine()) != null) {
 
@@ -33,7 +36,25 @@ public class AllItems {
                 //System.out.println(Boolean.toString(newItem.validatePath()));
                 //System.out.println(newItem.toString());
                 this.allItems.add(newItem);
-                this.categories.add(newItem.getCategory());
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(categoriesFile))) {
+
+            while ((line = br.readLine()) != null) {
+
+                // use comma as separator
+            	//System.out.println(line);
+                String[] fields = line.split(cvsSplitBy);
+                Category newCat = new Category(fields[0], Color.web(fields[1]), fields[2]);
+                //System.out.println(Boolean.toString(newItem.validatePath()));
+                //System.out.println(newItem.toString());
+                this.categories.add(newCat);
 
             }
 
@@ -58,13 +79,8 @@ public class AllItems {
 		return returnString;
 	}
 	
-	public LinkedList<String> getCategories() {
-		LinkedList<String> ll = new LinkedList<>(this.categories);
-		return ll;
-	}
-	
 	public boolean saveItems() {
-		try (BufferedWriter br = new BufferedWriter(new FileWriter(csvFile))) {
+		try (BufferedWriter br = new BufferedWriter(new FileWriter(itemsFile))) {
 
 			for (Item itm:allItems) {
 				br.write(itm.toString());
@@ -75,6 +91,10 @@ public class AllItems {
             return false;
         }
 		return true;
+	}
+	
+	public LinkedList<Category> getCategories() {
+		return this.categories;
 	}
 
 	public Item addItem() {

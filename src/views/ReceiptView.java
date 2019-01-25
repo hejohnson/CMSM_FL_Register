@@ -1,6 +1,7 @@
 package views;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -20,32 +21,34 @@ public class ReceiptView extends BorderPane{
 	private VBox items;
 	private Text totalValue;
 	private Text totalText;
-	private BorderPane totalBox;
+	private VBox totalBox;
 	private PurchasedItemView activePIV;
 	private CornerRadii cr;
 	
 	public ReceiptView (Receipt _r) {
 		this.receipt = _r;
 		this.items = new VBox();
-		this.totalBox = new BorderPane();
+		this.totalBox = new VBox();
 		this.totalValue = new Text();
 		this.totalText = new Text();
-		this.totalText.setText("Total: ");
+		this.totalText.setText("total");
 		this.setTop(this.items);
+		
+		this.totalBox.setAlignment(Pos.CENTER);
 		
 		this.cr = new CornerRadii(10);
 		
-		this.totalBox.setLeft(this.totalText);
-		this.totalBox.setRight(this.totalValue);
+		this.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255, 0.65), CornerRadii.EMPTY, Insets.EMPTY)));
+		this.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5))));
+		
+		this.totalBox.getChildren().addAll(this.totalText, this.totalValue);
 		this.totalBox.setPadding(new Insets(10, 10, 10, 10));
-		this.totalBox.setBorder(new Border(new BorderStroke(Color.BLACK, 
-     		   BorderStrokeStyle.SOLID, this.cr, BorderWidths.DEFAULT)));
+		//this.totalBox.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, this.cr, BorderWidths.DEFAULT)));
 		this.setBottom(this.totalBox);
 		//this.getChildren().addAll(this.items, this.total);
-		this.setMinWidth(300);
-		this.setPadding(new Insets(10, 10, 10, 10));
-		this.setBorder(new Border(new BorderStroke(Color.BLACK, 
-	            		   BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+		this.setMinWidth(280);
+		this.setPadding(new Insets(15, 30, 30, 30));
+		//this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
 		this.update();
 	}
 	
@@ -81,7 +84,7 @@ public class ReceiptView extends BorderPane{
 	}
 
 	public void clearTotalBG() {
-		this.totalBox.setBackground(new Background(new BackgroundFill(Color.WHITE, this.cr, Insets.EMPTY)));
+		this.totalBox.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, this.cr, Insets.EMPTY)));
 	}
 	
 	public void setActiveBG(String item) {
@@ -101,6 +104,6 @@ public class ReceiptView extends BorderPane{
 	}
 	
 	public Node getShoppingCart() {
-		return this.totalBox.getLeft();
+		return this.totalBox;
 	}
 }
