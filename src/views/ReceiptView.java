@@ -99,7 +99,7 @@ public class ReceiptView extends AnchorPane{
 		
 		this.totalBox.getChildren().addAll(this.totalText, this.totalValue);
 		this.totalBox.setPadding(new Insets(10, 10, 10, 10));
-		this.totalBox.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5, 0, 0, 0))));
+		this.items.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(0, 0, 5, 0))));
 		//this.totalBox.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, this.cr, BorderWidths.DEFAULT)));
 		this.container.setBottom(this.totalBox);
 		//this.getChildren().addAll(this.items, this.total);

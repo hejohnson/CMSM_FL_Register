@@ -44,6 +44,7 @@ public class Register extends Application{
     public void start(Stage welcomeStage) {
         
 		Stage registerStage = new Stage();
+		Stage dialogStage = new Stage();
         
         AnchorPane registerLayout = new AnchorPane();
         BorderPane welcomeLayout = new BorderPane();
@@ -55,6 +56,10 @@ public class Register extends Application{
         Scene welcomeScreen = new Scene(welcomeLayout);
         registerStage.setScene(registerScreen);
         welcomeStage.setScene(welcomeScreen);
+        
+//        dialogStage.initStyle(StageStyle.UNDECORATED);
+//        dialogStage.setMaximized(true);
+//        dialogStage.show();
         
         //registerStage.setFullScreen(true);
         registerStage.initStyle(StageStyle.UNDECORATED);

@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import model.Item;
 import views.ReceiptView;
 
@@ -14,10 +15,10 @@ public class PurchaseByImageController implements EventHandler<ActionEvent> {
 	private Item item;
 	private Text total;
 	private int qty;
-	private Alert alert;
+	private Stage alert;
 	private ReceiptView rv;
 	
-	public PurchaseByImageController(Item _item, int _i, Alert _alert, ReceiptView _rv) {
+	public PurchaseByImageController(Item _item, int _i, Stage _alert, ReceiptView _rv) {
 		this.item = _item;
 		this.qty = _i;
 		this.alert = _alert;
@@ -35,7 +36,7 @@ public class PurchaseByImageController implements EventHandler<ActionEvent> {
 //		double currentTotal = Double.parseDouble(this.total.getText().substring(1));
 //		Double totalCost = currentTotal + this.item.getPrice()*this.qty;
 //		this.total.setText("$".concat(new Integer(totalCost.intValue()).toString()));
-		alert.close();
+		alert.hide();
 		this.rv.setTotalBG();
 		Timer tm = new Timer();
 		tm.schedule(new ResetBackground(this.rv), 1000);
