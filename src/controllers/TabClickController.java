@@ -22,7 +22,7 @@ public class TabClickController implements EventHandler<MouseEvent> {
 	public void handle(MouseEvent event) {
 		// TODO Auto-generated method stub
 		int idx = (int)((event.getX()-30)/(tabW+30));
-		if (idx < this.ta.getTabs().size()) {
+		if (idx < this.ta.getTabs().size() && (event.getY()) < this.tabH+30) {
 			this.ta.get(idx).toFront();
 		}
 	}

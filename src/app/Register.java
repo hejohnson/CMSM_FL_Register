@@ -90,7 +90,7 @@ public class Register extends Application{
 	    Receipt r = new Receipt();
 	    ReceiptView rv = new ReceiptView(r);
 	    registerLayout.getChildren().add(rv);
-	    registerLayout.setBottomAnchor(rv, 90.0);
+	    registerLayout.setBottomAnchor(rv, 80.0);
 	    registerLayout.setTopAnchor(rv, 150.0);
         registerLayout.setRightAnchor(rv, 60.0);
         

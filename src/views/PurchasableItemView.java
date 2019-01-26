@@ -35,7 +35,9 @@ public class PurchasableItemView extends VBox{
 	// Needs a box with the price
 	private Text priceField = new Text();
 	
-	private Font textFieldFont = Font.font("Verdana", FontWeight.BOLD, 26);
+	private Font textFieldFont = Font.font("Verdana", FontWeight.NORMAL, 20);
+	
+	private Font priceFont = Font.font("Verdana", FontWeight.BOLD, 20);
 	
 	private ImageView imgView;
 	
@@ -61,6 +63,7 @@ public class PurchasableItemView extends VBox{
 		this.nameField.setFont(textFieldFont);
 		//this.nameField.prefHeight(36);
 		this.nameField.setTextAlignment(TextAlignment.CENTER);
+		this.container.setPadding(new Insets(5,0,5,0));
 		
 		DropShadow ds = new DropShadow();
 		ds.setRadius(25);
@@ -91,7 +94,7 @@ public class PurchasableItemView extends VBox{
 //		infoContainer.getChildren().addAll(clippedItemInfo, spacerBox);
 		
 		this.priceField.setText(String.format("$%.2f", item.getPrice()));
-		this.priceField.setFont(textFieldFont);
+		this.priceField.setFont(priceFont);
 		//this.priceField.prefHeight(36);
 		
 //		this.priceBackgroundImg = new ImageView(new Image(getClass().getResourceAsStream("/images/priceBG.jpg")));
