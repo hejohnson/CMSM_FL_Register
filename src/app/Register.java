@@ -112,6 +112,7 @@ public class Register extends Application{
         registerLayout.setRightAnchor(ipv, 0.0);
         rv.toFront();
         rv.getShoppingCart().setOnMouseClicked(new TotalReceiptController(rv, ipv, welcomeStage, registerStage));
+        rv.getCartImage().setOnMouseClicked(new TotalReceiptController(rv, ipv, welcomeStage, registerStage));
         
         welcomeStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(welcomeStage, registerStage));
         registerStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(registerStage, welcomeStage));

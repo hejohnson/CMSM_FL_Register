@@ -17,12 +17,14 @@ public class PurchaseByImageController implements EventHandler<ActionEvent> {
 	private int qty;
 	private Stage alert;
 	private ReceiptView rv;
+	private Stage rs;
 	
-	public PurchaseByImageController(Item _item, int _i, Stage _alert, ReceiptView _rv) {
+	public PurchaseByImageController(Item _item, int _i, Stage _alert, Stage _rs, ReceiptView _rv) {
 		this.item = _item;
 		this.qty = _i;
 		this.alert = _alert;
 		this.rv = _rv;
+		this.rs = _rs;
 	}
 	
 	@Override
@@ -37,6 +39,7 @@ public class PurchaseByImageController implements EventHandler<ActionEvent> {
 //		Double totalCost = currentTotal + this.item.getPrice()*this.qty;
 //		this.total.setText("$".concat(new Integer(totalCost.intValue()).toString()));
 		alert.hide();
+		this.rs.setAlwaysOnTop(true);
 		this.rv.setTotalBG();
 		Timer tm = new Timer();
 		tm.schedule(new ResetBackground(this.rv), 1000);

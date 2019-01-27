@@ -171,4 +171,8 @@ public class ReceiptView extends AnchorPane{
 	public Node getShoppingCart() {
 		return this.totalBox;
 	}
+	
+	public Node getCartImage() {
+		return this.cartImg;
+	}
 }

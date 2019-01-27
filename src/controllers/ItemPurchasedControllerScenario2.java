@@ -89,7 +89,7 @@ public class ItemPurchasedControllerScenario2 implements EventHandler<MouseEvent
 		for (int i = 1; i <= 5; i++) {
 			Button button = new Button();
 			button.setGraphic(this.getCombinedImage(image, imageHeight, i));
-			button.setOnAction(new PurchaseByImageController(piv.getItem(), i, ds, this.rv));
+			button.setOnAction(new PurchaseByImageController(piv.getItem(), i, ds, this.ipv.getStage(), this.rv));
 			button.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255), new CornerRadii(5), Insets.EMPTY)));
 			container.getChildren().add(button);
 			//gp.add(button, (i<=3)?(int)(0.5*Math.pow(i, 2)+.5*i-1):((i%4)*4), (i<=3)?0:1, i, 1);			

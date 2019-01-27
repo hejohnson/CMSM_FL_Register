@@ -14,11 +14,11 @@ public class TimeTick extends TimerTask {
 	Text timeDisplay;
 	Stage registerStage;
 	Stage welcomeStage;
-	Alert al;
+	Stage al;
 	ReceiptView rv;
 	ItemPurchaserView ipv;
 	
-	public TimeTick (Text td, Stage rs, Stage ws, Alert _al, ReceiptView _rv, ItemPurchaserView _ipv) {
+	public TimeTick (Text td, Stage rs, Stage ws, Stage _al, ReceiptView _rv, ItemPurchaserView _ipv) {
 		this.timeDisplay = td;
 		this.registerStage = rs;
 		this.welcomeStage = ws;

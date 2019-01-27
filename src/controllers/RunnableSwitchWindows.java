@@ -9,14 +9,14 @@ public class RunnableSwitchWindows implements Runnable {
 	
 	private Stage rs;
 	private Stage ws;
-	private Alert al;
+	private Stage al;
 	private ReceiptView rv;
 	private ItemPurchaserView ipv;
 
-	public RunnableSwitchWindows (Stage _rs, Stage _ws, Alert _al, ReceiptView _rv, ItemPurchaserView _ipv) {
+	public RunnableSwitchWindows (Stage _rs, Stage _ws, Stage al2, ReceiptView _rv, ItemPurchaserView _ipv) {
 		this.rs = _rs;
 		this.ws = _ws;
-		this.al = _al;
+		this.al = al2;
 		this.rv = _rv;
 		this.ipv = _ipv;
 	}

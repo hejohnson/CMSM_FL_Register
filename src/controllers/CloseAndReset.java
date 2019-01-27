@@ -10,11 +10,11 @@ public class CloseAndReset implements Cancelable {
 
 	Stage registerStage;
 	Stage welcomeStage;
-	Alert al;
+	Stage al;
 	ReceiptView rv;
 	ItemPurchaserView ipv;
 	
-	public CloseAndReset (Stage rs, Stage ws, Alert _al, ReceiptView _rv, ItemPurchaserView _ipv) {
+	public CloseAndReset (Stage rs, Stage ws, Stage _al, ReceiptView _rv, ItemPurchaserView _ipv) {
 		this.registerStage = rs;
 		this.welcomeStage = ws;
 		this.al = _al;
