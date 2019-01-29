@@ -22,7 +22,7 @@ public class ItemPurchaserView extends TabbedArea {
 		//this.setHgap(10);
 		//this.setVgap(10);
 		
-		this.setPadding(new Insets(20, 20, 20, 20));
+		//this.setPadding(new Insets(20, 20, 20, 20));
 		
 		//this.setGridLinesVisible(true);
 		

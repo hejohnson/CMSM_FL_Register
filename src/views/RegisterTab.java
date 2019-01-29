@@ -93,6 +93,16 @@ public class RegisterTab extends AnchorPane {
 		this.contentArea.getChildren().add(content);
 	}
 	
+	public void setSelected() {
+		this.tabName.setVisible(true);
+		this.tabInfo.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(15), new BorderWidths(5))));
+	}
+	
+	public void clearSelected() {
+		this.tabName.setVisible(false);
+		this.tabInfo.setBorder(new Border(new BorderStroke(this.tabColor.brighter(), BorderStrokeStyle.SOLID, new CornerRadii(15), new BorderWidths(5))));
+	}
+	
 	public void setContentAreaBG(Color color) {
 		this.contentArea.setBackground(new Background(new BackgroundFill(color, new CornerRadii(20), Insets.EMPTY)));
 		this.contentArea.setBorder(new Border(new BorderStroke(this.tabColor.brighter(), BorderStrokeStyle.SOLID, new CornerRadii(15), new BorderWidths(5))));
