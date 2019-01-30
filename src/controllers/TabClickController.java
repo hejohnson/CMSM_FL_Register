@@ -3,29 +3,26 @@ package controllers;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import views.RegisterTab;
 import views.TabbedArea;
 
 public class TabClickController implements EventHandler<MouseEvent> {
 	
+	private RegisterTab rt;
 	private TabbedArea ta;
-	private int tabW;
-	private int tabH;
 
-	public TabClickController(TabbedArea _ta, int _tabW, int _tabH) {
+	public TabClickController(RegisterTab _rt, TabbedArea _ta) {
 		// TODO Auto-generated constructor stub
+		this.rt = _rt;
 		this.ta = _ta;
-		this.tabW = _tabW;
-		this.tabH = _tabH;
 	}
 
 	@Override
 	public void handle(MouseEvent event) {
 		// TODO Auto-generated method stub
-		int idx = (int)((event.getX()-30)/(tabW+30));
-		if (idx < this.ta.getTabs().size() && (event.getY()) < this.tabH+30) {
-			this.ta.get(idx).toFront();
-			this.ta.get(idx).setSelected();
-		}
+		this.rt.setSelected();
+		this.ta.getSelectedTab().clearSelected();
+		this.ta.setSelectedTab(rt);
 	}
 	
 	

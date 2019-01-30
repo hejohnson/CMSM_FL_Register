@@ -51,7 +51,7 @@ public class AllItems {
                 // use comma as separator
             	//System.out.println(line);
                 String[] fields = line.split(cvsSplitBy);
-                Category newCat = new Category(fields[0], Color.web(fields[1]), fields[2]);
+                Category newCat = new Category(fields[0], Color.web(fields[1]), fields[2], fields[3]);
                 //System.out.println(Boolean.toString(newItem.validatePath()));
                 //System.out.println(newItem.toString());
                 this.categories.add(newCat);

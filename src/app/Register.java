@@ -104,7 +104,7 @@ public class Register extends Application{
       		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, rv));
         }
         
-        ipv.setOnMouseClicked(new controllers.TabClickController(ipv, 200, 80));
+        //ipv.setOnMouseClicked(new controllers.TabClickController(ipv, 200, 80));
         registerLayout.getChildren().add(ipv);
         registerLayout.setBottomAnchor(ipv, 0.0);
 	    registerLayout.setTopAnchor(ipv, 0.0);

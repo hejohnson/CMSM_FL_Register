@@ -37,25 +37,29 @@ public class ItemPurchaserView extends TabbedArea {
 //			
 //			nt.setContent(fp);
 //			this.getTabs().add(nt);
-			this.add(cat.getName(), cat.getImg(), cat.getColor());
+			this.addTab(cat.getName(), cat.getImg(), cat.getBGImg(), cat.getColor());
 		}
-		this.get(0).toFront();
 		
 		for (Item itm : allItems.getItems()) {
 			if (itm.isPurchasable()) {
-				for (RegisterTab t:this.getTabs()) {
-					if (t.getTabName().equals(itm.getCategory())) {
-						FlowPane fp = (FlowPane) t.getContentArea();
-						PurchasableItemView itemView = new PurchasableItemView(itm, this.stage);
-						purchasableItems.add(itemView);
-						fp.getChildren().add(itemView);
-					} 
-				}
+				PurchasableItemView itemView = new PurchasableItemView(itm, this.stage);
+				purchasableItems.add(itemView);
+				this.addContent(itm.getCategory(), itemView);
+//				for (RegisterTab t:this.getTabs()) {
+//					if (t.getTabName().equals(itm.getCategory())) {
+//						FlowPane fp = (FlowPane) t.getContentArea();
+//						PurchasableItemView itemView = new PurchasableItemView(itm, this.stage);
+//						purchasableItems.add(itemView);
+//						fp.getChildren().add(itemView);
+//					} 
+//				}
 //				this.addItem(itm, idx%2, (int)(idx/2));
 //				idx=idx+1;
 			}
 			
 		}
+		
+		this.getFirstTab().setSelected();
 		//this.setAlignment(Pos.CENTER);
 		
 	}
@@ -73,7 +77,7 @@ public class ItemPurchaserView extends TabbedArea {
 	}
 
 	public void reset() {
-		this.get(0).toFront();
+		this.getFirstTab().toFront();
 		
 	}
 
