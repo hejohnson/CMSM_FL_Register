@@ -38,9 +38,9 @@ public class ReceiptView extends AnchorPane{
 	
 	private HBox cartImgContainer;
 	
-	private Font totalFont = Font.font("Verdana", FontWeight.BOLD, 20);
+	private Font totalFont = Font.font("DidactGothic", FontWeight.NORMAL, 26);
 	
-	private Font priceFont = Font.font("Verdana", FontWeight.BOLD, 26);
+	private Font priceFont = Font.font("FredokaOne", FontWeight.NORMAL, 30);
 	
 	private VBox headerContainer;
 	
@@ -83,7 +83,7 @@ public class ReceiptView extends AnchorPane{
 		this.container.setCenter(this.items);
 		this.cartImgContainer = new HBox();
 		
-		this.cartImg = new ImageView(new Image(getClass().getResourceAsStream("/images/shoppingCart.jpg")));
+		this.cartImg = new ImageView(new Image(getClass().getResourceAsStream("/images/shoppingCart.png")));
 		this.cartImg.setPreserveRatio(true);
 		this.cartImg.setFitWidth(100);
 		

@@ -21,7 +21,7 @@ public class PriceChangedController implements EventHandler<KeyEvent> {
 	public void handle(KeyEvent event) {
 		// TODO Auto-generated method stub
 		String newPriceString = this.eiv.getCurrentPriceString();
-		if (newPriceString.matches("-?\\d+(\\.\\d+)?")) {
+		if (newPriceString.matches("-?\\d+(\\.\\d*+)?")) {
 			this.eiv.getItem().setPrice(Double.parseDouble(newPriceString));
 		} else {
 			Alert alert = new Alert(AlertType.ERROR, "Please enter only numerals or a decimal point. The value will be reset.");

@@ -2,10 +2,8 @@ package views;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
@@ -13,8 +11,6 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -31,7 +27,7 @@ public class RegisterTab extends VBox {
 	private int textPadding = 5;
 	private VBox tabNameContainer;
 	
-	private Font font = Font.font("Verdana", FontWeight.BOLD, 20);
+	private Font font = Font.font("DidactGothic", FontWeight.NORMAL, 26);
 	
 	public RegisterTab (int th, int tw, RegisterTabContent _rtc) {
 		
@@ -44,7 +40,7 @@ public class RegisterTab extends VBox {
 		this.tabName.setFill(Color.WHITE);
 		
 		this.tabNameContainer = new VBox();
-		this.tabNameContainer.setPadding(new Insets(textPadding, 0, textPadding, 0));
+		this.tabNameContainer.setPadding(new Insets(textPadding, 15, textPadding, 15));
 		this.tabNameContainer.getChildren().add(this.tabName);
 		this.tabNameContainer.setAlignment(Pos.CENTER);
 		

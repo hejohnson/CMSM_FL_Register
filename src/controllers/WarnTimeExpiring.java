@@ -70,7 +70,7 @@ public class WarnTimeExpiring implements Runnable, Cancelable {
 			container.setBorder(new Border(new BorderStroke(Color.DARKGREY, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(5))));
 			container.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255), new CornerRadii(15), Insets.EMPTY)));
 			
-			layout.addEventFilter(MouseEvent.MOUSE_MOVED, amc);
+			layout.addEventFilter(MouseEvent.MOUSE_CLICKED, amc);
 			
 			Text timeLeft = new Text();
 			

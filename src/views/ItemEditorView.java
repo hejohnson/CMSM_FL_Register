@@ -2,6 +2,7 @@ package views;
 import controllers.AddItemButtonController;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -15,10 +16,14 @@ public class ItemEditorView extends VBox {
 	private AllItems allItems;
 	private Button addItemButton;
 	private Stage stage;
+	private ScrollPane sp;
+	private VBox editableItems;
 	
 	public ItemEditorView(AllItems _allItems, Stage _stage) {
 		this.allItems = _allItems;
 		this.stage = _stage;
+		this.sp = new ScrollPane();
+		this.editableItems = new VBox();
 		Text t = new Text("Add/Edit/Delete Items");
 		t.setFont(Font.font("Verdana", FontWeight.BOLD, 48));
 		this.getChildren().add(t);
@@ -33,6 +38,9 @@ public class ItemEditorView extends VBox {
 			this.setAlignment(Pos.TOP_CENTER);
 		}
 		
+		this.getChildren().add(sp);
+		this.sp.setContent(editableItems);
+		
 		
 	}
 	
@@ -43,6 +51,6 @@ public class ItemEditorView extends VBox {
 	public void addItem(Item itm) {
 		EditItemView itemView = new EditItemView(itm, this.stage);
 		itemView.initializeControllers();
-		this.getChildren().add(itemView);
+		this.editableItems.getChildren().add(itemView);
 	}
 }

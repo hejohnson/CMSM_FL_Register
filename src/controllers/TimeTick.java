@@ -4,6 +4,8 @@ import java.util.TimerTask;
 
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import views.ItemPurchaserView;
@@ -25,6 +27,7 @@ public class TimeTick extends TimerTask {
 		this.al = _al;
 		this.rv = _rv;
 		this.ipv = _ipv;
+		this.timeDisplay.setFont(Font.font("FredokaOne", FontWeight.NORMAL, 20));
 	}
 	@Override
 	public void run() {

@@ -77,7 +77,10 @@ public class ItemPurchaserView extends TabbedArea {
 	}
 
 	public void reset() {
-		this.getFirstTab().toFront();
+		this.getSelectedTab().clearSelected();
+		this.getFirstTab().setSelected();
+		
+		this.setSelectedTab(this.getFirstTab());
 		
 	}
 

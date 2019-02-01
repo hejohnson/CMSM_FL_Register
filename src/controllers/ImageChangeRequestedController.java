@@ -17,7 +17,13 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.control.ButtonType;
@@ -92,9 +98,14 @@ public class ImageChangeRequestedController implements EventHandler<ActionEvent>
 	        Point p = new Point(0,0);
 	        
 	        System.out.println(scale);
+	        
+	        VBox imageContainer = new VBox();
+	        imageContainer.getChildren().add(imageView);
+	        imageContainer.setBorder(new Border((new BorderStroke(Color.DARKGREY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1)))));
 
 	        // Add rectangle at the last, so it shows up on the top of other children
-	        Pane pane = new Pane( imageView, r );
+	        Pane pane = new Pane( imageContainer, r );
+	       // pane.setBorder(new Border((new BorderStroke(Color.DARKGREY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(10)))));
 	        
 	        cropper.getDialogPane().setContent(pane);
 	        

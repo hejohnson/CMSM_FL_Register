@@ -10,6 +10,8 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import model.PurchasedItem;
 
@@ -19,11 +21,15 @@ public class PurchasedItemView extends BorderPane {
 	private Text itemSubtotal;
 	private CornerRadii cr;
 	
+	private Font font = Font.font("DidactGothic", FontWeight.NORMAL, 20);
+	
 	public PurchasedItemView (PurchasedItem pi) {
 		this.purchasedItem = pi;
 		this.itemName = new Text();
 		this.itemSubtotal = new Text();
 		this.itemName.setText(this.purchasedItem.getName());
+		this.itemName.setFont(font);
+		this.itemSubtotal.setFont(font);
 		updateSubtotal();
 		
 		this.cr = new CornerRadii(10);

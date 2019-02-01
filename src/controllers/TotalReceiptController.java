@@ -41,9 +41,9 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 	private Stage ds;
 	private ImageView cartImg;
 	
-	private Font totalFont = Font.font("Verdana", FontWeight.BOLD, 20);
+	private Font totalFont = Font.font("DidactGothic", FontWeight.NORMAL, 26);
 	
-	private Font priceFont = Font.font("Verdana", FontWeight.BOLD, 32);
+	private Font priceFont = Font.font("FredokaOne", FontWeight.NORMAL, 30);
 	
 	public TotalReceiptController(ReceiptView _rv, ItemPurchaserView _ipv, Stage welcomeStage, Stage registerStage) {
 		// TODO Auto-generated constructor stub
@@ -97,7 +97,7 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 		
 		HBox cartContainer = new HBox();
 		
-		this.cartImg = new ImageView(new Image(getClass().getResourceAsStream("/images/shoppingCart.jpg")));
+		this.cartImg = new ImageView(new Image(getClass().getResourceAsStream("/images/shoppingCart.png")));
 		this.cartImg.setPreserveRatio(true);
 		this.cartImg.setFitWidth(100);
 		

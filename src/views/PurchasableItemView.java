@@ -13,8 +13,6 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -35,24 +33,26 @@ public class PurchasableItemView extends VBox{
 	// Needs a box with the price
 	private Text priceField = new Text();
 	
-	private Font textFieldFont = Font.font("Verdana", FontWeight.NORMAL, 20);
+	private Font textFieldFont = Font.font("DidactGothic", FontWeight.NORMAL, 26);
 	
-	private Font priceFont = Font.font("Verdana", FontWeight.BOLD, 20);
+	private Font priceFont = Font.font("FredokaOne", FontWeight.NORMAL, 30);
 	
 	private ImageView imgView;
 	
-	private ImageView priceBackgroundImg;
-	
-	private StackPane priceDisplay;
-	
-	private VBox itemInfo;
-	
-	private VBox container;
+	private AnchorPane container;
 	
 	public PurchasableItemView(Item _item, Stage _stage) {
 		this.item = _item;
 		this.stage = _stage;
-		this.container = new VBox();
+		this.container = new AnchorPane();
+		
+		VBox nameContainer = new VBox();
+		nameContainer.getChildren().add(nameField);
+		nameContainer.setAlignment(Pos.CENTER);
+		
+		VBox priceContainer = new VBox();
+		priceContainer.getChildren().add(priceField);
+		priceContainer.setAlignment(Pos.CENTER);
 		
 //		this.setPadding(new Insets(0, 20, 30, 20));
 		
@@ -63,15 +63,17 @@ public class PurchasableItemView extends VBox{
 		this.nameField.setFont(textFieldFont);
 		//this.nameField.prefHeight(36);
 		this.nameField.setTextAlignment(TextAlignment.CENTER);
-		this.container.setPadding(new Insets(5,0,5,0));
+		this.container.setPadding(new Insets(5,10,5,10));
 		
 		DropShadow ds = new DropShadow();
 		ds.setRadius(25);
-		ds.setOffsetX(-3.0);
-		ds.setOffsetY(3.0);
-		ds.setColor(Color.BLACK);
+		ds.setWidth(5);
+		ds.setHeight(5);
+		ds.setOffsetX(-5.0);
+		ds.setOffsetY(5.0);
+		ds.setColor(Color.rgb(30, 30, 30));
 		
-		this.container.setAlignment(Pos.CENTER);
+		//this.container.setAlignment(Pos.CENTER);
 		this.container.setEffect(ds);
 		
 //		HBox spacerBox = new HBox();
@@ -104,8 +106,9 @@ public class PurchasableItemView extends VBox{
 //		this.priceDisplay = new StackPane();		
 //		this.priceDisplay.getChildren().addAll(this.priceBackgroundImg, this.priceField);
 		
-		this.container.getChildren().addAll(this.nameField, this.imgView, this.priceField);
+		this.container.getChildren().addAll(nameContainer, this.imgView, priceContainer);
 		this.container.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(25), Insets.EMPTY)));
+		this.container.setBorder(new Border(new BorderStroke(Color.rgb(50,50,50), BorderStrokeStyle.SOLID, new CornerRadii(24), new BorderWidths(1))));
 		this.getChildren().add(container);
 		//this.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(25), new BorderWidths(10))));
 
@@ -116,6 +119,21 @@ public class PurchasableItemView extends VBox{
 
 //		this.setAlignment(infoContainer, Pos.TOP_CENTER);
 //		this.setAlignment(this.priceDisplay, Pos.BOTTOM_CENTER);
+		
+		this.container.setLeftAnchor(nameContainer, 0.0);
+		this.container.setRightAnchor(nameContainer, 0.0);
+		this.container.setTopAnchor(nameContainer, 0.0);
+		
+		this.imgView.toBack();
+		
+		this.container.setBottomAnchor(this.imgView, 38.0);
+		this.container.setLeftAnchor(this.imgView, 0.0);
+		this.container.setRightAnchor(this.imgView, 0.0);
+		this.container.setTopAnchor(this.imgView, 32.0);
+		
+		this.container.setBottomAnchor(priceContainer, 0.0);
+		this.container.setLeftAnchor(priceContainer, 0.0);
+		this.container.setRightAnchor(priceContainer, 0.0);
 
 	}
 	
@@ -126,7 +144,7 @@ public class PurchasableItemView extends VBox{
 	public void updateImage(Image image) {
 		imgView = new ImageView(image);
 		imgView.setPreserveRatio(true);
-		imgView.setFitWidth(200);
+		imgView.setFitWidth(170);
 	}
 
 	public Stage getStage() {

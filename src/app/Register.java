@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.AllItems;
@@ -42,11 +43,13 @@ public class Register extends Application{
 	
 	@Override
     public void start(Stage welcomeStage) {
+		
+		Font.loadFont(getClass().getResource("/DidactGothic-Regular.ttf").toExternalForm(), 10);
+		Font.loadFont(getClass().getResource("/FredokaOne-Regular.ttf").toExternalForm(), 10);
+		
         
 		Stage registerStage = new Stage();
-		Stage dialogStage = new Stage();
-        
-        AnchorPane registerLayout = new AnchorPane();
+		AnchorPane registerLayout = new AnchorPane();
         BorderPane welcomeLayout = new BorderPane();
         
         ImageView welcomeImage = new ImageView(new Image(getClass().getResourceAsStream("/images/welcomeImage.jpg")));
@@ -99,7 +102,7 @@ public class Register extends Application{
 	    registerLayout.setTopAnchor(rv, 150.0);
         registerLayout.setRightAnchor(rv, 60.0);
         
-        ItemPurchaserView ipv = new ItemPurchaserView(allItems, registerStage, 200, 80);
+        ItemPurchaserView ipv = new ItemPurchaserView(allItems, registerStage, 100, 100);
         for (PurchasableItemView piv:ipv.getPurchasableItems()) {
       		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, rv));
         }
@@ -129,7 +132,7 @@ public class Register extends Application{
         
         ActivityMonitorController amc = new ActivityMonitorController(rv, ipv, welcomeStage, registerStage); 
         
-        registerStage.addEventFilter(MouseEvent.MOUSE_MOVED, amc);
+        registerStage.addEventFilter(MouseEvent.MOUSE_PRESSED, amc);
         
 //        registerLayout.setOnMouseMoved(amc);
 //        ipv.setOnMouseMoved(amc);

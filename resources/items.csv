@@ -1,0 +1,26 @@
+banana,fruit,0.75,/images/banana.jpg,true
+orange,fruit,1.5,/images/orange.jpg,true
+watermelon slice,fruit,1.0,/images/watermelonSlice.jpg,true
+fish,other,4.0,/images/fish.jpg,true
+egg,other,0.25,/images/egg.jpg,true
+baguette,other,2.5,/images/baguette.jpg,true
+carrot,veggies 1,1.0,/images/carrot.jpg,true
+cauliflower,veggies 1,3.0,/images/cauliflower.jpg,true
+corn on the cob,veggies 2,1.0,/images/cornOnTheCob.jpg,true
+cucumber,veggies 2,1.0,/images/cucumber.jpg,true
+eggplant,veggies 2,3.0,/images/eggplant.jpg,true
+green apple,fruit,1.25,/images/greenApple.jpg,true
+green onion,veggies 1,0.5,/images/greenOnion.jpg,true
+lettuce,veggies 1,2.5,/images/lettuce.jpg,true
+potato,veggies 1,1.0,/images/potato.jpg,true
+potato bag,veggies 2,4.5,/images/potatoBag.jpg,true
+pumpkin,veggies 1,4.0,/images/pumpkin.jpg,true
+red apple,fruit,1.25,/images/redApple.jpg,true
+round loaf,other,4.0,/images/roundLoaf.jpg,true
+soybeans,veggies 2,0.25,/images/soybeans.jpg,true
+strawberry,fruit,0.5,/images/strawberry.jpg,true
+sugar beet,veggies 1,2.0,/images/sugarBeet.jpg,true
+tomato,fruit,1.5,/images/tomato.jpg,true
+watermelon,fruit,5.0,/images/watermelon.jpg,true
+yellow squash,veggies 2,2.0,/images/yellowSquash.jpg,true
+zucchini,veggies 2,2.0,/images/zucchini.png,true

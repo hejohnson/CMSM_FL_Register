@@ -39,7 +39,7 @@ public class EditItemView extends HBox{
 	
 	private Button deleteItemButton = new Button("");
 	
-	private Font textFieldFont = Font.font("Verdana", FontWeight.BOLD, 48);
+	private Font textFieldFont = Font.font("Verdana", FontWeight.BOLD, 30);
 	
 	public EditItemView(Item _item, Stage _stage) {
 		this.item = _item;
@@ -48,12 +48,12 @@ public class EditItemView extends HBox{
 		this.nameField.setText(this.item.getName());
 		this.nameField.setAlignment(Pos.CENTER);
 		this.nameField.setFont(textFieldFont);
-		this.nameField.setPrefWidth(48*12);
+		this.nameField.setPrefWidth(36*12);
 		
 		this.categoryField.setText(this.item.getCategory());
 		this.categoryField.setAlignment(Pos.CENTER);
 		this.categoryField.setFont(textFieldFont);
-		this.categoryField.setPrefWidth(48*12);
+		this.categoryField.setPrefWidth(36*12);
 		
 		this.priceField.setText(String.format("%.2f", item.getPrice()));
 		this.priceField.setAlignment(Pos.CENTER);

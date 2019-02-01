@@ -1,0 +1,4 @@
+fruit,50;128;131,/images/fruitIcon.png,/images/fruitBG.jpg
+veggies 1,168;207;68,/images/veggies1Icon.png,/images/veggies1BG.jpg
+veggies 2,255;202;16,/images/veggies2Icon.png,/images/veggies2BG.jpg
+other,248;152;28,/images/otherIcon.png,/images/otherBG.jpg
