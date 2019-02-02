@@ -19,8 +19,9 @@ public class TimeTick extends TimerTask {
 	Stage al;
 	ReceiptView rv;
 	ItemPurchaserView ipv;
+	ActivityMonitorController amc;
 	
-	public TimeTick (Text td, Stage rs, Stage ws, Stage _al, ReceiptView _rv, ItemPurchaserView _ipv) {
+	public TimeTick (Text td, Stage rs, Stage ws, Stage _al, ReceiptView _rv, ItemPurchaserView _ipv, ActivityMonitorController _amc) {
 		this.timeDisplay = td;
 		this.registerStage = rs;
 		this.welcomeStage = ws;
@@ -28,6 +29,7 @@ public class TimeTick extends TimerTask {
 		this.rv = _rv;
 		this.ipv = _ipv;
 		this.timeDisplay.setFont(Font.font("FredokaOne", FontWeight.NORMAL, 20));
+		this.amc = _amc;
 	}
 	@Override
 	public void run() {
@@ -36,7 +38,7 @@ public class TimeTick extends TimerTask {
 		if (newTimeLeft > 0) {
 			this.timeDisplay.setText("Time Remaining: ".concat(Integer.toString(newTimeLeft)));
 		} else {
-			Platform.runLater(new RunnableSwitchWindows(this.registerStage, this.welcomeStage, this.al, this.rv, this.ipv));
+			Platform.runLater(new RunnableSwitchWindows(this.registerStage, this.welcomeStage, this.al, this.rv, this.ipv, this.amc));
 		}
 		
 	}

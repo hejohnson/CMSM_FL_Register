@@ -55,8 +55,8 @@ public class Register extends Application{
         ImageView welcomeImage = new ImageView(new Image(getClass().getResourceAsStream("/images/welcomeImage.jpg")));
         welcomeLayout.getChildren().add(welcomeImage);
         
-        Scene registerScreen = new Scene(registerLayout);
-        Scene welcomeScreen = new Scene(welcomeLayout);
+        Scene registerScreen = new Scene(registerLayout, 1280, 1024);
+        Scene welcomeScreen = new Scene(welcomeLayout, 1280, 1024);
         registerStage.setScene(registerScreen);
         welcomeStage.setScene(welcomeScreen);
         
@@ -66,14 +66,18 @@ public class Register extends Application{
         
         //registerStage.setFullScreen(true);
         registerStage.initStyle(StageStyle.UNDECORATED);
-        registerStage.setMaximized(true);
+        //registerStage.setMaximized(true);
 	    registerStage.show();
+	    registerStage.setX(0);
+	    registerStage.setY(0);
 	    //registerStage.hide();
 	    
 	    welcomeStage.initStyle(StageStyle.UNDECORATED);
-	    welcomeStage.setMaximized(true);
+	   // welcomeStage.setMaximized(true);
 //        welcomeStage.setFullScreen(true);
 	    welcomeStage.show();
+	    welcomeStage.setX(0);
+	    welcomeStage.setY(0);
 	    welcomeStage.setAlwaysOnTop(true);
 	    
 	    
@@ -114,8 +118,11 @@ public class Register extends Application{
         registerLayout.setLeftAnchor(ipv, 0.0);
         registerLayout.setRightAnchor(ipv, 0.0);
         rv.toFront();
-        rv.getShoppingCart().setOnMouseClicked(new TotalReceiptController(rv, ipv, welcomeStage, registerStage));
-        rv.getCartImage().setOnMouseClicked(new TotalReceiptController(rv, ipv, welcomeStage, registerStage));
+        
+        ActivityMonitorController amc = new ActivityMonitorController(rv, ipv, welcomeStage, registerStage); 
+        
+        rv.getShoppingCart().setOnMouseClicked(new TotalReceiptController(rv, ipv, welcomeStage, registerStage, amc));
+        rv.getCartImage().setOnMouseClicked(new TotalReceiptController(rv, ipv, welcomeStage, registerStage, amc));
         
         welcomeStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(welcomeStage, registerStage));
         registerStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(registerStage, welcomeStage));
@@ -130,13 +137,13 @@ public class Register extends Application{
 //        ipv.setOnKeyPressed(new KeyExitController(registerStage));
 //        welcomeImage.setOnKeyPressed(new KeyExitController(welcomeStage));
         
-        ActivityMonitorController amc = new ActivityMonitorController(rv, ipv, welcomeStage, registerStage); 
+        
         
         registerStage.addEventFilter(MouseEvent.MOUSE_PRESSED, amc);
         
 //        registerLayout.setOnMouseMoved(amc);
 //        ipv.setOnMouseMoved(amc);
-	    welcomeLayout.setOnMousePressed(new WelcomeClickedController(welcomeStage, registerStage));
+	    welcomeLayout.setOnMousePressed(new WelcomeClickedController(welcomeStage, registerStage, amc));
         
 //        String [] arrayData = {"Scenario 1", "Scenario 2", "Scenario 3"};
 //        List<String> dialogData;

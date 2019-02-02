@@ -13,18 +13,20 @@ public class CloseAndReset implements Cancelable {
 	Stage al;
 	ReceiptView rv;
 	ItemPurchaserView ipv;
+	ActivityMonitorController amc;
 	
-	public CloseAndReset (Stage rs, Stage ws, Stage _al, ReceiptView _rv, ItemPurchaserView _ipv) {
+	public CloseAndReset (Stage rs, Stage ws, Stage _al, ReceiptView _rv, ItemPurchaserView _ipv, ActivityMonitorController _amc) {
 		this.registerStage = rs;
 		this.welcomeStage = ws;
 		this.al = _al;
 		this.rv = _rv;
 		this.ipv = _ipv;
+		this.amc = _amc;
 	}
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		Platform.runLater(new RunnableSwitchWindows(this.registerStage, this.welcomeStage, this.al, this.rv, this.ipv));		
+		Platform.runLater(new RunnableSwitchWindows(this.registerStage, this.welcomeStage, this.al, this.rv, this.ipv, this.amc));		
 	}
 	@Override
 	public void cancel() {

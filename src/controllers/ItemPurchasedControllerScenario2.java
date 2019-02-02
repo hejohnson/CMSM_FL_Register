@@ -29,6 +29,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import views.FullscreenPopup;
 import views.ItemPurchaserView;
 import views.PurchasableItemView;
 import views.ReceiptView;
@@ -38,7 +39,7 @@ public class ItemPurchasedControllerScenario2 implements EventHandler<MouseEvent
 	private PurchasableItemView piv;
 	private ItemPurchaserView ipv;
 	private ReceiptView rv;
-	private Stage ds;
+//	private Stage ds;
 	
 	public ItemPurchasedControllerScenario2(ItemPurchaserView _ipv, PurchasableItemView _piv, ReceiptView _rv) {
 		this.piv = _piv;
@@ -53,20 +54,23 @@ public class ItemPurchasedControllerScenario2 implements EventHandler<MouseEvent
 		
 		BorderPane layout = new BorderPane();
 		
-		Scene dialogScene = new Scene(layout);
-		this.ds = new Stage();
-		this.ds.setScene(dialogScene);
-		this.ds.initStyle(StageStyle.TRANSPARENT);
-		this.ds.setMaximized(true);
-		this.ds.show();
-		this.ds.setAlwaysOnTop(true);
-		this.ipv.getStage().setAlwaysOnTop(false);
+		FullscreenPopup fps = new FullscreenPopup(layout);
 		
+//		Scene dialogScene = new Scene(layout);
+//		this.ds = new Stage();
+//		this.ds.setScene(dialogScene);
+//		this.ds.initStyle(StageStyle.TRANSPARENT);
+//		this.ds.setMaximized(true);
+//		this.ds.show();
+//		this.ds.setAlwaysOnTop(true);
+//		this.ipv.getStage().setAlwaysOnTop(false);
+//		
+		fps.display(this.ipv.getStage());
 		VBox container = new VBox();
 		container.setAlignment(Pos.CENTER);
 		layout.setCenter(container);
 		layout.setPadding(new Insets(350, 450, 350, 450));
-		dialogScene.setFill(Color.TRANSPARENT);
+//		dialogScene.setFill(Color.TRANSPARENT);
 		layout.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255, 0.5), CornerRadii.EMPTY, Insets.EMPTY)));
 		container.setBorder(new Border(new BorderStroke(Color.DARKGREY, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(5))));
 		container.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255), new CornerRadii(15), Insets.EMPTY)));
@@ -89,13 +93,13 @@ public class ItemPurchasedControllerScenario2 implements EventHandler<MouseEvent
 		for (int i = 1; i <= 5; i++) {
 			Button button = new Button();
 			button.setGraphic(this.getCombinedImage(image, imageHeight, i));
-			button.setOnAction(new PurchaseByImageController(piv.getItem(), i, ds, this.ipv.getStage(), this.rv));
+			button.setOnAction(new PurchaseByImageController(piv.getItem(), i, fps, this.ipv.getStage(), this.rv));
 			button.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255), new CornerRadii(5), Insets.EMPTY)));
 			container.getChildren().add(button);
 			//gp.add(button, (i<=3)?(int)(0.5*Math.pow(i, 2)+.5*i-1):((i%4)*4), (i<=3)?0:1, i, 1);			
 		}
 		
-		layout.setOnMouseClicked(new CancelPurchaseItemController(this.ds, this.ipv.getStage(), this.rv));
+		layout.setOnMouseClicked(new CancelPurchaseItemController(fps, this.ipv.getStage(), this.rv));
 
 	}
 	

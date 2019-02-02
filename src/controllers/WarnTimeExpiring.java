@@ -23,6 +23,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import views.FullscreenPopup;
 import views.TimeExpiringAlert;
 
 public class WarnTimeExpiring implements Runnable, Cancelable {
@@ -31,8 +32,8 @@ public class WarnTimeExpiring implements Runnable, Cancelable {
 	private Stage ws;
 	private ActivityMonitorController amc;
 	private Alert alert;
-	private Stage ds;
 	private Timer countdown;
+	private FullscreenPopup fps;
 
 	public WarnTimeExpiring (Stage _rs, Stage _ws, ActivityMonitorController _amc) {
 		this.rs = _rs;
@@ -41,8 +42,10 @@ public class WarnTimeExpiring implements Runnable, Cancelable {
 		this.alert = new Alert(AlertType.INFORMATION);
 		alert.initOwner(this.rs);
 		alert.initModality(Modality.NONE);
-		this.ds = new Stage();
+		//this.ds = new Stage();
 		this.countdown = new Timer();
+		this.fps = new FullscreenPopup();
+		
 	}
 	
 	@Override
@@ -51,21 +54,25 @@ public class WarnTimeExpiring implements Runnable, Cancelable {
 		
 			BorderPane layout = new BorderPane();
 			
-			Scene dialogScene = new Scene(layout);
+			//Scene dialogScene = new Scene(layout);
 			
-			this.ds.setScene(dialogScene);
-			this.ds.initStyle(StageStyle.TRANSPARENT);
-			this.ds.initModality(Modality.NONE);
-			this.ds.setMaximized(true);
-			this.ds.show();
-			this.ds.setAlwaysOnTop(true);
-			this.rs.setAlwaysOnTop(false);
+			this.fps = new FullscreenPopup(layout);
+			
+//			this.ds.setScene(dialogScene);
+//			this.ds.initStyle(StageStyle.TRANSPARENT);
+//			this.ds.initModality(Modality.NONE);
+//			this.ds.setMaximized(true);
+//			this.ds.show();
+//			this.ds.setAlwaysOnTop(true);
+//			this.rs.setAlwaysOnTop(false);
+			
+			this.fps.display(this.rs);
 			
 			VBox container = new VBox();
 			container.setAlignment(Pos.CENTER);
 			layout.setCenter(container);
 			layout.setPadding(new Insets(350, 450, 350, 450));
-			dialogScene.setFill(Color.TRANSPARENT);
+			//dialogScene.setFill(Color.TRANSPARENT);
 			layout.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255, 0.5), CornerRadii.EMPTY, Insets.EMPTY)));
 			container.setBorder(new Border(new BorderStroke(Color.DARKGREY, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(5))));
 			container.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255), new CornerRadii(15), Insets.EMPTY)));
@@ -80,7 +87,7 @@ public class WarnTimeExpiring implements Runnable, Cancelable {
 	
 			container.getChildren().add(timeLeft);
 			
-			countdown.scheduleAtFixedRate(new TimeTick(timeLeft, this.rs, this.ws, this.ds, this.amc.getReceiptView(), this.amc.getIPV()), 1000, 1000);
+			countdown.scheduleAtFixedRate(new TimeTick(timeLeft, this.rs, this.ws, fps, this.amc.getReceiptView(), this.amc.getIPV(), this.amc), 1000, 1000);
 			
 			//countdown.cancel();
 		}
@@ -92,7 +99,7 @@ public class WarnTimeExpiring implements Runnable, Cancelable {
 	}
 	
 	public void cancel() {
-		this.ds.close();
+		this.fps.close();
 		this.rs.setAlwaysOnTop(true);
 		countdown.cancel();
 		//System.out.println("Closed tea");

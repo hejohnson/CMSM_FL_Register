@@ -29,8 +29,8 @@ public class ActivityMonitorController implements EventHandler<MouseEvent> {
 		this.ws = welcomeStage;
 		
 		te = new TimeExpiring(new WarnTimeExpiring(this.rs, this.ws, this));
-
-		tm2.schedule(te, 20000);
+//
+//		tm2.schedule(te, 20000);
 		//tm.schedule(new Reset(rv, ipv, ws, rs, te), 15000);
 	}
 
@@ -39,7 +39,27 @@ public class ActivityMonitorController implements EventHandler<MouseEvent> {
 		// TODO Auto-generated method stub
 		//System.out.println("triggered");
 		//te.cancel();
-		tm.cancel();
+//		te.cancel();
+//		tm2.cancel();
+//		
+//		te = new TimeExpiring(new WarnTimeExpiring(this.rs, this.ws, this));
+//		
+//		tm2 = new Timer();
+//		tm2.schedule(te, 20000);
+		
+		//tm = new Timer();
+		//tm.schedule(new Reset(rv, ipv, ws, rs, te), 15000);
+		this.cancel();
+		this.start();
+		
+	}
+	
+	public void cancel() {
+		te.cancel();
+		tm2.cancel();
+	}
+	
+	public void start() {
 		te.cancel();
 		tm2.cancel();
 		
@@ -47,10 +67,6 @@ public class ActivityMonitorController implements EventHandler<MouseEvent> {
 		
 		tm2 = new Timer();
 		tm2.schedule(te, 20000);
-		
-		//tm = new Timer();
-		//tm.schedule(new Reset(rv, ipv, ws, rs, te), 15000);
-		
 	}
 	
 	public ReceiptView getReceiptView() {

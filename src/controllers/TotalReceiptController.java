@@ -28,6 +28,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import views.FullscreenPopup;
 import views.ItemPurchaserView;
 import views.ReceiptView;
 
@@ -37,24 +38,21 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 	private ItemPurchaserView ipv;
 	private Stage rs;
 	private Stage ws;
-	private Alert alert;
-	private Stage ds;
 	private ImageView cartImg;
+	private ActivityMonitorController amc;
 	
 	private Font totalFont = Font.font("DidactGothic", FontWeight.NORMAL, 26);
 	
 	private Font priceFont = Font.font("FredokaOne", FontWeight.NORMAL, 30);
 	
-	public TotalReceiptController(ReceiptView _rv, ItemPurchaserView _ipv, Stage welcomeStage, Stage registerStage) {
+	public TotalReceiptController(ReceiptView _rv, ItemPurchaserView _ipv, Stage welcomeStage, Stage registerStage, ActivityMonitorController _amc) {
 		// TODO Auto-generated constructor stub
 		this.rv = _rv;
 		this.ipv = _ipv;
 		this.rs = registerStage;
 		this.ws = welcomeStage;
+		this.amc = _amc;
 		
-		this.alert = new Alert(AlertType.INFORMATION);
-		alert.initOwner(this.rs);
-		alert.initModality(Modality.NONE);
 	}
 
 	@Override
@@ -68,21 +66,24 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 		
 		BorderPane layout = new BorderPane();
 		
-		Scene dialogScene = new Scene(layout);
-		this.ds = new Stage();
-		this.ds.setScene(dialogScene);
-		this.ds.initStyle(StageStyle.TRANSPARENT);
-		this.ds.initModality(Modality.NONE);
-		this.ds.setMaximized(true);
-		this.ds.show();
-		this.ds.setAlwaysOnTop(true);
-		this.ipv.getStage().setAlwaysOnTop(false);
+//		Scene dialogScene = new Scene(layout);
+//		this.ds = new Stage();
+//		this.ds.setScene(dialogScene);
+//		this.ds.initStyle(StageStyle.TRANSPARENT);
+//		this.ds.initModality(Modality.NONE);
+//		this.ds.setMaximized(true);
+//		this.ds.show();
+//		this.ds.setAlwaysOnTop(true);
+//		this.ipv.getStage().setAlwaysOnTop(false);
+		
+		FullscreenPopup fps = new FullscreenPopup(layout);
+		fps.display(this.ipv.getStage());
 		
 		VBox container = new VBox();
 		container.setAlignment(Pos.CENTER);
 		layout.setCenter(container);
 		layout.setPadding(new Insets(350, 450, 650, 450));
-		dialogScene.setFill(Color.TRANSPARENT);
+
 		layout.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255, 0.5), CornerRadii.EMPTY, Insets.EMPTY)));
 		container.setBorder(new Border(new BorderStroke(Color.DARKGREY, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(10))));
 		container.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255), new CornerRadii(30), Insets.EMPTY)));
@@ -97,7 +98,7 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 		
 		HBox cartContainer = new HBox();
 		
-		this.cartImg = new ImageView(new Image(getClass().getResourceAsStream("/images/shoppingCart.png")));
+		this.cartImg = new ImageView(new Image(getClass().getResourceAsStream("/images/backCart.png")));
 		this.cartImg.setPreserveRatio(true);
 		this.cartImg.setFitWidth(100);
 		
@@ -111,9 +112,9 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 		layout.setBottom(cartContainer);
 		
 		Timer tm = new Timer();
-		tm.schedule(new TimeExpiring(new CloseAndReset(this.rs, this.ws, this.ds, this.rv, this.ipv)), 5000);
+		tm.schedule(new TimeExpiring(new CloseAndReset(this.rs, this.ws, fps, this.rv, this.ipv, this.amc)), 5000);
 		
-		this.cartImg.setOnMouseClicked(new ReturnToRegisterController(this.ds, this.ipv.getStage(), tm));
+		this.cartImg.setOnMouseClicked(new ReturnToRegisterController(fps, this.ipv.getStage(), tm));
 	}
 
 }

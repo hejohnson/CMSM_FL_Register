@@ -9,10 +9,12 @@ public class WelcomeClickedController implements EventHandler<MouseEvent> {
 	
 	private Stage ws;
 	private Stage rs;
+	private ActivityMonitorController amc;
 
-	public WelcomeClickedController(Stage welcomeStage, Stage registerScreen) {
+	public WelcomeClickedController(Stage welcomeStage, Stage registerScreen, ActivityMonitorController _amc) {
 		this.ws = welcomeStage;
 		this.rs = registerScreen;
+		this.amc = _amc;
 	}
 
 	@Override
@@ -24,6 +26,7 @@ public class WelcomeClickedController implements EventHandler<MouseEvent> {
 //		this.rs.show();
 		this.rs.setAlwaysOnTop(true);
 		this.ws.setAlwaysOnTop(false);
+		this.amc.start();
 	}
 
 }
