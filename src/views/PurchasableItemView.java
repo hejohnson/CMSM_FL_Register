@@ -95,7 +95,13 @@ public class PurchasableItemView extends VBox{
 //		VBox infoContainer = new VBox();
 //		infoContainer.getChildren().addAll(clippedItemInfo, spacerBox);
 		
-		this.priceField.setText(String.format("$%.2f", item.getPrice()));
+		if (this.item.getPrice() == 0.0) {
+			this.priceField.setText("free");
+		} else {
+			this.priceField.setText(String.format("$%.2f", item.getPrice()));
+		}
+		
+		
 		this.priceField.setFont(priceFont);
 		//this.priceField.prefHeight(36);
 		

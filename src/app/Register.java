@@ -67,7 +67,7 @@ public class Register extends Application{
         //registerStage.setFullScreen(true);
         registerStage.initStyle(StageStyle.UNDECORATED);
         //registerStage.setMaximized(true);
-	    registerStage.show();
+	    //registerStage.show();
 	    registerStage.setX(0);
 	    registerStage.setY(0);
 	    //registerStage.hide();
@@ -102,8 +102,8 @@ public class Register extends Application{
 	    Receipt r = new Receipt();
 	    ReceiptView rv = new ReceiptView(r);
 	    registerLayout.getChildren().add(rv);
-	    registerLayout.setBottomAnchor(rv, 80.0);
-	    registerLayout.setTopAnchor(rv, 150.0);
+	    registerLayout.setBottomAnchor(rv, 30.0);
+	    registerLayout.setTopAnchor(rv, 50.0);
         registerLayout.setRightAnchor(rv, 60.0);
         
         ItemPurchaserView ipv = new ItemPurchaserView(allItems, registerStage, 100, 100);

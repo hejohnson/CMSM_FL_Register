@@ -21,7 +21,7 @@ public class PurchasedItemView extends BorderPane {
 	private Text itemSubtotal;
 	private CornerRadii cr;
 	
-	private Font font = Font.font("DidactGothic", FontWeight.NORMAL, 20);
+	private Font font = Font.font("DidactGothic", FontWeight.NORMAL, 18);
 	
 	public PurchasedItemView (PurchasedItem pi) {
 		this.purchasedItem = pi;
@@ -38,11 +38,18 @@ public class PurchasedItemView extends BorderPane {
 		this.setLeft(this.itemSubtotal);
 //		this.setBorder(new Border(new BorderStroke(Color.BLACK, 
 //	            BorderStrokeStyle.SOLID, this.cr, BorderWidths.DEFAULT)));
-		this.setPadding(new Insets(10, 10, 10, 10));
+		this.setPadding(new Insets(1, 10, 1, 10));
 	}
 	
 	public void updateSubtotal() {
-		this.itemSubtotal.setText(String.format ("$%.2f", this.purchasedItem.getTotalPrice()));
+		
+		if (this.purchasedItem.getTotalPrice() == 0.0) {
+			this.itemSubtotal.setText("free");
+		} else {
+			this.itemSubtotal.setText(String.format("$%.2f", this.purchasedItem.getTotalPrice()));
+		}
+		
+		//this.itemSubtotal.setText(String.format ("$%.2f", this.purchasedItem.getTotalPrice()));
 	}
 	
 	public String getItemName() {

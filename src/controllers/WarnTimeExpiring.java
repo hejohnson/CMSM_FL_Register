@@ -50,7 +50,7 @@ public class WarnTimeExpiring implements Runnable, Cancelable {
 	
 	@Override
 	public void run() {
-		if (this.rs.isAlwaysOnTop()) {
+		//if (this.rs.isAlwaysOnTop()) {
 		
 			BorderPane layout = new BorderPane();
 			
@@ -90,7 +90,7 @@ public class WarnTimeExpiring implements Runnable, Cancelable {
 			countdown.scheduleAtFixedRate(new TimeTick(timeLeft, this.rs, this.ws, fps, this.amc.getReceiptView(), this.amc.getIPV(), this.amc), 1000, 1000);
 			
 			//countdown.cancel();
-		}
+		//}
 		
 //		tea = new TimeExpiringAlert(this.amc);
 //		//tea.getDialogPane().setOnMouseMoved(amc);

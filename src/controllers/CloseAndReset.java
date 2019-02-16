@@ -26,7 +26,8 @@ public class CloseAndReset implements Cancelable {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		Platform.runLater(new RunnableSwitchWindows(this.registerStage, this.welcomeStage, this.al, this.rv, this.ipv, this.amc));		
+		Platform.runLater(new RunnableSwitchWindows(this.registerStage, this.welcomeStage, this.al, this.rv, this.ipv, this.amc));
+		this.amc.cancel();
 	}
 	@Override
 	public void cancel() {
