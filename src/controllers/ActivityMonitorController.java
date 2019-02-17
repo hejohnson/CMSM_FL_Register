@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import views.ItemPurchaserView;
 import views.ReceiptView;
+import views.RegisterView;
 
 public class ActivityMonitorController implements EventHandler<MouseEvent> {
 
@@ -15,11 +16,11 @@ public class ActivityMonitorController implements EventHandler<MouseEvent> {
 	private Timer tm2;
 	private ReceiptView rv;
 	private ItemPurchaserView ipv;
-	private Stage rs;
+	private RegisterView rs;
 	private Stage ws;
 	private TimeExpiring te;
 
-	public ActivityMonitorController(ReceiptView _rv, ItemPurchaserView _ipv, Stage welcomeStage, Stage registerStage) {
+	public ActivityMonitorController(ReceiptView _rv, ItemPurchaserView _ipv, Stage welcomeStage, RegisterView registerStage) {
 		this.tm = new Timer();
 		this.tm2 = new Timer();
 		

@@ -11,6 +11,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
@@ -31,12 +32,13 @@ import javafx.stage.StageStyle;
 import views.FullscreenPopup;
 import views.ItemPurchaserView;
 import views.ReceiptView;
+import views.RegisterView;
 
 public class TotalReceiptController implements EventHandler<MouseEvent> {
 
 	private ReceiptView rv;
 	private ItemPurchaserView ipv;
-	private Stage rs;
+	private RegisterView rs;
 	private Stage ws;
 	private ImageView cartImg;
 	private ActivityMonitorController amc;
@@ -45,7 +47,7 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 	
 	private Font priceFont = Font.font("FredokaOne", FontWeight.NORMAL, 30);
 	
-	public TotalReceiptController(ReceiptView _rv, ItemPurchaserView _ipv, Stage welcomeStage, Stage registerStage, ActivityMonitorController _amc) {
+	public TotalReceiptController(ReceiptView _rv, ItemPurchaserView _ipv, Stage welcomeStage, RegisterView registerStage, ActivityMonitorController _amc) {
 		// TODO Auto-generated constructor stub
 		this.rv = _rv;
 		this.ipv = _ipv;
@@ -76,8 +78,17 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 //		this.ds.setAlwaysOnTop(true);
 //		this.ipv.getStage().setAlwaysOnTop(false);
 		
-		FullscreenPopup fps = new FullscreenPopup(layout);
-		fps.display(this.ipv.getStage());
+//		FullscreenPopup fps = new FullscreenPopup(layout);
+//		fps.display(this.ipv.getStage());
+		
+		this.rs.addPopup(layout);
+		
+//		AnchorPane registerLayout = (AnchorPane) (this.ipv.getStage().getScene().getRoot());
+//		registerLayout.getChildren().add(layout);
+//		registerLayout.setBottomAnchor(layout, 0.0);
+//		registerLayout.setTopAnchor(layout, 0.0);
+//		registerLayout.setLeftAnchor(layout, 0.0);
+//		registerLayout.setRightAnchor(layout, 0.0);
 		
 		VBox container = new VBox();
 		container.setAlignment(Pos.CENTER);
@@ -112,9 +123,9 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 		layout.setBottom(cartContainer);
 		
 		Timer tm = new Timer();
-		tm.schedule(new TimeExpiring(new CloseAndReset(this.rs, this.ws, fps, this.rv, this.ipv, this.amc)), 5000);
+		tm.schedule(new TimeExpiring(new CloseAndReset(this.rs, this.ws, this.rv, this.ipv, this.amc)), 5000);
 		
-		this.cartImg.setOnMouseClicked(new ReturnToRegisterController(fps, this.ipv.getStage(), tm));
+		layout.setOnMousePressed(new ReturnToRegisterController(this.ipv.getStage(), tm));
 	}
 
 }

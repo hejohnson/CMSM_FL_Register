@@ -12,10 +12,10 @@ import model.Item;
 public class ItemPurchaserView extends TabbedArea {
 	
 	private AllItems allItems;
-	private Stage stage;
+	private RegisterView stage;
 	private ArrayList<PurchasableItemView> purchasableItems = new ArrayList<PurchasableItemView>();
 	
-	public ItemPurchaserView(AllItems _allItems, Stage _stage, int w, int h) {
+	public ItemPurchaserView(AllItems _allItems, RegisterView _stage, int w, int h) {
 		super(w, h);
 		this.allItems = _allItems;
 		this.stage = _stage;
@@ -64,7 +64,7 @@ public class ItemPurchaserView extends TabbedArea {
 		
 	}
 	
-	public Stage getStage() {
+	public RegisterView getStage() {
 		return this.stage;
 	}
 	

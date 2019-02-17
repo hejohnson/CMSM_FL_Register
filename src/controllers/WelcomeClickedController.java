@@ -24,9 +24,11 @@ public class WelcomeClickedController implements EventHandler<MouseEvent> {
 //		this.ws.hide();
 //		this.rs.setFullScreen(true);
 //		this.rs.show();
-		this.ws.hide();
+//		this.ws.hide();
 		this.ws.setAlwaysOnTop(false);
-		this.rs.show();
+		this.ws.setFullScreen(false);
+//		this.rs.show();
+		this.rs.setFullScreen(true);
 		this.rs.setAlwaysOnTop(true);
 		this.amc.start();
 		System.out.println("Clicked");

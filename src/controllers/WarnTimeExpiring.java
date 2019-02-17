@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
@@ -24,24 +25,22 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import views.FullscreenPopup;
+import views.RegisterView;
 import views.TimeExpiringAlert;
 
 public class WarnTimeExpiring implements Runnable, Cancelable {
 	
-	private Stage rs;
+	private RegisterView rs;
 	private Stage ws;
 	private ActivityMonitorController amc;
 	private Alert alert;
 	private Timer countdown;
 	private FullscreenPopup fps;
 
-	public WarnTimeExpiring (Stage _rs, Stage _ws, ActivityMonitorController _amc) {
+	public WarnTimeExpiring (RegisterView _rs, Stage _ws, ActivityMonitorController _amc) {
 		this.rs = _rs;
 		this.ws = _ws;
 		this.amc = _amc;
-		this.alert = new Alert(AlertType.INFORMATION);
-		alert.initOwner(this.rs);
-		alert.initModality(Modality.NONE);
 		//this.ds = new Stage();
 		this.countdown = new Timer();
 		this.fps = new FullscreenPopup();
@@ -66,7 +65,16 @@ public class WarnTimeExpiring implements Runnable, Cancelable {
 //			this.ds.setAlwaysOnTop(true);
 //			this.rs.setAlwaysOnTop(false);
 			
-			this.fps.display(this.rs);
+//			this.fps.display(this.rs);
+			
+//			AnchorPane registerLayout = (AnchorPane) (this.rs.getScene().getRoot());
+//			registerLayout.getChildren().add(layout);
+//			registerLayout.setBottomAnchor(layout, 0.0);
+//			registerLayout.setTopAnchor(layout, 0.0);
+//			registerLayout.setLeftAnchor(layout, 0.0);
+//			registerLayout.setRightAnchor(layout, 0.0);
+			
+			this.rs.addPopup(layout);
 			
 			VBox container = new VBox();
 			container.setAlignment(Pos.CENTER);
@@ -77,7 +85,7 @@ public class WarnTimeExpiring implements Runnable, Cancelable {
 			container.setBorder(new Border(new BorderStroke(Color.DARKGREY, BorderStrokeStyle.SOLID, new CornerRadii(10), new BorderWidths(5))));
 			container.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255), new CornerRadii(15), Insets.EMPTY)));
 			
-			layout.addEventFilter(MouseEvent.MOUSE_CLICKED, amc);
+			layout.addEventFilter(MouseEvent.MOUSE_PRESSED, amc);
 			
 			Text timeLeft = new Text();
 			
@@ -87,7 +95,7 @@ public class WarnTimeExpiring implements Runnable, Cancelable {
 	
 			container.getChildren().add(timeLeft);
 			
-			countdown.scheduleAtFixedRate(new TimeTick(timeLeft, this.rs, this.ws, fps, this.amc.getReceiptView(), this.amc.getIPV(), this.amc), 1000, 1000);
+			countdown.scheduleAtFixedRate(new TimeTick(timeLeft, this.rs, this.ws, this.amc.getReceiptView(), this.amc.getIPV(), this.amc), 1000, 1000);
 			
 			//countdown.cancel();
 		//}
@@ -99,8 +107,13 @@ public class WarnTimeExpiring implements Runnable, Cancelable {
 	}
 	
 	public void cancel() {
-		this.fps.close();
-		this.rs.setAlwaysOnTop(true);
+		AnchorPane registerLayout = (AnchorPane) (this.rs.getScene().getRoot());
+		System.out.println(registerLayout.getChildren().size());
+		if (registerLayout.getChildren().size() >= 3) {
+			registerLayout.getChildren().remove(registerLayout.getChildren().size()-1);
+		}
+//		
+//		this.rs.setAlwaysOnTop(true);
 		countdown.cancel();
 		//System.out.println("Closed tea");
 	}

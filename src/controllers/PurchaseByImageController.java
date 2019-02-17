@@ -5,10 +5,12 @@ import java.util.Timer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Item;
 import views.ReceiptView;
+import views.RegisterView;
 
 public class PurchaseByImageController implements EventHandler<ActionEvent> {
 
@@ -17,9 +19,9 @@ public class PurchaseByImageController implements EventHandler<ActionEvent> {
 	private int qty;
 	private Stage alert;
 	private ReceiptView rv;
-	private Stage rs;
+	private RegisterView rs;
 	
-	public PurchaseByImageController(Item _item, int _i, Stage _alert, Stage _rs, ReceiptView _rv) {
+	public PurchaseByImageController(Item _item, int _i, Stage _alert, RegisterView _rs, ReceiptView _rv) {
 		this.item = _item;
 		this.qty = _i;
 		this.alert = _alert;
@@ -38,7 +40,10 @@ public class PurchaseByImageController implements EventHandler<ActionEvent> {
 //		double currentTotal = Double.parseDouble(this.total.getText().substring(1));
 //		Double totalCost = currentTotal + this.item.getPrice()*this.qty;
 //		this.total.setText("$".concat(new Integer(totalCost.intValue()).toString()));
-		alert.hide();
+//		AnchorPane registerLayout = (AnchorPane) (this.rs.getScene().getRoot());
+		//registerLayout.getChildren().remove(registerLayout.getChildren().size()-1);
+//		alert.hide();
+		this.rs.removePopup();
 		this.rs.setAlwaysOnTop(true);
 		this.rv.setTotalBG();
 		Timer tm = new Timer();

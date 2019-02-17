@@ -13,6 +13,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +28,7 @@ import model.Receipt;
 import views.ItemPurchaserView;
 import views.PurchasableItemView;
 import views.ReceiptView;
+import views.RegisterView;
 
 public class Register extends Application{
 	
@@ -48,7 +50,9 @@ public class Register extends Application{
 		Font.loadFont(getClass().getResource("/FredokaOne-Regular.ttf").toExternalForm(), 10);
 		
         
-		Stage registerStage = new Stage();
+		RegisterView registerStage = new RegisterView();
+		registerStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+		welcomeStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		AnchorPane registerLayout = new AnchorPane();
         BorderPane welcomeLayout = new BorderPane();
         
@@ -67,9 +71,10 @@ public class Register extends Application{
         //registerStage.setFullScreen(true);
         registerStage.initStyle(StageStyle.UNDECORATED);
         //registerStage.setMaximized(true);
-	    //registerStage.show();
+	    registerStage.show();
 	    registerStage.setX(0);
 	    registerStage.setY(0);
+	    registerStage.setFullScreen(true);
 	    //registerStage.hide();
 	    
 	    welcomeStage.initStyle(StageStyle.UNDECORATED);
@@ -79,6 +84,7 @@ public class Register extends Application{
 	    welcomeStage.setX(0);
 	    welcomeStage.setY(0);
 	    welcomeStage.setAlwaysOnTop(true);
+	    welcomeStage.setFullScreen(true);
 	    
 	    
 //	    VBox totalTracker = new VBox();

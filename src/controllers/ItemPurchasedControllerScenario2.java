@@ -22,6 +22,7 @@ import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -65,7 +66,7 @@ public class ItemPurchasedControllerScenario2 implements EventHandler<MouseEvent
 //		this.ds.setAlwaysOnTop(true);
 //		this.ipv.getStage().setAlwaysOnTop(false);
 //		
-		fps.display(this.ipv.getStage());
+		//fps.display(this.ipv.getStage());
 		VBox container = new VBox();
 		container.setAlignment(Pos.CENTER);
 		layout.setCenter(container);
@@ -99,8 +100,8 @@ public class ItemPurchasedControllerScenario2 implements EventHandler<MouseEvent
 			//gp.add(button, (i<=3)?(int)(0.5*Math.pow(i, 2)+.5*i-1):((i%4)*4), (i<=3)?0:1, i, 1);			
 		}
 		
-		layout.setOnMouseClicked(new CancelPurchaseItemController(fps, this.ipv.getStage(), this.rv));
-
+		layout.setOnMousePressed(new CancelPurchaseItemController(this.ipv.getStage(), this.rv));
+		this.ipv.getStage().addPopup(layout);
 	}
 	
 	public Canvas getCombinedImage(Image img, int height, int qty) {
