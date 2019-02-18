@@ -12,13 +12,11 @@ import model.Item;
 public class ItemPurchaserView extends TabbedArea {
 	
 	private AllItems allItems;
-	private RegisterView stage;
 	private ArrayList<PurchasableItemView> purchasableItems = new ArrayList<PurchasableItemView>();
 	
-	public ItemPurchaserView(AllItems _allItems, RegisterView _stage, int w, int h) {
+	public ItemPurchaserView(AllItems _allItems, int w, int h) {
 		super(w, h);
 		this.allItems = _allItems;
-		this.stage = _stage;
 		//this.setHgap(10);
 		//this.setVgap(10);
 		
@@ -42,7 +40,7 @@ public class ItemPurchaserView extends TabbedArea {
 		
 		for (Item itm : allItems.getItems()) {
 			if (itm.isPurchasable()) {
-				PurchasableItemView itemView = new PurchasableItemView(itm, this.stage);
+				PurchasableItemView itemView = new PurchasableItemView(itm);
 				purchasableItems.add(itemView);
 				this.addContent(itm.getCategory(), itemView);
 //				for (RegisterTab t:this.getTabs()) {
@@ -62,10 +60,6 @@ public class ItemPurchaserView extends TabbedArea {
 		this.getFirstTab().setSelected();
 		//this.setAlignment(Pos.CENTER);
 		
-	}
-	
-	public RegisterView getStage() {
-		return this.stage;
 	}
 	
 	public AllItems getAllItems() {

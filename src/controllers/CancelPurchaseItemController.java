@@ -25,7 +25,6 @@ public class CancelPurchaseItemController implements EventHandler<MouseEvent> {
 //		registerLayout.getChildren().remove(registerLayout.getChildren().size()-1);
 		arg0.consume();
 		this.rs.removePopup();
-		this.rs.setAlwaysOnTop(true);
 		this.rv.clearActiveBG();
 	}
 

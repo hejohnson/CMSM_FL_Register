@@ -44,47 +44,49 @@ public class Register extends Application{
 	}
 	
 	@Override
-    public void start(Stage welcomeStage) {
+    public void start(Stage stage) {
 		
 		Font.loadFont(getClass().getResource("/DidactGothic-Regular.ttf").toExternalForm(), 10);
 		Font.loadFont(getClass().getResource("/FredokaOne-Regular.ttf").toExternalForm(), 10);
 		
         
-		RegisterView registerStage = new RegisterView();
-		registerStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-		welcomeStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+//		RegisterView registerStage = new RegisterView();
+		stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+//		welcomeStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		AnchorPane registerLayout = new AnchorPane();
         BorderPane welcomeLayout = new BorderPane();
         
         ImageView welcomeImage = new ImageView(new Image(getClass().getResourceAsStream("/images/welcomeImage.jpg")));
-        welcomeLayout.getChildren().add(welcomeImage);
+//        welcomeLayout.getChildren().add(welcomeImage);
         
-        Scene registerScreen = new Scene(registerLayout, 1280, 1024);
-        Scene welcomeScreen = new Scene(welcomeLayout, 1280, 1024);
-        registerStage.setScene(registerScreen);
-        welcomeStage.setScene(welcomeScreen);
+        RegisterView registerScreen = new RegisterView(registerLayout, 1280, 1024);
+        registerScreen.setWelcome(welcomeImage);
+        
+//        Scene welcomeScreen = new Scene(welcomeLayout, 1280, 1024);
+        stage.setScene(registerScreen);
+//        welcomeStage.setScene(welcomeScreen);
         
 //        dialogStage.initStyle(StageStyle.UNDECORATED);
 //        dialogStage.setMaximized(true);
 //        dialogStage.show();
         
         //registerStage.setFullScreen(true);
-        registerStage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.UNDECORATED);
         //registerStage.setMaximized(true);
-	    registerStage.show();
-	    registerStage.setX(0);
-	    registerStage.setY(0);
-	    registerStage.setFullScreen(true);
+	    stage.show();
+	    stage.setX(0);
+	    stage.setY(0);
+	    stage.setFullScreen(true);
 	    //registerStage.hide();
 	    
-	    welcomeStage.initStyle(StageStyle.UNDECORATED);
-	   // welcomeStage.setMaximized(true);
-//        welcomeStage.setFullScreen(true);
-	    welcomeStage.show();
-	    welcomeStage.setX(0);
-	    welcomeStage.setY(0);
-	    welcomeStage.setAlwaysOnTop(true);
-	    welcomeStage.setFullScreen(true);
+//	    welcomeStage.initStyle(StageStyle.UNDECORATED);
+//	   // welcomeStage.setMaximized(true);
+////        welcomeStage.setFullScreen(true);
+//	    welcomeStage.show();
+//	    welcomeStage.setX(0);
+//	    welcomeStage.setY(0);
+//	    welcomeStage.setAlwaysOnTop(true);
+//	    welcomeStage.setFullScreen(true);
 	    
 	    
 //	    VBox totalTracker = new VBox();
@@ -112,9 +114,9 @@ public class Register extends Application{
 	    registerLayout.setTopAnchor(rv, 50.0);
         registerLayout.setRightAnchor(rv, 60.0);
         
-        ItemPurchaserView ipv = new ItemPurchaserView(allItems, registerStage, 100, 100);
+        ItemPurchaserView ipv = new ItemPurchaserView(allItems, 100, 100);
         for (PurchasableItemView piv:ipv.getPurchasableItems()) {
-      		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, rv));
+      		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(registerScreen, ipv, piv, rv));
         }
         
         //ipv.setOnMouseClicked(new controllers.TabClickController(ipv, 200, 80));
@@ -125,13 +127,13 @@ public class Register extends Application{
         registerLayout.setRightAnchor(ipv, 0.0);
         rv.toFront();
         
-        ActivityMonitorController amc = new ActivityMonitorController(rv, ipv, welcomeStage, registerStage); 
+        ActivityMonitorController amc = new ActivityMonitorController(rv, ipv, registerScreen); 
         
-        rv.getShoppingCart().setOnMouseClicked(new TotalReceiptController(rv, ipv, welcomeStage, registerStage, amc));
-        rv.getCartImage().setOnMouseClicked(new TotalReceiptController(rv, ipv, welcomeStage, registerStage, amc));
+        rv.getShoppingCart().setOnMouseClicked(new TotalReceiptController(rv, ipv, registerScreen, amc));
+        rv.getCartImage().setOnMouseClicked(new TotalReceiptController(rv, ipv, registerScreen, amc));
         
-        welcomeStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(welcomeStage, registerStage));
-        registerStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(registerStage, welcomeStage));
+        stage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(stage));
+//        registerStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(registerStage, welcomeStage));
         
         ArrayList<Rectangle> boxes = new ArrayList<Rectangle>();
         boxes.add(new Rectangle(0,0,250,250));
@@ -139,17 +141,18 @@ public class Register extends Application{
         boxes.add(new Rectangle(0,775,250,250));
         boxes.add(new Rectangle(1030,775,250,250));
         
-        registerStage.addEventFilter(MouseEvent.MOUSE_PRESSED, new ApplicationExitController(welcomeStage, registerStage, boxes));
+        stage.addEventFilter(MouseEvent.MOUSE_PRESSED, new ApplicationExitController(stage, boxes));
 //        ipv.setOnKeyPressed(new KeyExitController(registerStage));
 //        welcomeImage.setOnKeyPressed(new KeyExitController(welcomeStage));
         
         
         
-        registerStage.addEventFilter(MouseEvent.MOUSE_PRESSED, amc);
+        stage.addEventFilter(MouseEvent.MOUSE_PRESSED, amc);
         
 //        registerLayout.setOnMouseMoved(amc);
 //        ipv.setOnMouseMoved(amc);
-	    welcomeLayout.setOnMousePressed(new WelcomeClickedController(welcomeStage, registerStage, amc));
+	    welcomeImage.setOnMousePressed(new WelcomeClickedController(registerScreen, amc));
+	    registerScreen.showWelcome();
         
 //        String [] arrayData = {"Scenario 1", "Scenario 2", "Scenario 3"};
 //        List<String> dialogData;

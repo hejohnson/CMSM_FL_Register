@@ -9,16 +9,13 @@ import views.RegisterView;
 
 public class RunnableSwitchWindows implements Runnable {
 	
-	private RegisterView rs;
-	private Stage ws;
-	private Stage al;
+	private RegisterView registerView;
 	private ReceiptView rv;
 	private ItemPurchaserView ipv;
 	private ActivityMonitorController amc;
 
-	public RunnableSwitchWindows (RegisterView _rs, Stage _ws, ReceiptView _rv, ItemPurchaserView _ipv, ActivityMonitorController _amc) {
-		this.rs = _rs;
-		this.ws = _ws;
+	public RunnableSwitchWindows (RegisterView _registerView, ReceiptView _rv, ItemPurchaserView _ipv, ActivityMonitorController _amc) {
+		this.registerView = _registerView;
 //		this.al = al2;
 		this.rv = _rv;
 		this.ipv = _ipv;
@@ -27,16 +24,13 @@ public class RunnableSwitchWindows implements Runnable {
 	
 	@Override
 	public void run() {
-		this.rs.removePopup();
+		this.registerView.removePopup();
 //		AnchorPane registerLayout = (AnchorPane) (this.rs.getScene().getRoot());
 //		registerLayout.getChildren().remove(registerLayout.getChildren().size()-1);
 //		this.al.close();
 //		this.rs.hide();
-		this.rs.setAlwaysOnTop(false);
-		this.rs.setFullScreen(false);
 //		this.ws.show();
-		this.ws.setAlwaysOnTop(true);
-		this.ws.setFullScreen(true);
+		this.registerView.showWelcome();
 		this.rv.getReceipt().clear();
 		this.rv.clear();
 		this.ipv.reset();

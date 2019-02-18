@@ -4,16 +4,15 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import views.RegisterView;
 
 public class WelcomeClickedController implements EventHandler<MouseEvent> {
 	
-	private Stage ws;
-	private Stage rs;
+	private RegisterView registerView;
 	private ActivityMonitorController amc;
 
-	public WelcomeClickedController(Stage welcomeStage, Stage registerScreen, ActivityMonitorController _amc) {
-		this.ws = welcomeStage;
-		this.rs = registerScreen;
+	public WelcomeClickedController(RegisterView _registerView, ActivityMonitorController _amc) {
+		this.registerView = _registerView;
 		this.amc = _amc;
 	}
 
@@ -25,11 +24,12 @@ public class WelcomeClickedController implements EventHandler<MouseEvent> {
 //		this.rs.setFullScreen(true);
 //		this.rs.show();
 //		this.ws.hide();
-		this.ws.setAlwaysOnTop(false);
-		this.ws.setFullScreen(false);
-//		this.rs.show();
-		this.rs.setFullScreen(true);
-		this.rs.setAlwaysOnTop(true);
+//		this.ws.setAlwaysOnTop(false);
+//		this.ws.setFullScreen(false);
+////		this.rs.show();
+//		this.rs.setFullScreen(true);
+//		this.rs.setAlwaysOnTop(true);
+		this.registerView.hideWelcome();
 		this.amc.start();
 		System.out.println("Clicked");
 	}

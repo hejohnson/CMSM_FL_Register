@@ -10,9 +10,8 @@ public class KeyExitController implements EventHandler<KeyEvent> {
 	Stage s1;
 	Stage s2;
 	
-	public KeyExitController (Stage stage1, Stage stage2) {
+	public KeyExitController (Stage stage1) {
 		this.s1 = stage1;
-		this.s2 = stage2;
 	}
 	
 	@Override
@@ -22,7 +21,6 @@ public class KeyExitController implements EventHandler<KeyEvent> {
 		System.out.println(arg0.getCode().toString());
 		if (arg0.getCode().equals(KeyCode.ESCAPE)) {
 			this.s1.close();
-			this.s2.close();
 		}
 	}
 

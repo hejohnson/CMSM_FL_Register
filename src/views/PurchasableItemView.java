@@ -41,9 +41,9 @@ public class PurchasableItemView extends VBox{
 	
 	private AnchorPane container;
 	
-	public PurchasableItemView(Item _item, Stage _stage) {
+	public PurchasableItemView(Item _item) {
 		this.item = _item;
-		this.stage = _stage;
+
 		this.container = new AnchorPane();
 		
 		VBox nameContainer = new VBox();
@@ -151,10 +151,6 @@ public class PurchasableItemView extends VBox{
 		imgView = new ImageView(image);
 		imgView.setPreserveRatio(true);
 		imgView.setFitWidth(170);
-	}
-
-	public Stage getStage() {
-		return this.stage;
 	}
 	
 	public ImageView getImage() {

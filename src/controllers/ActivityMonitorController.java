@@ -15,21 +15,20 @@ public class ActivityMonitorController implements EventHandler<MouseEvent> {
 	private Timer tm;
 	private Timer tm2;
 	private ReceiptView rv;
+	private RegisterView registerView;
 	private ItemPurchaserView ipv;
-	private RegisterView rs;
-	private Stage ws;
+
 	private TimeExpiring te;
 
-	public ActivityMonitorController(ReceiptView _rv, ItemPurchaserView _ipv, Stage welcomeStage, RegisterView registerStage) {
+	public ActivityMonitorController(ReceiptView _rv, ItemPurchaserView _ipv, RegisterView _registerView) {
 		this.tm = new Timer();
 		this.tm2 = new Timer();
 		
 		this.rv = _rv;
 		this.ipv = _ipv;
-		this.rs = registerStage;
-		this.ws = welcomeStage;
+		this.registerView = _registerView;
 		
-		te = new TimeExpiring(new WarnTimeExpiring(this.rs, this.ws, this));
+		te = new TimeExpiring(new WarnTimeExpiring(this.registerView, this));
 //
 //		tm2.schedule(te, 20000);
 		//tm.schedule(new Reset(rv, ipv, ws, rs, te), 15000);
@@ -64,7 +63,7 @@ public class ActivityMonitorController implements EventHandler<MouseEvent> {
 		te.cancel();
 		tm2.cancel();
 		
-		te = new TimeExpiring(new WarnTimeExpiring(this.rs, this.ws, this));
+		te = new TimeExpiring(new WarnTimeExpiring(this.registerView, this));
 		
 		tm2 = new Timer();
 		tm2.schedule(te, 20000);

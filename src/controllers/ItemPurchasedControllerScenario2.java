@@ -34,18 +34,21 @@ import views.FullscreenPopup;
 import views.ItemPurchaserView;
 import views.PurchasableItemView;
 import views.ReceiptView;
+import views.RegisterView;
 
 public class ItemPurchasedControllerScenario2 implements EventHandler<MouseEvent> {
 
 	private PurchasableItemView piv;
 	private ItemPurchaserView ipv;
 	private ReceiptView rv;
+	private RegisterView registerView;
 //	private Stage ds;
 	
-	public ItemPurchasedControllerScenario2(ItemPurchaserView _ipv, PurchasableItemView _piv, ReceiptView _rv) {
+	public ItemPurchasedControllerScenario2(RegisterView _registerView, ItemPurchaserView _ipv, PurchasableItemView _piv, ReceiptView _rv) {
 		this.piv = _piv;
 		this.ipv = _ipv;
 		this.rv = _rv;
+		this.registerView = _registerView;
 	}
 
 	@Override
@@ -94,14 +97,14 @@ public class ItemPurchasedControllerScenario2 implements EventHandler<MouseEvent
 		for (int i = 1; i <= 5; i++) {
 			Button button = new Button();
 			button.setGraphic(this.getCombinedImage(image, imageHeight, i));
-			button.setOnAction(new PurchaseByImageController(piv.getItem(), i, fps, this.ipv.getStage(), this.rv));
+			button.setOnAction(new PurchaseByImageController(piv.getItem(), i, fps, this.registerView, this.rv));
 			button.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255), new CornerRadii(5), Insets.EMPTY)));
 			container.getChildren().add(button);
 			//gp.add(button, (i<=3)?(int)(0.5*Math.pow(i, 2)+.5*i-1):((i%4)*4), (i<=3)?0:1, i, 1);			
 		}
 		
-		layout.setOnMousePressed(new CancelPurchaseItemController(this.ipv.getStage(), this.rv));
-		this.ipv.getStage().addPopup(layout);
+		layout.setOnMousePressed(new CancelPurchaseItemController(this.registerView, this.rv));
+		this.registerView.addPopup(layout);
 	}
 	
 	public Canvas getCombinedImage(Image img, int height, int qty) {

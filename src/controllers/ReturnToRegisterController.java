@@ -27,7 +27,6 @@ public class ReturnToRegisterController implements EventHandler<MouseEvent> {
 		//registerLayout.getChildren().remove(registerLayout.getChildren().size()-1);
 		//this.ds.close();
 		this.rs.removePopup();
-		this.rs.setAlwaysOnTop(true);
 		this.tm.cancel();
 		System.out.println("RRC");
 		

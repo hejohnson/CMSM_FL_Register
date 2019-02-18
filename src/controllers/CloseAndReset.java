@@ -9,16 +9,13 @@ import views.RegisterView;
 
 public class CloseAndReset implements Cancelable {
 
-	RegisterView registerStage;
-	Stage welcomeStage;
-	Stage al;
+	RegisterView registerView;
 	ReceiptView rv;
 	ItemPurchaserView ipv;
 	ActivityMonitorController amc;
 	
-	public CloseAndReset (RegisterView rs, Stage ws, ReceiptView _rv, ItemPurchaserView _ipv, ActivityMonitorController _amc) {
-		this.registerStage = rs;
-		this.welcomeStage = ws;
+	public CloseAndReset (RegisterView _registerView, ReceiptView _rv, ItemPurchaserView _ipv, ActivityMonitorController _amc) {
+		this.registerView = _registerView;
 //		this.al = _al;
 		this.rv = _rv;
 		this.ipv = _ipv;
@@ -27,7 +24,7 @@ public class CloseAndReset implements Cancelable {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		Platform.runLater(new RunnableSwitchWindows(this.registerStage, this.welcomeStage, this.rv, this.ipv, this.amc));
+		Platform.runLater(new RunnableSwitchWindows(this.registerView, this.rv, this.ipv, this.amc));
 		this.amc.cancel();
 	}
 	@Override

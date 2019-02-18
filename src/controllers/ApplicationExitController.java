@@ -11,15 +11,14 @@ import javafx.stage.Stage;
 
 public class ApplicationExitController implements EventHandler<MouseEvent> {
 	private Stage s1;
-	private Stage s2;
+
 	private ArrayList<Rectangle> boxes;
 	private int i;
 	private Timer timer;
 	private RestartExitSequence res;
 	
-	public ApplicationExitController(Stage _s1, Stage _s2, ArrayList<Rectangle> _boxes) {
+	public ApplicationExitController(Stage _s1, ArrayList<Rectangle> _boxes) {
 		this.s1 = _s1;
-		this.s2 = _s2;
 		this.boxes = _boxes;
 		this.i = 0;
 		this.timer = new Timer();
@@ -35,7 +34,6 @@ public class ApplicationExitController implements EventHandler<MouseEvent> {
 				this.i++;
 				if (this.boxes.size()==i) {
 					this.s1.close();
-					this.s2.close();
 				}
 				this.res.cancel();
 				this.res = new RestartExitSequence(this);

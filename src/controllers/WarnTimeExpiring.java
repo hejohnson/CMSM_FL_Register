@@ -30,16 +30,13 @@ import views.TimeExpiringAlert;
 
 public class WarnTimeExpiring implements Runnable, Cancelable {
 	
-	private RegisterView rs;
-	private Stage ws;
+	private RegisterView registerView;
 	private ActivityMonitorController amc;
-	private Alert alert;
 	private Timer countdown;
 	private FullscreenPopup fps;
 
-	public WarnTimeExpiring (RegisterView _rs, Stage _ws, ActivityMonitorController _amc) {
-		this.rs = _rs;
-		this.ws = _ws;
+	public WarnTimeExpiring (RegisterView _registerView, ActivityMonitorController _amc) {
+		this.registerView = _registerView;
 		this.amc = _amc;
 		//this.ds = new Stage();
 		this.countdown = new Timer();
@@ -74,7 +71,7 @@ public class WarnTimeExpiring implements Runnable, Cancelable {
 //			registerLayout.setLeftAnchor(layout, 0.0);
 //			registerLayout.setRightAnchor(layout, 0.0);
 			
-			this.rs.addPopup(layout);
+			this.registerView.addPopup(layout);
 			
 			VBox container = new VBox();
 			container.setAlignment(Pos.CENTER);
@@ -95,7 +92,7 @@ public class WarnTimeExpiring implements Runnable, Cancelable {
 	
 			container.getChildren().add(timeLeft);
 			
-			countdown.scheduleAtFixedRate(new TimeTick(timeLeft, this.rs, this.ws, this.amc.getReceiptView(), this.amc.getIPV(), this.amc), 1000, 1000);
+			countdown.scheduleAtFixedRate(new TimeTick(timeLeft, this.registerView, this.amc.getReceiptView(), this.amc.getIPV(), this.amc), 1000, 1000);
 			
 			//countdown.cancel();
 		//}
@@ -107,11 +104,7 @@ public class WarnTimeExpiring implements Runnable, Cancelable {
 	}
 	
 	public void cancel() {
-		AnchorPane registerLayout = (AnchorPane) (this.rs.getScene().getRoot());
-		System.out.println(registerLayout.getChildren().size());
-		if (registerLayout.getChildren().size() >= 3) {
-			registerLayout.getChildren().remove(registerLayout.getChildren().size()-1);
-		}
+		this.registerView.removePopup();
 //		
 //		this.rs.setAlwaysOnTop(true);
 		countdown.cancel();

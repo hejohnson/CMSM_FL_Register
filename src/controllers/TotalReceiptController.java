@@ -38,8 +38,7 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 
 	private ReceiptView rv;
 	private ItemPurchaserView ipv;
-	private RegisterView rs;
-	private Stage ws;
+	private RegisterView registerView;
 	private ImageView cartImg;
 	private ActivityMonitorController amc;
 	
@@ -47,12 +46,11 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 	
 	private Font priceFont = Font.font("FredokaOne", FontWeight.NORMAL, 30);
 	
-	public TotalReceiptController(ReceiptView _rv, ItemPurchaserView _ipv, Stage welcomeStage, RegisterView registerStage, ActivityMonitorController _amc) {
+	public TotalReceiptController(ReceiptView _rv, ItemPurchaserView _ipv, RegisterView _registerView, ActivityMonitorController _amc) {
 		// TODO Auto-generated constructor stub
 		this.rv = _rv;
 		this.ipv = _ipv;
-		this.rs = registerStage;
-		this.ws = welcomeStage;
+		this.registerView = _registerView;
 		this.amc = _amc;
 		
 	}
@@ -81,7 +79,7 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 //		FullscreenPopup fps = new FullscreenPopup(layout);
 //		fps.display(this.ipv.getStage());
 		
-		this.rs.addPopup(layout);
+		this.registerView.addPopup(layout);
 		
 //		AnchorPane registerLayout = (AnchorPane) (this.ipv.getStage().getScene().getRoot());
 //		registerLayout.getChildren().add(layout);
@@ -123,9 +121,9 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 		layout.setBottom(cartContainer);
 		
 		Timer tm = new Timer();
-		tm.schedule(new TimeExpiring(new CloseAndReset(this.rs, this.ws, this.rv, this.ipv, this.amc)), 5000);
+		tm.schedule(new TimeExpiring(new CloseAndReset(this.registerView, this.rv, this.ipv, this.amc)), 5000);
 		
-		layout.setOnMousePressed(new ReturnToRegisterController(this.ipv.getStage(), tm));
+		layout.setOnMousePressed(new ReturnToRegisterController(this.registerView, tm));
 	}
 
 }

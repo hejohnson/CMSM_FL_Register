@@ -44,7 +44,6 @@ public class PurchaseByImageController implements EventHandler<ActionEvent> {
 		//registerLayout.getChildren().remove(registerLayout.getChildren().size()-1);
 //		alert.hide();
 		this.rs.removePopup();
-		this.rs.setAlwaysOnTop(true);
 		this.rv.setTotalBG();
 		Timer tm = new Timer();
 		tm.schedule(new ResetBackground(this.rv), 1000);
