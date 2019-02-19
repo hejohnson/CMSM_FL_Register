@@ -31,7 +31,7 @@ public class WelcomeClickedController implements EventHandler<MouseEvent> {
 //		this.rs.setAlwaysOnTop(true);
 		this.registerView.hideWelcome();
 		this.amc.start();
-		System.out.println("Clicked");
+//		System.out.println("Clicked");
 	}
 
 }

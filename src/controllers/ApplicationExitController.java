@@ -30,7 +30,7 @@ public class ApplicationExitController implements EventHandler<MouseEvent> {
 	@Override
 	public void handle(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		System.out.println("Mouse Event");
+		//System.out.println("Mouse Event");
 		if ((arg0.getScreenX() < (this.boxes.get(i).getX()+this.boxes.get(i).getWidth())) && (arg0.getScreenX() > this.boxes.get(i).getX())){
 			if ((arg0.getScreenY() < (this.boxes.get(i).getY()+this.boxes.get(i).getHeight())) && (arg0.getScreenY() > this.boxes.get(i).getY())){
 				this.i++;
