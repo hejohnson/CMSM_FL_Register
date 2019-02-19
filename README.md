@@ -1,1 +1,2 @@
-# CMSM_FL_Register
+## Welcome to CMSM Financial Literacy Exhibit Cash Register
+
