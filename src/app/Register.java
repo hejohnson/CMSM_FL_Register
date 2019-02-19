@@ -54,7 +54,6 @@ public class Register extends Application{
 		stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 //		welcomeStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		AnchorPane registerLayout = new AnchorPane();
-        BorderPane welcomeLayout = new BorderPane();
         
         ImageView welcomeImage = new ImageView(new Image(getClass().getResourceAsStream("/images/welcomeImage.jpg")));
 //        welcomeLayout.getChildren().add(welcomeImage);
@@ -132,7 +131,6 @@ public class Register extends Application{
         rv.getShoppingCart().setOnMouseClicked(new TotalReceiptController(rv, ipv, registerScreen, amc));
         rv.getCartImage().setOnMouseClicked(new TotalReceiptController(rv, ipv, registerScreen, amc));
         
-        stage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(stage));
 //        registerStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(registerStage, welcomeStage));
         
         ArrayList<Rectangle> boxes = new ArrayList<Rectangle>();
@@ -141,12 +139,8 @@ public class Register extends Application{
         boxes.add(new Rectangle(0,775,250,250));
         boxes.add(new Rectangle(1030,775,250,250));
         
+        stage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(stage));
         stage.addEventFilter(MouseEvent.MOUSE_PRESSED, new ApplicationExitController(stage, boxes));
-//        ipv.setOnKeyPressed(new KeyExitController(registerStage));
-//        welcomeImage.setOnKeyPressed(new KeyExitController(welcomeStage));
-        
-        
-        
         stage.addEventFilter(MouseEvent.MOUSE_PRESSED, amc);
         
 //        registerLayout.setOnMouseMoved(amc);
