@@ -3,11 +3,13 @@ package controllers;
 import java.util.ArrayList;
 import java.util.Timer;
 
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class ApplicationExitController implements EventHandler<MouseEvent> {
 	private Stage s1;
@@ -33,7 +35,8 @@ public class ApplicationExitController implements EventHandler<MouseEvent> {
 			if ((arg0.getScreenY() < (this.boxes.get(i).getY()+this.boxes.get(i).getHeight())) && (arg0.getScreenY() > this.boxes.get(i).getY())){
 				this.i++;
 				if (this.boxes.size()==i) {
-					this.s1.close();
+					Platform.exit();
+					this.s1.fireEvent(new WindowEvent(this.s1, WindowEvent.WINDOW_CLOSE_REQUEST));
 				}
 				this.res.cancel();
 				this.res = new RestartExitSequence(this);
