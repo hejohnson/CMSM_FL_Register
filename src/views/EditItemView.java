@@ -13,9 +13,11 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import model.AllItems;
 import model.Item;
 
 public class EditItemView extends HBox{
@@ -81,13 +83,13 @@ public class EditItemView extends HBox{
 		this.setAlignment(Pos.CENTER);
 	}
 	
-	public void initializeControllers() {
+	public void initializeControllers(AllItems ai, VBox ei) {
 		this.purchasableCheckbox.setOnAction(new PurchasableToggleController(this));
 		this.nameField.setOnKeyReleased(new ItemNameChangedController(this));
 		this.categoryField.setOnKeyReleased(new ItemCategoryChangedController(this));
 		this.priceField.setOnKeyReleased(new PriceChangedController(this));
 		this.imageButton.setOnAction(new ImageChangeRequestedController(this));
-		//this.deleteItemButton.setOnAction(new DeleteItemController(this));
+		this.deleteItemButton.setOnAction(new DeleteItemController(this, ai, ei));
 		
 	}
 	

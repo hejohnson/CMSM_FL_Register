@@ -103,4 +103,8 @@ public class AllItems {
 		this.allItems.add(tmp);
 		return tmp;
 	}
+	
+	public void removeItem(Item itm) {
+		this.allItems.remove(itm);
+	}
 }

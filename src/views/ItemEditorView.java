@@ -50,7 +50,7 @@ public class ItemEditorView extends VBox {
 
 	public void addItem(Item itm) {
 		EditItemView itemView = new EditItemView(itm, this.stage);
-		itemView.initializeControllers();
+		itemView.initializeControllers(this.allItems, this.editableItems);
 		this.editableItems.getChildren().add(itemView);
 	}
 }
