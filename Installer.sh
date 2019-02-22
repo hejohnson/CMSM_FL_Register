@@ -12,20 +12,22 @@
  apt-get clean
  apt-get autoremove
 
- apt-get install xubuntu-desktop
  apt-get remove --purge firefox
  apt-get remove --purge thunderbird
+ apt-get remove --purge gimp
 
  apt-get clean
  apt-get autoremove
+ 
+ apt-get install subversion
 
 mkdir ~/Desktop/CashRegister
 cd ~/Desktop/CashRegister
-wget http://github.com/hejohnson/CMSM_FL_Register/raw/master/resources/
 wget http://github.com/hejohnson/CMSM_FL_Register/raw/master/RunEditor.sh
 wget http://github.com/hejohnson/CMSM_FL_Register/raw/master/RunRegister.sh
 wget http://github.com/hejohnson/CMSM_FL_Register/raw/master/update_editor.sh
 wget http://github.com/hejohnson/CMSM_FL_Register/raw/master/update.sh
+svn export https://github.com/hejohnson/CMSM_FL_Register.git/trunk/resources
 
 chmod +x *.sh
 
