@@ -1,23 +1,23 @@
 #!/bin/bash
 
-sudo apt-get remove --purge libreoffice*
-sudo apt-get clean
-sudo apt-get autoremove
+ apt-get remove --purge libreoffice*
+ apt-get clean
+ apt-get autoremove
 
-sudo apt-get install python-software-properties
-sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install oracle-java8-installer
+ apt-get install python-software-properties
+ add-apt-repository ppa:webupd8team/java
+ apt-get update
+ apt-get install oracle-java8-installer
 
-sudo apt-get clean
-sudo apt-get autoremove
+ apt-get clean
+ apt-get autoremove
 
-sudo apt-get install xubuntu-desktop
-sudo apt-get remove --purge firefox
-sudo apt-get remove --purge thunderbird
+ apt-get install xubuntu-desktop
+ apt-get remove --purge firefox
+ apt-get remove --purge thunderbird
 
-sudo apt-get clean
-sudo apt-get autoremove
+ apt-get clean
+ apt-get autoremove
 
 mkdir ~/Desktop/CashRegister
 cd ~/Desktop/CashRegister
