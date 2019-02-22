@@ -53,28 +53,28 @@ public class EditItemView extends HBox{
 		this.categoryField.setText(this.item.getCategory());
 		this.categoryField.setAlignment(Pos.CENTER);
 		this.categoryField.setFont(textFieldFont);
-		this.categoryField.setPrefWidth(36*12);
+		this.categoryField.setPrefWidth(36*8);
 		
 		this.priceField.setText(String.format("%.2f", item.getPrice()));
 		this.priceField.setAlignment(Pos.CENTER);
 		this.priceField.setFont(textFieldFont);
-		this.priceField.setPrefWidth(48*5);
+		this.priceField.setPrefWidth(48*4);
 		
 		this.purchasableCheckbox.setSelected(item.isPurchasable());
 		this.setToggleButtonImage();
 		this.purchasableCheckbox.setAlignment(Pos.CENTER);
-		this.purchasableCheckbox.setMaxHeight(96);
-		this.purchasableCheckbox.setMinHeight(96);
-		this.purchasableCheckbox.setPrefHeight(96);
-		this.purchasableCheckbox.setMaxWidth(96);
-		this.purchasableCheckbox.setMinWidth(96);
-		this.purchasableCheckbox.setPrefWidth(96);
+		this.purchasableCheckbox.setMaxHeight(72);
+		this.purchasableCheckbox.setMinHeight(72);
+		this.purchasableCheckbox.setPrefHeight(72);
+		this.purchasableCheckbox.setMaxWidth(72);
+		this.purchasableCheckbox.setMinWidth(72);
+		this.purchasableCheckbox.setPrefWidth(72);
 		
 		this.updateImage(new Image(getClass().getResourceAsStream(this.item.getImagePath())));
 		
 		ImageView deleteImage = new ImageView(new Image(getClass().getResourceAsStream("/images/trashcan.jpg")));
 		deleteImage.setPreserveRatio(true);
-		deleteImage.setFitHeight(96);
+		deleteImage.setFitHeight(72);
 		this.deleteItemButton.setGraphic(deleteImage);
 		
 		this.getChildren().addAll(this.imageButton, this.nameField, this.categoryField, this.priceField, this.purchasableCheckbox, this.deleteItemButton);
@@ -99,7 +99,7 @@ public class EditItemView extends HBox{
 			img = new ImageView(new Image(getClass().getResourceAsStream("/images/unchecked.png")));
 		}
 		img.setPreserveRatio(true);
-		img.setFitHeight(96);
+		img.setFitHeight(72);
 		this.purchasableCheckbox.setGraphic(img);
 	}
 	
@@ -118,7 +118,7 @@ public class EditItemView extends HBox{
 	public void updateImage(Image image) {
 		ImageView itemImage = new ImageView(image);
 		itemImage.setPreserveRatio(true);
-		itemImage.setFitHeight(96);
+		itemImage.setFitHeight(72);
 		this.imageButton.setGraphic(itemImage);
 	}
 	public String getCurrentPriceString() {

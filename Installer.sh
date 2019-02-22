@@ -1,33 +1,33 @@
 #!/bin/bash
 
- apt-get remove --purge libreoffice*
+ apt-get -y remove --purge libreoffice*
  apt-get clean
- apt-get autoremove
+ apt-get -y autoremove
 
- apt-get install python-software-properties
- add-apt-repository ppa:webupd8team/java
+ apt-get -y install python-software-properties
+ add-apt-repository -y ppa:webupd8team/java
  apt-get update
- apt-get install oracle-java8-installer
+ apt-get install -y oracle-java8-installer
 
  apt-get clean
- apt-get autoremove
-
- apt-get remove --purge firefox
- apt-get remove --purge thunderbird
- apt-get remove --purge gimp
-
- apt-get clean
- apt-get autoremove
+ apt-get -y autoremove
  
- apt-get install subversion
+ apt-get -y install subversion
 
 mkdir ~/Desktop/CashRegister
+USR=$(logname)
+chown $USR ~/Desktop/CashRegister
+chgrp $USR ~/Desktop/CashRegister
+
 cd ~/Desktop/CashRegister
 wget http://github.com/hejohnson/CMSM_FL_Register/raw/master/RunEditor.sh
 wget http://github.com/hejohnson/CMSM_FL_Register/raw/master/RunRegister.sh
 wget http://github.com/hejohnson/CMSM_FL_Register/raw/master/update_editor.sh
 wget http://github.com/hejohnson/CMSM_FL_Register/raw/master/update.sh
 svn export https://github.com/hejohnson/CMSM_FL_Register.git/trunk/resources
+
+chown $USR ~/Desktop/CashRegister/*
+chgrp $USR ~/Desktop/CashRegister/*
 
 chmod +x *.sh
 
