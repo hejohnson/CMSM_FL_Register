@@ -110,10 +110,10 @@ public class Register extends Application{
 	    ReceiptView rv = new ReceiptView(r);
 	    registerLayout.getChildren().add(rv);
 	    registerLayout.setBottomAnchor(rv, 30.0);
-	    registerLayout.setTopAnchor(rv, 50.0);
+	    registerLayout.setTopAnchor(rv, 60.0);
         registerLayout.setRightAnchor(rv, 60.0);
         
-        ItemPurchaserView ipv = new ItemPurchaserView(allItems, 100, 100);
+        ItemPurchaserView ipv = new ItemPurchaserView(allItems, 100, 50);
         for (PurchasableItemView piv:ipv.getPurchasableItems()) {
       		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(registerScreen, ipv, piv, rv));
         }

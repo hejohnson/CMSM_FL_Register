@@ -42,9 +42,9 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 	private ImageView cartImg;
 	private ActivityMonitorController amc;
 	
-	private Font totalFont = Font.font("DidactGothic", FontWeight.NORMAL, 26);
+	private Font totalFont = Font.font("Didact Gothic", FontWeight.NORMAL, 26);
 	
-	private Font priceFont = Font.font("FredokaOne", FontWeight.NORMAL, 30);
+	private Font priceFont = Font.font("Fredoka One", FontWeight.NORMAL, 30);
 	
 	public TotalReceiptController(ReceiptView _rv, ItemPurchaserView _ipv, RegisterView _registerView, ActivityMonitorController _amc) {
 		// TODO Auto-generated constructor stub

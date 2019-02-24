@@ -41,13 +41,14 @@ public class TabbedArea extends AnchorPane {
 		
 	}
 	
-	public void addTab(String name, String tabImgPath, String bgImgPath, Color color) {
+	public void addTab(String name, String tabImgPath, String bgImgPath, Color color, Color borderColor) {
 		RegisterTabContent rtc = new RegisterTabContent(name, this.h, this.w);
 		RegisterTab rt = new RegisterTab(this.h, this.w, rtc);
 		
 		rt.setTabImage(new Image(getClass().getResourceAsStream(tabImgPath)));
 		rtc.setBGImage(new Image(getClass().getResourceAsStream(bgImgPath)));
 		rt.setTabAreaBG(color);
+		rt.setTabBorderColor(borderColor);
 		rt.setTabName(name);
 		rt.setOnMouseClicked(new TabClickController(rt, this));
 		this.tabs.getChildren().add(rt);
@@ -66,6 +67,15 @@ public class TabbedArea extends AnchorPane {
 			RegisterTabContent rtc = (RegisterTabContent)n;
 			if (rtc.getTabName().equals(name)) {
 				((RegisterTabContent)n).getContentArea().getChildren().add(piv);
+			}
+		}
+	}
+	
+	public void setUnselectedBorders() {
+		for (Node n:this.tabs.getChildren()) {
+			RegisterTab rt = (RegisterTab) n;
+			if (rt != this.selectedTab) {
+				rt.setTabBorder(this.selectedTab.getTabBorderColor());
 			}
 		}
 	}

@@ -35,7 +35,7 @@ public class ItemPurchaserView extends TabbedArea {
 //			
 //			nt.setContent(fp);
 //			this.getTabs().add(nt);
-			this.addTab(cat.getName(), cat.getImg(), cat.getBGImg(), cat.getColor());
+			this.addTab(cat.getName(), cat.getImg(), cat.getBGImg(), cat.getColor(), cat.getBorderColor());
 		}
 		
 		for (Item itm : allItems.getItems()) {
@@ -58,6 +58,7 @@ public class ItemPurchaserView extends TabbedArea {
 		}
 		
 		this.getFirstTab().setSelected();
+		this.setUnselectedBorders();
 		//this.setAlignment(Pos.CENTER);
 		
 	}

@@ -81,7 +81,7 @@ public class ItemPurchasedControllerScenario2 implements EventHandler<MouseEvent
 		
 		Text promptText = new Text("how many?");
 		
-		promptText.setFont(Font.font("FredokaOne", FontWeight.NORMAL, 30));
+		promptText.setFont(Font.font("Fredoka One", FontWeight.NORMAL, 30));
 		
 		container.getChildren().add(promptText);
 		container.setPadding(new Insets(20, 20, 20, 20));

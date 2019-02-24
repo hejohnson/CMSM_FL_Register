@@ -21,7 +21,7 @@ public class PurchasedItemView extends BorderPane {
 	private Text itemSubtotal;
 	private CornerRadii cr;
 	
-	private Font font = Font.font("DidactGothic", FontWeight.NORMAL, 18);
+	private Font font = Font.font("Didact Gothic", FontWeight.NORMAL, 18);
 	
 	public PurchasedItemView (PurchasedItem pi) {
 		this.purchasedItem = pi;
@@ -34,8 +34,8 @@ public class PurchasedItemView extends BorderPane {
 		
 		this.cr = new CornerRadii(10);
 		
-		this.setRight(this.itemName);
-		this.setLeft(this.itemSubtotal);
+		this.setLeft(this.itemName);
+		this.setRight(this.itemSubtotal);
 //		this.setBorder(new Border(new BorderStroke(Color.BLACK, 
 //	            BorderStrokeStyle.SOLID, this.cr, BorderWidths.DEFAULT)));
 		this.setPadding(new Insets(1, 10, 1, 10));

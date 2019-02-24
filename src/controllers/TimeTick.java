@@ -26,7 +26,7 @@ public class TimeTick extends TimerTask {
 		this.registerView = _registerView;
 		this.rv = _rv;
 		this.ipv = _ipv;
-		this.timeDisplay.setFont(Font.font("FredokaOne", FontWeight.NORMAL, 20));
+		this.timeDisplay.setFont(Font.font("Fredoka One", FontWeight.NORMAL, 20));
 		this.amc = _amc;
 	}
 	@Override
@@ -37,6 +37,7 @@ public class TimeTick extends TimerTask {
 			this.timeDisplay.setText("Time Remaining: ".concat(Integer.toString(newTimeLeft)));
 		} else {
 			Platform.runLater(new RunnableSwitchWindows(this.registerView, this.rv, this.ipv, this.amc));
+			this.cancel();
 		}
 		
 	}

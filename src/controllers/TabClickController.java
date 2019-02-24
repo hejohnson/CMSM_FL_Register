@@ -23,6 +23,7 @@ public class TabClickController implements EventHandler<MouseEvent> {
 		this.rt.setSelected();
 		this.ta.getSelectedTab().clearSelected();
 		this.ta.setSelectedTab(rt);
+		this.ta.setUnselectedBorders();
 	}
 	
 	

@@ -8,12 +8,14 @@ public class Category {
 	private Color bgColor;
 	private String imgPath;
 	private String bgPath;
+	private Color borderColor;
 	
-	public Category (String _n, Color _bg, String _img, String _bgImg) {
+	public Category (String _n, Color _bg, Color _borderColor, String _img, String _bgImg) {
 		this.name = _n;
 		this.bgColor = _bg;
 		this.imgPath = _img;
 		this.bgPath = _bgImg;
+		this.borderColor = _borderColor;
 	}
 	
 	public String getName() {
@@ -30,5 +32,9 @@ public class Category {
 	
 	public String getBGImg() {
 		return this.bgPath;
+	}
+	
+	public Color getBorderColor() {
+		return this.borderColor;
 	}
 }

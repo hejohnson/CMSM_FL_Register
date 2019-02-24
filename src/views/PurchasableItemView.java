@@ -33,9 +33,9 @@ public class PurchasableItemView extends VBox{
 	// Needs a box with the price
 	private Text priceField = new Text();
 	
-	private Font textFieldFont = Font.font("DidactGothic", FontWeight.NORMAL, 26);
+	private Font textFieldFont = Font.font("Didact Gothic", FontWeight.NORMAL, 26);
 	
-	private Font priceFont = Font.font("FredokaOne", FontWeight.NORMAL, 30);
+	private Font priceFont = Font.font("Fredoka One", FontWeight.NORMAL, 30);
 	
 	private ImageView imgView;
 	
@@ -113,8 +113,8 @@ public class PurchasableItemView extends VBox{
 //		this.priceDisplay.getChildren().addAll(this.priceBackgroundImg, this.priceField);
 		
 		this.container.getChildren().addAll(nameContainer, this.imgView, priceContainer);
-		this.container.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(25), Insets.EMPTY)));
-		this.container.setBorder(new Border(new BorderStroke(Color.rgb(50,50,50), BorderStrokeStyle.SOLID, new CornerRadii(24), new BorderWidths(1))));
+		this.container.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(40), Insets.EMPTY)));
+		this.container.setBorder(new Border(new BorderStroke(Color.rgb(150,150,150), BorderStrokeStyle.SOLID, new CornerRadii(38), new BorderWidths(2))));
 		this.getChildren().add(container);
 		//this.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(25), new BorderWidths(10))));
 
@@ -150,7 +150,7 @@ public class PurchasableItemView extends VBox{
 	public void updateImage(Image image) {
 		imgView = new ImageView(image);
 		imgView.setPreserveRatio(true);
-		imgView.setFitWidth(170);
+		imgView.setFitWidth(150);
 	}
 	
 	public ImageView getImage() {

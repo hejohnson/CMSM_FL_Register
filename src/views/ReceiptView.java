@@ -38,13 +38,19 @@ public class ReceiptView extends AnchorPane{
 	
 	private HBox cartImgContainer;
 	
-	private Font totalFont = Font.font("DidactGothic", FontWeight.NORMAL, 26);
+	private Font totalFont = Font.font("Fredoka One", FontWeight.NORMAL, 22);
 	
-	private Font priceFont = Font.font("FredokaOne", FontWeight.NORMAL, 30);
+	private Font priceFont = Font.font("Fredoka One", FontWeight.BOLD, 30);
 	
 	private VBox headerContainer;
 	
 	private Text headerText;
+	
+	private HBox line1 = new HBox();
+	private HBox line2 = new HBox();
+	
+	private HBox spacer1 = new HBox();
+	private HBox spacer2 = new HBox();
 	
 	public ReceiptView (Receipt _r) {
 		this.receipt = _r;
@@ -73,10 +79,14 @@ public class ReceiptView extends AnchorPane{
 //		sep1.setStrokeWidth(5);
 //		sep1.setLe
 		
+		this.line1.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(3))));
+		this.line2.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(3))));
+		this.spacer1.setPrefHeight(10);
+		this.spacer2.setPrefHeight(5);
 		
-		this.headerContainer.getChildren().add(headerText);
-		this.headerContainer.setPadding(new Insets(0, 0, 7, 0));
-		this.headerContainer.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(0, 0, 5, 0))));
+		this.headerContainer.getChildren().addAll(headerText, this.spacer1, this.line1);
+		this.headerContainer.setPadding(new Insets(10, 0, 7, 0));
+		//this.headerContainer.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(0, 0, 5, 0))));
 		//this.headerContainer.getChildren().add(sep1);
 		
 		this.container.setTop(this.headerContainer);
@@ -85,33 +95,38 @@ public class ReceiptView extends AnchorPane{
 		
 		this.cartImg = new ImageView(new Image(getClass().getResourceAsStream("/images/shoppingCart.png")));
 		this.cartImg.setPreserveRatio(true);
-		this.cartImg.setFitWidth(100);
+		this.cartImg.setFitWidth(120);
 		
 		this.cartImgContainer.getChildren().add(this.cartImg);
 		this.cartImgContainer.setAlignment(Pos.CENTER);
 		
 		this.totalBox.setAlignment(Pos.CENTER);
 		
-		this.cr = new CornerRadii(10);
+		this.cr = new CornerRadii(20);
 		
-		this.container.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255, 0.65), this.cr, Insets.EMPTY)));
-		this.container.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, this.cr, new BorderWidths(5))));
+		this.container.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255, 0.60), new CornerRadii(27), Insets.EMPTY)));
+		this.container.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, this.cr, new BorderWidths(7))));
+		
+		VBox totalContainer = new VBox();
 		
 		this.totalBox.getChildren().addAll(this.totalText, this.totalValue);
+		
+		totalContainer.getChildren().addAll(this.line2, this.spacer2, this.totalBox);
+		
 		this.totalBox.setPadding(new Insets(10, 10, 10, 10));
-		this.items.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(0, 0, 5, 0))));
+		//this.items.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(0, 0, 5, 0))));
 		//this.totalBox.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, this.cr, BorderWidths.DEFAULT)));
-		this.container.setBottom(this.totalBox);
+		this.container.setBottom(totalContainer);
 		//this.getChildren().addAll(this.items, this.total);
-		this.container.setMinWidth(280);
-		this.container.setPadding(new Insets(8, 20, 50, 20));
+		this.container.setMinWidth(300);
+		this.container.setPadding(new Insets(8, 20, 65, 20));
 		//this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
 		this.update();
 		
 		this.getChildren().addAll(this.container, this.cartImgContainer);
 		
 		this.setTopAnchor(this.container, 0.0);
-		this.setBottomAnchor(this.container, 50.0);
+		this.setBottomAnchor(this.container, 35.0);
 		this.setLeftAnchor(this.cartImgContainer, 0.0);
 		this.setRightAnchor(this.cartImgContainer, 0.0);
 		this.setBottomAnchor(this.cartImgContainer, 0.0);

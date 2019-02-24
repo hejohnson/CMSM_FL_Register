@@ -52,7 +52,12 @@ public class AllItems {
             	//System.out.println(line);
                 String[] fields = line.split(cvsSplitBy);
                 String[] rgbs = fields[1].split(";");
-                Category newCat = new Category(fields[0], Color.rgb(Integer.parseInt(rgbs[0]),Integer.parseInt(rgbs[1]),Integer.parseInt(rgbs[2])), fields[2], fields[3]);
+                String[] rgbs2 = fields[2].split(";");
+                Category newCat = new Category(fields[0], 
+						                		Color.rgb(Integer.parseInt(rgbs[0]),Integer.parseInt(rgbs[1]),Integer.parseInt(rgbs[2])), 
+						                		Color.rgb(Integer.parseInt(rgbs2[0]),Integer.parseInt(rgbs2[1]),Integer.parseInt(rgbs2[2])), 
+						                		fields[3], 
+						                		fields[4]);
                 //System.out.println(Boolean.toString(newItem.validatePath()));
                 //System.out.println(newItem.toString());
                 this.categories.add(newCat);
