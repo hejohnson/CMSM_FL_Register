@@ -25,6 +25,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.control.ButtonType;
 import javafx.stage.FileChooser;
@@ -96,6 +97,8 @@ public class ImageChangeRequestedController implements EventHandler<ActionEvent>
 	        r.setFill(null);
 	        r.setStrokeWidth(3);
 	        Point p = new Point(0,0);
+	        Line vl = new Line();
+	        Line hl = new Line();
 	        
 	        System.out.println(scale);
 	        
@@ -104,13 +107,16 @@ public class ImageChangeRequestedController implements EventHandler<ActionEvent>
 	        imageContainer.setBorder(new Border((new BorderStroke(Color.DARKGREY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1)))));
 
 	        // Add rectangle at the last, so it shows up on the top of other children
-	        Pane pane = new Pane( imageContainer, r );
+	        Pane pane = new Pane( imageContainer, r , vl, hl);
 	       // pane.setBorder(new Border((new BorderStroke(Color.DARKGREY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(10)))));
 	        
 	        cropper.getDialogPane().setContent(pane);
 	        
+	        Rectangle bounds = new Rectangle(img.getWidth()/scale, imageView.getFitHeight());
+	        
+	        pane.setOnMouseMoved(new CrosshairsController(vl, hl, bounds));
 	        pane.setOnMousePressed(new ImageAreaSelectorRectangleStartController(r, p));
-	        pane.setOnMouseDragged(new ImageAreaSelectorRectangleDragController(r, p));
+	        pane.setOnMouseDragged(new ImageAreaSelectorRectangleDragController(r, p, bounds));
 			
 			Optional<ButtonType> result = cropper.showAndWait();
 		
@@ -118,7 +124,7 @@ public class ImageChangeRequestedController implements EventHandler<ActionEvent>
 				
 				BufferedImage bi = SwingFXUtils.fromFXImage(img, null);
 				
-				System.out.println(r.toString());
+				//System.out.println(r.toString());
 				BufferedImage cropped = bi.getSubimage((int)(scale*r.getX()), (int)(scale*r.getY()), (int)(scale*r.getWidth()), (int)(scale*r.getHeight()));
 				
 				try {
