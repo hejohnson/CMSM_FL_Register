@@ -46,7 +46,7 @@ public class Editor extends Application{
         primaryStage.setFullScreen(true);        
 	    primaryStage.show();
 //	    primaryStage.setOnCloseRequest(new EditorCloseController(iev));
-	    primaryStage.getScene().getWindow().addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, new EditorCloseController(iev));
+//	    primaryStage.getScene().getWindow().addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, new EditorCloseController(iev));
 	    root.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(primaryStage));
         root.addEventFilter(MouseEvent.MOUSE_PRESSED, new ApplicationExitController(primaryStage, boxes));
     }

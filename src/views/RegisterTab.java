@@ -29,7 +29,7 @@ public class RegisterTab extends VBox {
 	private VBox graphicContainer;
 	private Color tabBorderColor;
 	
-	private Font font = Font.font("Fredoka One", FontWeight.BOLD, 26);
+	private Font font = Font.font("Didact Gothic", FontWeight.NORMAL, 26);
 	
 	public RegisterTab (int th, int tw, RegisterTabContent _rtc) {
 		
@@ -88,8 +88,8 @@ public class RegisterTab extends VBox {
 		this.setBackground(new Background(new BackgroundFill(this.tabColor, new CornerRadii(0, 0, 25, 25, false), Insets.EMPTY)));
 		this.rtc.toFront();
 		this.tabGraphic.setFitHeight(60);
-		this.setPrefWidth(tabWidth*1.5);
-		this.setMaxWidth(tabWidth*1.5);
+		this.setPrefWidth(190);
+		this.setMaxWidth(190);
 	}
 	
 	public void clearSelected() {

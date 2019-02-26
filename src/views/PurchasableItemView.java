@@ -54,13 +54,20 @@ public class PurchasableItemView extends VBox{
 		priceContainer.getChildren().add(priceField);
 		priceContainer.setAlignment(Pos.CENTER);
 		
-//		this.setPadding(new Insets(0, 20, 30, 20));
-		
 		this.updateImage(new Image(getClass().getResourceAsStream(this.item.getImagePath())));
 		
+		VBox imgContainer = new VBox();
+		imgContainer.getChildren().add(this.imgView);
+		imgContainer.setAlignment(Pos.CENTER);
+		
+//		this.setPadding(new Insets(0, 20, 30, 20));
+		
+		
+		
 		this.nameField.setText(this.item.getName());
-		this.nameField.setWrappingWidth(180);
+		this.nameField.setWrappingWidth(172);
 		this.nameField.setFont(textFieldFont);
+		this.nameField.setFill(Color.rgb(89, 89, 89));
 		//this.nameField.prefHeight(36);
 		this.nameField.setTextAlignment(TextAlignment.CENTER);
 		this.container.setPadding(new Insets(5,10,5,10));
@@ -103,6 +110,7 @@ public class PurchasableItemView extends VBox{
 		
 		
 		this.priceField.setFont(priceFont);
+		this.priceField.setFill(Color.rgb(89, 89, 89));
 		//this.priceField.prefHeight(36);
 		
 //		this.priceBackgroundImg = new ImageView(new Image(getClass().getResourceAsStream("/images/priceBG.jpg")));
@@ -112,7 +120,7 @@ public class PurchasableItemView extends VBox{
 //		this.priceDisplay = new StackPane();		
 //		this.priceDisplay.getChildren().addAll(this.priceBackgroundImg, this.priceField);
 		
-		this.container.getChildren().addAll(nameContainer, this.imgView, priceContainer);
+		this.container.getChildren().addAll(nameContainer, imgContainer, priceContainer);
 		this.container.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(40), Insets.EMPTY)));
 		this.container.setBorder(new Border(new BorderStroke(Color.rgb(150,150,150), BorderStrokeStyle.SOLID, new CornerRadii(38), new BorderWidths(2))));
 		this.getChildren().add(container);
@@ -130,12 +138,14 @@ public class PurchasableItemView extends VBox{
 		this.container.setRightAnchor(nameContainer, 0.0);
 		this.container.setTopAnchor(nameContainer, 0.0);
 		
-		this.imgView.toBack();
+		imgContainer.toBack();
 		
-		this.container.setBottomAnchor(this.imgView, 38.0);
-		this.container.setLeftAnchor(this.imgView, 0.0);
-		this.container.setRightAnchor(this.imgView, 0.0);
-		this.container.setTopAnchor(this.imgView, 32.0);
+		
+		
+		this.container.setBottomAnchor(imgContainer, 38.0);
+		this.container.setLeftAnchor(imgContainer, 0.0);
+		this.container.setRightAnchor(imgContainer, 0.0);
+		this.container.setTopAnchor(imgContainer, 32.0);
 		
 		this.container.setBottomAnchor(priceContainer, 0.0);
 		this.container.setLeftAnchor(priceContainer, 0.0);

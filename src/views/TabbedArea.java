@@ -31,7 +31,7 @@ public class TabbedArea extends AnchorPane {
 		this.getChildren().addAll(tabContents, tabs);
 		
 		this.setTopAnchor(this.tabs, 0.0);
-		this.setLeftAnchor(this.tabs, 90.0);
+		this.setLeftAnchor(this.tabs, 78.0);
 		//this.setRightAnchor(this.tabs, 0.0);
 		
 		this.setBottomAnchor(this.tabContents, 0.0);

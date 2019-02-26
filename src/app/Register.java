@@ -111,7 +111,7 @@ public class Register extends Application{
 	    registerLayout.getChildren().add(rv);
 	    registerLayout.setBottomAnchor(rv, 30.0);
 	    registerLayout.setTopAnchor(rv, 60.0);
-        registerLayout.setRightAnchor(rv, 60.0);
+        registerLayout.setRightAnchor(rv, 68.0);
         
         ItemPurchaserView ipv = new ItemPurchaserView(allItems, 100, 50);
         for (PurchasableItemView piv:ipv.getPurchasableItems()) {
@@ -125,6 +125,13 @@ public class Register extends Application{
         registerLayout.setLeftAnchor(ipv, 0.0);
         registerLayout.setRightAnchor(ipv, 0.0);
         rv.toFront();
+        
+        ImageView grid = new ImageView(new Image(getClass().getResourceAsStream("/images/grid.png")));
+        registerLayout.getChildren().add(grid);
+        registerLayout.setBottomAnchor(grid, 0.0);
+	    registerLayout.setTopAnchor(grid, 0.0);
+        registerLayout.setLeftAnchor(grid, 0.0);
+        registerLayout.setRightAnchor(grid, 0.0);
         
         ActivityMonitorController amc = new ActivityMonitorController(rv, ipv, registerScreen); 
         

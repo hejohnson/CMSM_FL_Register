@@ -38,9 +38,9 @@ public class ReceiptView extends AnchorPane{
 	
 	private HBox cartImgContainer;
 	
-	private Font totalFont = Font.font("Fredoka One", FontWeight.NORMAL, 22);
+	private Font totalFont = Font.font("Didact Gothic", FontWeight.NORMAL, 26);
 	
-	private Font priceFont = Font.font("Fredoka One", FontWeight.BOLD, 30);
+	private Font priceFont = Font.font("Fredoka One", FontWeight.NORMAL, 30);
 	
 	private VBox headerContainer;
 	
@@ -58,13 +58,16 @@ public class ReceiptView extends AnchorPane{
 		this.totalBox = new VBox();
 		this.totalValue = new Text();
 		this.totalValue.setFont(priceFont);
+		this.totalValue.setFill(Color.rgb(89, 89, 89));
 		this.totalText = new Text();
 		this.totalText.setFont(totalFont);
+		this.totalText.setFill(Color.rgb(89, 89, 89));
 		this.totalText.setText("total");
 		this.container = new BorderPane();
 		
 		this.headerText = new Text("shopping cart");
 		this.headerText.setFont(priceFont);
+		this.headerText.setFill(Color.rgb(89, 89, 89));
 		
 		this.headerContainer = new VBox();
 		this.headerContainer.setAlignment(Pos.CENTER);
@@ -118,7 +121,7 @@ public class ReceiptView extends AnchorPane{
 		//this.totalBox.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, this.cr, BorderWidths.DEFAULT)));
 		this.container.setBottom(totalContainer);
 		//this.getChildren().addAll(this.items, this.total);
-		this.container.setMinWidth(300);
+		this.container.setMinWidth(324);
 		this.container.setPadding(new Insets(8, 20, 65, 20));
 		//this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
 		this.update();
