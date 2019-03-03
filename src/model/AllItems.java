@@ -32,7 +32,12 @@ public class AllItems {
                 // use comma as separator
             	//System.out.println(line);
                 String[] fields = line.split(cvsSplitBy);
-                Item newItem = new Item(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3], Boolean.parseBoolean(fields[4]));
+                Item newItem = new Item(fields[0], 
+                						fields[1], 
+                						Double.parseDouble(fields[2]), 
+                						fields[3], 
+                						fields[4],
+                						Boolean.parseBoolean(fields[5]));
                 //System.out.println(Boolean.toString(newItem.validatePath()));
                 //System.out.println(newItem.toString());
                 this.allItems.add(newItem);

@@ -54,7 +54,7 @@ public class PurchasableItemView extends VBox{
 		priceContainer.getChildren().add(priceField);
 		priceContainer.setAlignment(Pos.CENTER);
 		
-		this.updateImage(new Image(getClass().getResourceAsStream(this.item.getImagePath())));
+		this.updateImage(new Image(getClass().getResourceAsStream(this.item.getButtonImgPath())));
 		
 		VBox imgContainer = new VBox();
 		imgContainer.getChildren().add(this.imgView);
@@ -121,8 +121,8 @@ public class PurchasableItemView extends VBox{
 //		this.priceDisplay.getChildren().addAll(this.priceBackgroundImg, this.priceField);
 		
 		this.container.getChildren().addAll(nameContainer, imgContainer, priceContainer);
-		this.container.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(40), Insets.EMPTY)));
-		this.container.setBorder(new Border(new BorderStroke(Color.rgb(150,150,150), BorderStrokeStyle.SOLID, new CornerRadii(38), new BorderWidths(2))));
+//		this.container.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(40), Insets.EMPTY)));
+//		this.container.setBorder(new Border(new BorderStroke(Color.rgb(150,150,150), BorderStrokeStyle.SOLID, new CornerRadii(38), new BorderWidths(2))));
 		this.getChildren().add(container);
 		//this.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(25), new BorderWidths(10))));
 
@@ -134,21 +134,21 @@ public class PurchasableItemView extends VBox{
 //		this.setAlignment(infoContainer, Pos.TOP_CENTER);
 //		this.setAlignment(this.priceDisplay, Pos.BOTTOM_CENTER);
 		
-		this.container.setLeftAnchor(nameContainer, 0.0);
+		this.container.setLeftAnchor(nameContainer, 15.0);
 		this.container.setRightAnchor(nameContainer, 0.0);
-		this.container.setTopAnchor(nameContainer, 0.0);
+		this.container.setTopAnchor(nameContainer, 10.0);
 		
 		imgContainer.toBack();
 		
 		
 		
-		this.container.setBottomAnchor(imgContainer, 38.0);
+		this.container.setBottomAnchor(imgContainer, 0.0);
 		this.container.setLeftAnchor(imgContainer, 0.0);
 		this.container.setRightAnchor(imgContainer, 0.0);
-		this.container.setTopAnchor(imgContainer, 32.0);
+		this.container.setTopAnchor(imgContainer, 0.0);
 		
-		this.container.setBottomAnchor(priceContainer, 0.0);
-		this.container.setLeftAnchor(priceContainer, 0.0);
+		this.container.setBottomAnchor(priceContainer, 22.0);
+		this.container.setLeftAnchor(priceContainer, 15.0);
 		this.container.setRightAnchor(priceContainer, 0.0);
 
 	}
@@ -160,7 +160,7 @@ public class PurchasableItemView extends VBox{
 	public void updateImage(Image image) {
 		imgView = new ImageView(image);
 		imgView.setPreserveRatio(true);
-		imgView.setFitWidth(150);
+		imgView.setFitWidth(200);
 	}
 	
 	public ImageView getImage() {

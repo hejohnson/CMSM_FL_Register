@@ -126,12 +126,12 @@ public class Register extends Application{
         registerLayout.setRightAnchor(ipv, 0.0);
         rv.toFront();
         
-//        ImageView grid = new ImageView(new Image(getClass().getResourceAsStream("/images/grid.png")));
-//        registerLayout.getChildren().add(grid);
-//        registerLayout.setBottomAnchor(grid, 0.0);
-//	    registerLayout.setTopAnchor(grid, 0.0);
-//        registerLayout.setLeftAnchor(grid, 0.0);
-//        registerLayout.setRightAnchor(grid, 0.0);
+        ImageView grid = new ImageView(new Image(getClass().getResourceAsStream("/images/grid.png")));
+        registerLayout.getChildren().add(grid);
+        registerLayout.setBottomAnchor(grid, 0.0);
+	    registerLayout.setTopAnchor(grid, 0.0);
+        registerLayout.setLeftAnchor(grid, 0.0);
+        registerLayout.setRightAnchor(grid, 0.0);
         
         ActivityMonitorController amc = new ActivityMonitorController(rv, ipv, registerScreen); 
         

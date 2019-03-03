@@ -1,5 +1,6 @@
 package views;
 
+import controllers.ButtonImageChangeRequestedController;
 import controllers.DeleteItemController;
 import controllers.ImageChangeRequestedController;
 import controllers.ItemCategoryChangedController;
@@ -32,7 +33,9 @@ public class EditItemView extends HBox{
 	private TextField categoryField = new TextField();
 	
 	// Needs a clickable picture of the item
-	private Button imageButton = new Button("");
+	private Button itemImgButton = new Button("");
+	
+	private Button buttonImgButton = new Button("");
 
 	// Needs a box with the price
 	private TextField priceField = new TextField();
@@ -73,13 +76,14 @@ public class EditItemView extends HBox{
 		this.purchasableCheckbox.setPrefWidth(72);
 		
 		this.updateImage(new Image(getClass().getResourceAsStream(this.item.getImagePath())));
+		this.updateButtonImage(new Image(getClass().getResourceAsStream(this.item.getButtonImgPath())));
 		
 		ImageView deleteImage = new ImageView(new Image(getClass().getResourceAsStream("/images/trashcan.jpg")));
 		deleteImage.setPreserveRatio(true);
 		deleteImage.setFitHeight(72);
 		this.deleteItemButton.setGraphic(deleteImage);
 		
-		this.getChildren().addAll(this.imageButton, this.nameField, this.categoryField, this.priceField, this.purchasableCheckbox, this.deleteItemButton);
+		this.getChildren().addAll(this.buttonImgButton, this.itemImgButton, this.nameField, this.categoryField, this.priceField, this.purchasableCheckbox, this.deleteItemButton);
 		this.setAlignment(Pos.CENTER);
 	}
 	
@@ -88,7 +92,8 @@ public class EditItemView extends HBox{
 		this.nameField.setOnKeyReleased(new ItemNameChangedController(this));
 		this.categoryField.setOnKeyReleased(new ItemCategoryChangedController(this));
 		this.priceField.setOnKeyReleased(new PriceChangedController(this));
-		this.imageButton.setOnAction(new ImageChangeRequestedController(this));
+		this.itemImgButton.setOnAction(new ImageChangeRequestedController(this));
+		this.buttonImgButton.setOnAction(new ButtonImageChangeRequestedController(this));
 		this.deleteItemButton.setOnAction(new DeleteItemController(this, ai, ei));
 		
 	}
@@ -121,8 +126,16 @@ public class EditItemView extends HBox{
 		ImageView itemImage = new ImageView(image);
 		itemImage.setPreserveRatio(true);
 		itemImage.setFitHeight(72);
-		this.imageButton.setGraphic(itemImage);
+		this.itemImgButton.setGraphic(itemImage);
 	}
+	
+	public void updateButtonImage(Image image) {
+		ImageView itemImage = new ImageView(image);
+		itemImage.setPreserveRatio(true);
+		itemImage.setFitHeight(72);
+		this.buttonImgButton.setGraphic(itemImage);
+	}
+	
 	public String getCurrentPriceString() {
 		return this.priceField.getText();
 	}
