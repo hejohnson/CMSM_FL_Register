@@ -55,6 +55,8 @@ public class ReceiptView extends AnchorPane{
 	public ReceiptView (Receipt _r) {
 		this.receipt = _r;
 		this.items = new VBox();
+		this.items.setPadding(new Insets(4, -10, 0, -10));
+		
 		this.totalBox = new VBox();
 		this.totalValue = new Text();
 		this.totalValue.setFont(priceFont);
@@ -85,7 +87,7 @@ public class ReceiptView extends AnchorPane{
 		this.line1.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(3))));
 		this.line2.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(3), new BorderWidths(3))));
 		this.spacer1.setPrefHeight(10);
-		this.spacer2.setPrefHeight(5);
+		this.spacer2.setPrefHeight(3);
 		
 		this.headerContainer.getChildren().addAll(headerText, this.spacer1, this.line1);
 		this.headerContainer.setPadding(new Insets(10, 0, 7, 0));
@@ -96,9 +98,9 @@ public class ReceiptView extends AnchorPane{
 		this.container.setCenter(this.items);
 		this.cartImgContainer = new HBox();
 		
-		this.cartImg = new ImageView(new Image(getClass().getResourceAsStream("/images/shoppingCart.png")));
+		this.cartImg = new ImageView(new Image(getClass().getResourceAsStream("/core/shoppingCart.png")));
 		this.cartImg.setPreserveRatio(true);
-		this.cartImg.setFitWidth(120);
+		this.cartImg.setFitHeight(140);
 		
 		this.cartImgContainer.getChildren().add(this.cartImg);
 		this.cartImgContainer.setAlignment(Pos.CENTER);
@@ -116,22 +118,22 @@ public class ReceiptView extends AnchorPane{
 		
 		totalContainer.getChildren().addAll(this.line2, this.spacer2, this.totalBox);
 		
-		this.totalBox.setPadding(new Insets(10, 10, 10, 10));
+		this.totalBox.setPadding(new Insets(0, 10, 10, 10));
 		//this.items.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(0, 0, 5, 0))));
 		//this.totalBox.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, this.cr, BorderWidths.DEFAULT)));
 		this.container.setBottom(totalContainer);
 		//this.getChildren().addAll(this.items, this.total);
 		this.container.setMinWidth(324);
-		this.container.setPadding(new Insets(8, 20, 65, 20));
+		this.container.setPadding(new Insets(8, 32, 83, 32));
 		//this.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
 		this.update();
 		
 		this.getChildren().addAll(this.container, this.cartImgContainer);
 		
 		this.setTopAnchor(this.container, 0.0);
-		this.setBottomAnchor(this.container, 35.0);
+		this.setBottomAnchor(this.container, 50.0);
 		this.setLeftAnchor(this.cartImgContainer, 0.0);
-		this.setRightAnchor(this.cartImgContainer, 0.0);
+		this.setRightAnchor(this.cartImgContainer, 20.0);
 		this.setBottomAnchor(this.cartImgContainer, 0.0);
 	}
 	

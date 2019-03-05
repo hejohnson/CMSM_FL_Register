@@ -40,7 +40,7 @@ public class PurchasedItemView extends BorderPane {
 		this.setRight(this.itemSubtotal);
 //		this.setBorder(new Border(new BorderStroke(Color.BLACK, 
 //	            BorderStrokeStyle.SOLID, this.cr, BorderWidths.DEFAULT)));
-		this.setPadding(new Insets(1, 10, 1, 10));
+		this.setPadding(new Insets(-4, 10, 0, 10));
 	}
 	
 	public void updateSubtotal() {

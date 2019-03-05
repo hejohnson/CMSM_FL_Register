@@ -41,7 +41,7 @@ public class RegisterTab extends VBox {
 		this.tabName.setFont(font);
 		this.tabName.setFill(Color.WHITE);
 		
-		this.setPadding(new Insets(8, 3, 5, 3));
+		this.setPadding(new Insets(12, 3, 5, 3));
 		
 		this.tabNameContainer = new VBox();
 		this.tabNameContainer.setPadding(new Insets(textPadding, 15, textPadding, 15));
@@ -66,7 +66,7 @@ public class RegisterTab extends VBox {
 	public void setTabImage(Image img) {
 		this.tabGraphic.setImage(img);
 		this.tabGraphic.setPreserveRatio(true);
-		this.tabGraphic.setFitHeight(this.tabHeight-10);
+		this.tabGraphic.setFitHeight(this.tabHeight-30);
 	}
 	
 	public void setTabName(String name) {
@@ -87,18 +87,22 @@ public class RegisterTab extends VBox {
 		this.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, new CornerRadii(0, 0, 20, 20, false), new BorderWidths(0, 6, 6, 6))));
 		this.setBackground(new Background(new BackgroundFill(this.tabColor, new CornerRadii(0, 0, 25, 25, false), Insets.EMPTY)));
 		this.rtc.toFront();
-		this.tabGraphic.setFitHeight(60);
-		this.setPrefWidth(190);
-		this.setMaxWidth(190);
+		this.tabGraphic.setFitHeight(54);
+		this.setPrefWidth(192);
+		this.setMaxWidth(192);
+		this.setPrefHeight(110);
+		this.setMaxHeight(110);
 	}
 	
 	public void clearSelected() {
 		//this.tabName.setVisible(false);
 		this.getChildren().remove(this.tabNameContainer);
 		this.setBackground(new Background(new BackgroundFill(this.tabColor, new CornerRadii(0, 0, 20, 20, false), Insets.EMPTY)));
-		this.tabGraphic.setFitHeight(this.tabHeight-10);
+		this.tabGraphic.setFitHeight(this.tabHeight-30);
 		this.setPrefWidth(tabWidth);
 		this.setMaxWidth(tabWidth);
+		this.setPrefHeight(tabHeight);
+		this.setMaxHeight(tabHeight);
 	}
 	
 	public void setTabBorderColor(Color c) {

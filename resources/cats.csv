@@ -1,4 +1,4 @@
-fruit,50;128;131,155;189;190,/images/fruitIcon.png,/images/fruitBG.jpg
-veggies 1,168;207;68,209;229;160,/images/veggies1Icon.png,/images/veggies1BG.jpg
-veggies 2,255;202;16,255;227;153,/images/veggies2Icon.png,/images/veggies2BG.jpg
-other,248;152;28,254;200;138,/images/otherIcon.png,/images/otherBG.jpg
+fruit,50;128;131,155;189;190,/images/fruitIcon.png,/core/tab1BG.jpg
+veggies 1,168;207;68,209;229;160,/images/veggies1Icon.png,/core/tab2BG.jpg
+veggies 2,255;202;16,255;227;153,/images/veggies2Icon.png,/core/tab3BG.jpg
+other,248;152;28,254;200;138,/images/otherIcon.png,/core/tab4BG.jpg

@@ -65,11 +65,12 @@ public class PurchasableItemView extends VBox{
 		
 		
 		this.nameField.setText(this.item.getName());
-		this.nameField.setWrappingWidth(172);
+		this.nameField.setWrappingWidth(150);
 		this.nameField.setFont(textFieldFont);
 		this.nameField.setFill(Color.rgb(89, 89, 89));
 		//this.nameField.prefHeight(36);
 		this.nameField.setTextAlignment(TextAlignment.CENTER);
+		this.nameField.setLineSpacing(-10);
 		this.container.setPadding(new Insets(5,10,5,10));
 		
 		DropShadow ds = new DropShadow();
@@ -136,7 +137,7 @@ public class PurchasableItemView extends VBox{
 		
 		this.container.setLeftAnchor(nameContainer, 15.0);
 		this.container.setRightAnchor(nameContainer, 0.0);
-		this.container.setTopAnchor(nameContainer, 10.0);
+		this.container.setTopAnchor(nameContainer, 23.0);
 		
 		imgContainer.toBack();
 		
@@ -147,7 +148,7 @@ public class PurchasableItemView extends VBox{
 		this.container.setRightAnchor(imgContainer, 0.0);
 		this.container.setTopAnchor(imgContainer, 0.0);
 		
-		this.container.setBottomAnchor(priceContainer, 22.0);
+		this.container.setBottomAnchor(priceContainer, 40.0);
 		this.container.setLeftAnchor(priceContainer, 15.0);
 		this.container.setRightAnchor(priceContainer, 0.0);
 
@@ -160,7 +161,7 @@ public class PurchasableItemView extends VBox{
 	public void updateImage(Image image) {
 		imgView = new ImageView(image);
 		imgView.setPreserveRatio(true);
-		imgView.setFitWidth(200);
+		imgView.setFitWidth(218);
 	}
 	
 	public ImageView getImage() {

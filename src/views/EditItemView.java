@@ -78,7 +78,7 @@ public class EditItemView extends HBox{
 		this.updateImage(new Image(getClass().getResourceAsStream(this.item.getImagePath())));
 		this.updateButtonImage(new Image(getClass().getResourceAsStream(this.item.getButtonImgPath())));
 		
-		ImageView deleteImage = new ImageView(new Image(getClass().getResourceAsStream("/images/trashcan.jpg")));
+		ImageView deleteImage = new ImageView(new Image(getClass().getResourceAsStream("/core/trashcan.jpg")));
 		deleteImage.setPreserveRatio(true);
 		deleteImage.setFitHeight(72);
 		this.deleteItemButton.setGraphic(deleteImage);
@@ -101,9 +101,9 @@ public class EditItemView extends HBox{
 	private void setToggleButtonImage() {
 		ImageView img;
 		if (this.item.isPurchasable()) {
-			img = new ImageView(new Image(getClass().getResourceAsStream("/images/checked.png")));
+			img = new ImageView(new Image(getClass().getResourceAsStream("/core/checked.png")));
 		} else {
-			img = new ImageView(new Image(getClass().getResourceAsStream("/images/unchecked.png")));
+			img = new ImageView(new Image(getClass().getResourceAsStream("/core/unchecked.png")));
 		}
 		img.setPreserveRatio(true);
 		img.setFitHeight(72);

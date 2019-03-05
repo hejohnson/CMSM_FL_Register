@@ -46,8 +46,8 @@ public class Register extends Application{
 	@Override
     public void start(Stage stage) {
 		
-		Font.loadFont(getClass().getResource("/DidactGothic-Regular.ttf").toExternalForm(), 10);
-		Font.loadFont(getClass().getResource("/FredokaOne-Regular.ttf").toExternalForm(), 10);
+		Font.loadFont(getClass().getResource("/core/DidactGothic-Regular.ttf").toExternalForm(), 10);
+		Font.loadFont(getClass().getResource("/core/FredokaOne-Regular.ttf").toExternalForm(), 10);
 		
         
 //		RegisterView registerStage = new RegisterView();
@@ -109,11 +109,11 @@ public class Register extends Application{
 	    Receipt r = new Receipt();
 	    ReceiptView rv = new ReceiptView(r);
 	    registerLayout.getChildren().add(rv);
-	    registerLayout.setBottomAnchor(rv, 30.0);
-	    registerLayout.setTopAnchor(rv, 60.0);
+	    registerLayout.setBottomAnchor(rv, 20.0);
+	    registerLayout.setTopAnchor(rv, 66.0);
         registerLayout.setRightAnchor(rv, 68.0);
         
-        ItemPurchaserView ipv = new ItemPurchaserView(allItems, 100, 50);
+        ItemPurchaserView ipv = new ItemPurchaserView(allItems, 116, 78);
         for (PurchasableItemView piv:ipv.getPurchasableItems()) {
       		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(registerScreen, ipv, piv, rv));
         }

@@ -35,10 +35,10 @@ public class RegisterTabContent extends StackPane {
 		this.tabName = _tabName;
 		this.tabBG = new ImageView();
 		
-		this.contentArea.setPadding(new Insets(th+76, 300, 30, 78));
+		this.contentArea.setPadding(new Insets(118, 300, 30, 46));
 		this.contentArea.setPrefWrapLength(800);
-		this.contentArea.setHgap(48);
-		this.contentArea.setVgap(64);
+		this.contentArea.setHgap(8);
+		this.contentArea.setVgap(34);
 		//this.contentArea.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		
 		this.getChildren().addAll(this.tabBG, this.contentArea);

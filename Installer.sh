@@ -26,8 +26,8 @@ wget http://github.com/hejohnson/CMSM_FL_Register/raw/master/update_editor.sh
 wget http://github.com/hejohnson/CMSM_FL_Register/raw/master/update.sh
 svn export https://github.com/hejohnson/CMSM_FL_Register.git/trunk/resources
 
-chown $USR ~/Desktop/CashRegister/*
-chgrp $USR ~/Desktop/CashRegister/*
+chown $USR -R ~/Desktop/CashRegister/*
+chgrp $USR -R ~/Desktop/CashRegister/*
 
 chmod +x *.sh
 
