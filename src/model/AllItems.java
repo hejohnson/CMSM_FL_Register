@@ -15,6 +15,7 @@ public class AllItems {
 	private LinkedList<Category> categories = new LinkedList<Category>();
 	String itemsFile = "resources/items.csv";
 	String categoriesFile = "resources/cats.csv";
+	String welcomeImage = "";
 	
 	public AllItems () {
 		loadItems();
@@ -50,7 +51,7 @@ public class AllItems {
         }
 		
 		try (BufferedReader br = new BufferedReader(new FileReader(categoriesFile))) {
-
+			this.welcomeImage = br.readLine();
             while ((line = br.readLine()) != null) {
 
                 // use comma as separator
@@ -106,6 +107,10 @@ public class AllItems {
 	
 	public LinkedList<Category> getCategories() {
 		return this.categories;
+	}
+	
+	public String getWelcomeImage() {
+		return this.welcomeImage;
 	}
 
 	public Item addItem() {
