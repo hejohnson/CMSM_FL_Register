@@ -55,7 +55,7 @@ public class Register extends Application{
 //		welcomeStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		AnchorPane registerLayout = new AnchorPane();
         
-        ImageView welcomeImage = new ImageView(new Image(getClass().getResourceAsStream("/images/deliwelcomeImage.jpg")));
+        ImageView welcomeImage = new ImageView(new Image(getClass().getResourceAsStream("/images/welcomeImage.jpg")));
 //        welcomeLayout.getChildren().add(welcomeImage);
         
         RegisterView registerScreen = new RegisterView(registerLayout, 1280, 1024);
