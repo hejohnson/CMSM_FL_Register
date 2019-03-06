@@ -39,6 +39,7 @@ public class Register extends Application{
 		// TODO Auto-generated method stub
 		allItems = new AllItems();
 		System.out.println(allItems.toString());
+		System.out.println(allItems.getWelcomeImage());
 		launch();
 		
 	}
