@@ -13,8 +13,8 @@ import javafx.scene.paint.Color;
 public class AllItems {
 	private LinkedList<Item> allItems = new LinkedList<Item>();
 	private LinkedList<Category> categories = new LinkedList<Category>();
-	String itemsFile = "resources/items.csv";
-	String categoriesFile = "resources/cats.csv";
+	String itemsFile = "resources/deliitems.csv";
+	String categoriesFile = "resources/delicats.csv";
 	
 	public AllItems () {
 		loadItems();
