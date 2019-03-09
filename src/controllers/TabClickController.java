@@ -2,7 +2,6 @@ package controllers;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
 import views.RegisterTab;
 import views.TabbedArea;
 

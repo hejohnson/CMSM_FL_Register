@@ -1,8 +1,6 @@
 package controllers;
 
 import javafx.application.Platform;
-import javafx.scene.control.Alert;
-import javafx.stage.Stage;
 import views.ItemPurchaserView;
 import views.ReceiptView;
 import views.RegisterView;
@@ -16,7 +14,6 @@ public class CloseAndReset implements Cancelable {
 	
 	public CloseAndReset (RegisterView _registerView, ReceiptView _rv, ItemPurchaserView _ipv, ActivityMonitorController _amc) {
 		this.registerView = _registerView;
-//		this.al = _al;
 		this.rv = _rv;
 		this.ipv = _ipv;
 		this.amc = _amc;

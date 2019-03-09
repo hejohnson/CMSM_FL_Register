@@ -4,8 +4,6 @@ import java.util.Timer;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import views.RegisterView;
 
 public class ReturnToRegisterController implements EventHandler<MouseEvent> {
@@ -23,9 +21,6 @@ public class ReturnToRegisterController implements EventHandler<MouseEvent> {
 	@Override
 	public void handle(MouseEvent arg0) {
 		arg0.consume();
-//		AnchorPane registerLayout = (AnchorPane) (this.rs.getScene().getRoot());
-		//registerLayout.getChildren().remove(registerLayout.getChildren().size()-1);
-		//this.ds.close();
 		this.rs.removePopup();
 		this.tm.cancel();
 		System.out.println("RRC");

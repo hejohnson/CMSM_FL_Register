@@ -50,63 +50,22 @@ public class Register extends Application{
 		Font.loadFont(getClass().getResource("/core/DidactGothic-Regular.ttf").toExternalForm(), 10);
 		Font.loadFont(getClass().getResource("/core/FredokaOne-Regular.ttf").toExternalForm(), 10);
 		
-        
-//		RegisterView registerStage = new RegisterView();
-		stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-//		welcomeStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		AnchorPane registerLayout = new AnchorPane();
         
         ImageView welcomeImage = new ImageView(new Image(getClass().getResourceAsStream(this.allItems.getWelcomeImage())));
-//        welcomeLayout.getChildren().add(welcomeImage);
+
         
         RegisterView registerScreen = new RegisterView(registerLayout, 1280, 1024);
         registerScreen.setWelcome(welcomeImage);
         
-//        Scene welcomeScreen = new Scene(welcomeLayout, 1280, 1024);
         stage.setScene(registerScreen);
-//        welcomeStage.setScene(welcomeScreen);
-        
-//        dialogStage.initStyle(StageStyle.UNDECORATED);
-//        dialogStage.setMaximized(true);
-//        dialogStage.show();
-        
-        //registerStage.setFullScreen(true);
         stage.initStyle(StageStyle.UNDECORATED);
-        //registerStage.setMaximized(true);
 	    stage.show();
 	    stage.setX(0);
 	    stage.setY(0);
 	    stage.setFullScreen(true);
-	    //registerStage.hide();
+	    stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 	    
-//	    welcomeStage.initStyle(StageStyle.UNDECORATED);
-//	   // welcomeStage.setMaximized(true);
-////        welcomeStage.setFullScreen(true);
-//	    welcomeStage.show();
-//	    welcomeStage.setX(0);
-//	    welcomeStage.setY(0);
-//	    welcomeStage.setAlwaysOnTop(true);
-//	    welcomeStage.setFullScreen(true);
-	    
-	    
-//	    VBox totalTracker = new VBox();
-//	    BorderPane totalBox = new BorderPane();
-//	    
-//	    Text total = new Text("$0");
-//	    total.setFont(Font.font("Verdana", FontWeight.BOLD, 48));
-//	    
-//	    
-//	    totalTracker.setMinWidth(150);
-//	    totalTracker.setMaxWidth(150);
-//	    totalTracker.setPrefWidth(150);
-//	    
-//	    totalBox.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-//	    
-//	    totalTracker.setAlignment(Pos.BOTTOM_CENTER);
-//	    
-//	    totalBox.setCenter(total);
-//	    totalTracker.getChildren().add(totalBox);
-//	    
 	    Receipt r = new Receipt();
 	    ReceiptView rv = new ReceiptView(r);
 	    registerLayout.getChildren().add(rv);
@@ -116,10 +75,9 @@ public class Register extends Application{
         
         ItemPurchaserView ipv = new ItemPurchaserView(allItems, 116, 78);
         for (PurchasableItemView piv:ipv.getPurchasableItems()) {
-      		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(registerScreen, ipv, piv, rv));
+      		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(registerScreen, piv, rv));
         }
         
-        //ipv.setOnMouseClicked(new controllers.TabClickController(ipv, 200, 80));
         registerLayout.getChildren().add(ipv);
         registerLayout.setBottomAnchor(ipv, 0.0);
 	    registerLayout.setTopAnchor(ipv, 0.0);
@@ -127,19 +85,10 @@ public class Register extends Application{
         registerLayout.setRightAnchor(ipv, 0.0);
         rv.toFront();
         
-//        ImageView grid = new ImageView(new Image(getClass().getResourceAsStream("/images/grid.png")));
-//        registerLayout.getChildren().add(grid);
-//        registerLayout.setBottomAnchor(grid, 0.0);
-//	    registerLayout.setTopAnchor(grid, 0.0);
-//        registerLayout.setLeftAnchor(grid, 0.0);
-//        registerLayout.setRightAnchor(grid, 0.0);
-        
         ActivityMonitorController amc = new ActivityMonitorController(rv, ipv, registerScreen); 
         
         rv.getShoppingCart().setOnMouseClicked(new TotalReceiptController(rv, ipv, registerScreen, amc));
         rv.getCartImage().setOnMouseClicked(new TotalReceiptController(rv, ipv, registerScreen, amc));
-        
-//        registerStage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(registerStage, welcomeStage));
         
         ArrayList<Rectangle> boxes = new ArrayList<Rectangle>();
         boxes.add(new Rectangle(0,0,250,250));
@@ -150,38 +99,9 @@ public class Register extends Application{
         stage.addEventFilter(KeyEvent.KEY_PRESSED, new KeyExitController(stage));
         stage.addEventFilter(MouseEvent.MOUSE_PRESSED, new ApplicationExitController(stage, boxes));
         stage.addEventFilter(MouseEvent.MOUSE_PRESSED, amc);
-        
-//        registerLayout.setOnMouseMoved(amc);
-//        ipv.setOnMouseMoved(amc);
+
 	    welcomeImage.setOnMousePressed(new WelcomeClickedController(registerScreen, amc));
 	    registerScreen.showWelcome();
-        
-//        String [] arrayData = {"Scenario 1", "Scenario 2", "Scenario 3"};
-//        List<String> dialogData;
-//        
-//        dialogData = Arrays.asList(arrayData);
-//
-//        ChoiceDialog<String> dialog = new ChoiceDialog(dialogData.get(0), dialogData);
-//        dialog.setTitle("Select a scenario");
-//        dialog.setHeaderText("Select your choice");
-//        dialog.initOwner(primaryStage);
-//
-//        Optional<String> result = dialog.showAndWait();
-//        		
-//        if (result.isPresent()) {
-//
-//        	ItemPurchaserView ipv = new ItemPurchaserView(allItems, purchasedItems, primaryStage);
-//            for (PurchasableItemView piv:ipv.getPurchasableItems()) {
-//            	if (result.get().equals("Scenario 1")) {
-//            		piv.setOnMouseClicked(new ItemPurchasedControllerScenario1(ipv, piv, total));
-//            	} else if (result.get().equals("Scenario 2")) {
-//            		piv.setOnMouseClicked(new ItemPurchasedControllerScenario2(ipv, piv, total));
-//            	} else if (result.get().equals("Scenario 3")) {
-//            		piv.setOnMouseClicked(new ItemPurchasedControllerScenario3(ipv, piv, total, totalBox));
-//            	}
-//            }
-//            root.setCenter(ipv);
-//        }
         
     }
 

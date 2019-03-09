@@ -5,13 +5,9 @@ import java.util.Timer;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
@@ -26,10 +22,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import views.FullscreenPopup;
 import views.ItemPurchaserView;
 import views.ReceiptView;
 import views.RegisterView;
@@ -57,37 +49,11 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 
 	@Override
 	public void handle(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-//		alert.setContentText(Double.toString(this.rv.getReceipt().getTotal()));
-//		alert.setTitle("");
-//		alert.setHeaderText("");
-//		alert.setGraphic(null);
-//		alert.show();
-		
+
 		BorderPane layout = new BorderPane();
 		
-//		Scene dialogScene = new Scene(layout);
-//		this.ds = new Stage();
-//		this.ds.setScene(dialogScene);
-//		this.ds.initStyle(StageStyle.TRANSPARENT);
-//		this.ds.initModality(Modality.NONE);
-//		this.ds.setMaximized(true);
-//		this.ds.show();
-//		this.ds.setAlwaysOnTop(true);
-//		this.ipv.getStage().setAlwaysOnTop(false);
-		
-//		FullscreenPopup fps = new FullscreenPopup(layout);
-//		fps.display(this.ipv.getStage());
-		
 		this.registerView.addPopup(layout);
-		
-//		AnchorPane registerLayout = (AnchorPane) (this.ipv.getStage().getScene().getRoot());
-//		registerLayout.getChildren().add(layout);
-//		registerLayout.setBottomAnchor(layout, 0.0);
-//		registerLayout.setTopAnchor(layout, 0.0);
-//		registerLayout.setLeftAnchor(layout, 0.0);
-//		registerLayout.setRightAnchor(layout, 0.0);
-		
+			
 		VBox container = new VBox();
 		container.setAlignment(Pos.CENTER);
 		layout.setCenter(container);

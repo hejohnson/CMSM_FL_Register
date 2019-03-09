@@ -3,7 +3,6 @@ package controllers;
 import java.util.TimerTask;
 
 import javafx.application.Platform;
-import javafx.scene.control.Alert;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;

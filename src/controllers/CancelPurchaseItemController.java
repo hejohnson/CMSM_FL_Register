@@ -2,8 +2,6 @@ package controllers;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import views.ReceiptView;
 import views.RegisterView;
 
@@ -20,9 +18,6 @@ public class CancelPurchaseItemController implements EventHandler<MouseEvent> {
 	
 	@Override
 	public void handle(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-//		AnchorPane registerLayout = (AnchorPane) (this.rs.getScene().getRoot());
-//		registerLayout.getChildren().remove(registerLayout.getChildren().size()-1);
 		arg0.consume();
 		this.rs.removePopup();
 		this.rv.clearActiveBG();
