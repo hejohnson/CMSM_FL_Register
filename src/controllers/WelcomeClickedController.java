@@ -17,6 +17,7 @@ public class WelcomeClickedController implements EventHandler<MouseEvent> {
 	@Override
 	public void handle(MouseEvent event) {
 		this.registerView.hideWelcome();
+		this.amc.enable();
 		this.amc.start();
 	}
 

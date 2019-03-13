@@ -4,12 +4,15 @@ import java.util.ArrayList;
 
 import controllers.TabClickController;
 import controllers.KeyExitController;
+import controllers.ReturnToRegisterController;
 import controllers.TotalReceiptController;
 import controllers.ActivityMonitorController;
 import controllers.ApplicationExitController;
 import controllers.ItemPurchasedControllerScenario2;
 import controllers.WelcomeClickedController;
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,7 +20,12 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -49,14 +57,38 @@ public class Register extends Application{
 		
 		Font.loadFont(getClass().getResource("/core/DidactGothic-Regular.ttf").toExternalForm(), 10);
 		Font.loadFont(getClass().getResource("/core/FredokaOne-Regular.ttf").toExternalForm(), 10);
+		stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		
 		AnchorPane registerLayout = new AnchorPane();
         
         ImageView welcomeImage = new ImageView(new Image(getClass().getResourceAsStream(this.allItems.getWelcomeImage())));
+        
+        AnchorPane haveNiceDay = new AnchorPane();
+        ImageView haveNDImage = new ImageView(new Image(getClass().getResourceAsStream("/core/haveANiceDay.png")));
+        ImageView haveNDBack = new ImageView(new Image(getClass().getResourceAsStream("/core/backCart.png")));
+        
+        VBox haveNDBackContainer = new VBox();
+        haveNDBackContainer.getChildren().add(haveNDBack);
+        haveNDBackContainer.setAlignment(Pos.CENTER);
+        haveNiceDay.getChildren().add(haveNDBackContainer);
+        haveNiceDay.setBottomAnchor(haveNDBackContainer, 0.0);
+        haveNiceDay.setTopAnchor(haveNDBackContainer, 600.0);
+        haveNiceDay.setRightAnchor(haveNDBackContainer, 0.0);
+        haveNiceDay.setLeftAnchor(haveNDBackContainer, 0.0);
+       
+        
+        haveNiceDay.getChildren().add(haveNDImage);
+        haveNiceDay.setBottomAnchor(haveNDImage, 0.0);
+        haveNiceDay.setTopAnchor(haveNDImage, 0.0);
+        haveNiceDay.setRightAnchor(haveNDImage, 0.0);
+        haveNiceDay.setLeftAnchor(haveNDImage, 0.0);
+        haveNiceDay.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255, 0.80), CornerRadii.EMPTY, Insets.EMPTY)));
 
         
         RegisterView registerScreen = new RegisterView(registerLayout, 1280, 1024);
         registerScreen.setWelcome(welcomeImage);
+        registerScreen.setHaveNiceDay(haveNiceDay);
+        registerScreen.setHDBBack(haveNDBack);
         
         stage.setScene(registerScreen);
         stage.initStyle(StageStyle.UNDECORATED);

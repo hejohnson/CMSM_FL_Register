@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
@@ -32,11 +33,12 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 	private ItemPurchaserView ipv;
 	private RegisterView registerView;
 	private ImageView cartImg;
+	private ImageView payImg;
 	private ActivityMonitorController amc;
 	
-	private Font totalFont = Font.font("Didact Gothic", FontWeight.NORMAL, 26);
+	private Font totalFont = Font.font("Didact Gothic", FontWeight.NORMAL, 28);
 	
-	private Font priceFont = Font.font("Fredoka One", FontWeight.NORMAL, 30);
+	private Font priceFont = Font.font("Fredoka One", FontWeight.NORMAL, 42);
 	
 	public TotalReceiptController(ReceiptView _rv, ItemPurchaserView _ipv, RegisterView _registerView, ActivityMonitorController _amc) {
 		// TODO Auto-generated constructor stub
@@ -50,46 +52,71 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 	@Override
 	public void handle(MouseEvent arg0) {
 
-		BorderPane layout = new BorderPane();
-		
-		this.registerView.addPopup(layout);
-			
-		VBox container = new VBox();
-		container.setAlignment(Pos.CENTER);
-		layout.setCenter(container);
-		layout.setPadding(new Insets(350, 450, 650, 450));
-
+		AnchorPane layout = new AnchorPane();
+		//layout.setPadding(new Insets(300, 350, 650, 350));
 		layout.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255, 0.5), CornerRadii.EMPTY, Insets.EMPTY)));
-		container.setBorder(new Border(new BorderStroke(Color.DARKGREY, BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(10))));
-		container.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255), new CornerRadii(30), Insets.EMPTY)));
-		container.setPadding(new Insets(50, 0, 50, 0));
 		
-		Text totalWord = new Text("Total:");
+		
+		this.payImg = new ImageView(new Image(getClass().getResourceAsStream("/core/pay.png")));
+		VBox payContainer = new VBox();
+		payContainer.getChildren().add(payImg);
+		payContainer.setAlignment(Pos.CENTER);
+		layout.getChildren().add(payContainer);
+		layout.setLeftAnchor(payContainer, 0.0);
+		layout.setRightAnchor(payContainer, 0.0);
+		layout.setBottomAnchor(payContainer, 420.0);
+		
+		VBox container = new VBox();
+		VBox totalContainer = new VBox();
+		totalContainer.setAlignment(Pos.CENTER);
+		container.setAlignment(Pos.CENTER);
+		
+		Text totalWord = new Text("total:");
 		totalWord.setFont(totalFont);
-		
+		totalWord.setLineSpacing(-10);
 		Text totalNumber = new Text(String.format("$%.2f", this.rv.getReceipt().getTotal()));
 		totalNumber.setFont(priceFont);
-		totalNumber.setFill(Color.GREEN);
+		totalNumber.setLineSpacing(-25);
+		totalNumber.setFill(Color.rgb(168,207,68));
 		
-		HBox cartContainer = new HBox();
+		totalContainer.setBorder(new Border(new BorderStroke(Color.rgb(89, 89, 89), BorderStrokeStyle.SOLID, new CornerRadii(20), new BorderWidths(8))));
+		totalContainer.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255), new CornerRadii(30), Insets.EMPTY)));
+		//totalContainer.setPadding(new Insets(50, 0, 50, 0));
+		totalContainer.getChildren().addAll(totalWord, totalNumber);
 		
-		this.cartImg = new ImageView(new Image(getClass().getResourceAsStream("/images/backCart.png")));
+		container.getChildren().add(totalContainer);
+		totalContainer.setPrefHeight(100);
+		totalContainer.setPrefWidth(240);
+		totalContainer.setMaxHeight(100);
+		totalContainer.setMaxWidth(240);
+		//container.setPadding(new Insets(0, 75, 0, 75));
+		layout.getChildren().add(container);
+		layout.setLeftAnchor(container, 0.0);
+		layout.setRightAnchor(container, 0.0);
+		layout.setBottomAnchor(container, 320.0);
+		
+		HBox cartContainer = new HBox();		
+		this.cartImg = new ImageView(new Image(getClass().getResourceAsStream("/core/backCart.png")));
 		this.cartImg.setPreserveRatio(true);
-		this.cartImg.setFitWidth(100);
-		
-		
-		
+		this.cartImg.setFitHeight(150);
 		cartContainer.setAlignment(Pos.CENTER);
 		cartContainer.setPadding(new Insets(20, 0, 0, 0));
 		cartContainer.getChildren().add(this.cartImg);
+		layout.getChildren().add(cartContainer);
+		layout.setLeftAnchor(cartContainer, 0.0);
+		layout.setRightAnchor(cartContainer, 0.0);
+		layout.setBottomAnchor(cartContainer, 190.0);
 		
-		container.getChildren().addAll(totalWord, totalNumber);
-		layout.setBottom(cartContainer);
+		this.registerView.addPopup(layout);
+		
+		this.amc.disable();
+//		this.amc.cancel();
 		
 		Timer tm = new Timer();
-		tm.schedule(new TimeExpiring(new CloseAndReset(this.registerView, this.rv, this.ipv, this.amc)), 5000);
+		tm.schedule(new TimeExpiring(new HaveANiceDayController(this.registerView, tm, rv, ipv, amc)), 10000);
 		
-		layout.setOnMousePressed(new ReturnToRegisterController(this.registerView, tm));
+		this.cartImg.setOnMousePressed(new ReturnToRegisterController(this.registerView, tm, this.amc));
+		layout.setOnMousePressed(new HaveANiceDayController(this.registerView, tm, rv, ipv, amc));
 	}
 
 }

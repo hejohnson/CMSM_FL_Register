@@ -14,12 +14,13 @@ public class ActivityMonitorController implements EventHandler<MouseEvent> {
 	private ReceiptView rv;
 	private RegisterView registerView;
 	private ItemPurchaserView ipv;
+	private Boolean enabled;
 
 	private TimeExpiring te;
 
 	public ActivityMonitorController(ReceiptView _rv, ItemPurchaserView _ipv, RegisterView _registerView) {
 		this.tm2 = new Timer();
-		
+		this.enabled = false;
 		this.rv = _rv;
 		this.ipv = _ipv;
 		this.registerView = _registerView;
@@ -29,10 +30,20 @@ public class ActivityMonitorController implements EventHandler<MouseEvent> {
 	@Override
 	public void handle(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-
-		this.cancel();
-		this.start();
+		if (enabled) {
+			this.cancel();
+			this.start();
+		}
 		
+	}
+	
+	public void disable() {
+		this.enabled = false;
+		this.tm2.cancel();
+	}
+	
+	public void enable() {
+		this.enabled = true;
 	}
 	
 	public void cancel() {
