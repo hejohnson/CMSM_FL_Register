@@ -1,8 +1,10 @@
 package views;
 import controllers.AddItemButtonController;
+import controllers.SaveItemsButtonController;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -15,6 +17,7 @@ public class ItemEditorView extends VBox {
 	
 	private AllItems allItems;
 	private Button addItemButton;
+	private Button saveItemsButton;
 	private Stage stage;
 	private ScrollPane sp;
 	private VBox editableItems;
@@ -29,10 +32,18 @@ public class ItemEditorView extends VBox {
 		this.getChildren().add(t);
 		addItemButton = new Button();
 		addItemButton.setText("Add New Item");
-		addItemButton.setPrefHeight(96);
-		addItemButton.setFont(Font.font("Verdana", FontWeight.BOLD, 48));
+		addItemButton.setPrefHeight(72);
+		addItemButton.setFont(Font.font("Verdana", FontWeight.BOLD, 32));
 		addItemButton.setOnAction(new AddItemButtonController(this));
-		this.getChildren().add(addItemButton);
+		saveItemsButton = new Button();
+		saveItemsButton.setText("Save Items");
+		saveItemsButton.setPrefHeight(72);
+		saveItemsButton.setFont(Font.font("Verdana", FontWeight.BOLD, 32));
+		saveItemsButton.setOnAction(new SaveItemsButtonController(this));
+		HBox container = new HBox();
+		container.getChildren().addAll(addItemButton, saveItemsButton);
+		container.setAlignment(Pos.CENTER);
+		this.getChildren().add(container);
 		for (Item itm : allItems.getItems()) {
 			addItem(itm);
 			this.setAlignment(Pos.TOP_CENTER);

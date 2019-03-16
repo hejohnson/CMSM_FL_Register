@@ -4,11 +4,12 @@ import java.util.Timer;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import model.Item;
 import views.ReceiptView;
 import views.RegisterView;
 
-public class PurchaseByImageController implements EventHandler<ActionEvent> {
+public class PurchaseByImageController implements EventHandler<MouseEvent> {
 
 	private Item item;
 	private int qty;
@@ -23,7 +24,7 @@ public class PurchaseByImageController implements EventHandler<ActionEvent> {
 	}
 	
 	@Override
-	public void handle(ActionEvent arg0) {
+	public void handle(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 		this.rv.getReceipt().purchaseItem(this.item, this.qty);
