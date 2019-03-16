@@ -36,6 +36,7 @@ public class ApplicationExitController implements EventHandler<MouseEvent> {
 				if (this.boxes.size()==i) {
 					Platform.exit();
 					this.s1.fireEvent(new WindowEvent(this.s1, WindowEvent.WINDOW_CLOSE_REQUEST));
+					System.exit(0);
 				}
 				this.res.cancel();
 				this.res = new RestartExitSequence(this);

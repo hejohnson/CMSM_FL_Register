@@ -24,6 +24,7 @@ public class KeyExitController implements EventHandler<KeyEvent> {
 		if (arg0.getCode().equals(KeyCode.ESCAPE)) {
 			Platform.exit();
 			this.s1.fireEvent(new WindowEvent(this.s1, WindowEvent.WINDOW_CLOSE_REQUEST));
+			System.exit(0);
 		}
 	}
 
