@@ -21,6 +21,7 @@ public class RegisterView extends Scene{
 	}
 
 	public void addPopup(Parent layout) {
+		removePopup();
 		this.popup = layout;
 		registerLayout.getChildren().add(layout);
 		registerLayout.setBottomAnchor(layout, 0.0);

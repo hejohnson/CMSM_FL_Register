@@ -71,7 +71,7 @@ public class ItemPurchasedControllerScenario2 implements EventHandler<MouseEvent
 		
 		for (int i = 1; i <= 5; i++) {
 			Canvas button = getCombinedImage(image, imageHeight, i);
-			button.setOnMousePressed(new PurchaseByImageController(piv.getItem(), i, this.registerView, this.rv));
+			button.setOnMouseReleased(new PurchaseByImageController(piv.getItem(), i, this.registerView, this.rv));
 //			Button button = new Button();
 //			button.setGraphic(this.getCombinedImage(image, imageHeight, i));
 //			button.setOnMousePressed(new PurchaseByImageController(piv.getItem(), i, this.registerView, this.rv));

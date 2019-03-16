@@ -26,7 +26,7 @@ public class PurchaseByImageController implements EventHandler<MouseEvent> {
 	@Override
 	public void handle(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		arg0.consume();
 		this.rv.getReceipt().purchaseItem(this.item, this.qty);
 		this.rv.update();
 
