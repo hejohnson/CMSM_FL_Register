@@ -29,8 +29,8 @@ public class Item {
 	public Item() {
 		this.name = "";
 		this.price = 0.0;
-		this.imagePath = "/core/noimage.png";
-		this.buttonImgPath = "/core/noimage.png";
+		this.imagePath = "./resources/core/noimage.png";
+		this.buttonImgPath = "./resources/core/noimage.png";
 		this.purchasable = true;
 	}
 

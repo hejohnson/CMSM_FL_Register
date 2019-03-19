@@ -1,5 +1,7 @@
 package views;
 
+import java.io.File;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.effect.DropShadow;
@@ -44,7 +46,7 @@ public class PurchasableItemView extends VBox{
 		priceContainer.getChildren().add(priceField);
 		priceContainer.setAlignment(Pos.CENTER);
 		
-		this.updateImage(new Image(getClass().getResourceAsStream(this.item.getButtonImgPath())));
+		this.updateImage(new Image("file:"+new File(this.item.getButtonImgPath()).getAbsolutePath()));
 		
 		VBox imgContainer = new VBox();
 		imgContainer.getChildren().add(this.imgView);
@@ -107,10 +109,6 @@ public class PurchasableItemView extends VBox{
 		imgView.setPreserveRatio(true);
 		imgView.setFitWidth(218);
 	}
-	
-	public ImageView getImage() {
-		return new ImageView(new Image(getClass().getResourceAsStream(this.item.getImagePath())));
-	}
-	
+
 	
 }

@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.File;
 import java.util.Timer;
 
 import javafx.event.EventHandler;
@@ -57,7 +58,7 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 		layout.setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255, 0.5), CornerRadii.EMPTY, Insets.EMPTY)));
 		
 		
-		this.payImg = new ImageView(new Image(getClass().getResourceAsStream("/core/pay.png")));
+		this.payImg = new ImageView(new Image("file:"+new File("resources/core/pay.png").getAbsolutePath()));
 		VBox payContainer = new VBox();
 		payContainer.getChildren().add(payImg);
 		payContainer.setAlignment(Pos.CENTER);
@@ -96,7 +97,7 @@ public class TotalReceiptController implements EventHandler<MouseEvent> {
 		layout.setBottomAnchor(container, 320.0);
 		
 		HBox cartContainer = new HBox();		
-		this.cartImg = new ImageView(new Image(getClass().getResourceAsStream("/core/backCart.png")));
+		this.cartImg = new ImageView(new Image("file:"+new File("resources/core/backCart.png").getAbsolutePath()));
 		this.cartImg.setPreserveRatio(true);
 		this.cartImg.setFitHeight(150);
 		cartContainer.setAlignment(Pos.CENTER);

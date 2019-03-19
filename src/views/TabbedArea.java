@@ -1,5 +1,6 @@
 package views;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import controllers.TabClickController;
@@ -45,8 +46,8 @@ public class TabbedArea extends AnchorPane {
 		RegisterTabContent rtc = new RegisterTabContent(name, this.h, this.w);
 		RegisterTab rt = new RegisterTab(this.h, this.w, rtc);
 		
-		rt.setTabImage(new Image(getClass().getResourceAsStream(tabImgPath)));
-		rtc.setBGImage(new Image(getClass().getResourceAsStream(bgImgPath)));
+		rt.setTabImage(new Image("file:"+new File(tabImgPath).getAbsolutePath()));
+		rtc.setBGImage(new Image("file:"+new File(bgImgPath).getAbsolutePath()));
 		rt.setTabAreaBG(color);
 		rt.setTabBorderColor(borderColor);
 		rt.setTabName(name);

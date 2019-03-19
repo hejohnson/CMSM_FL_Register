@@ -1,5 +1,7 @@
 package app;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import controllers.TabClickController;
@@ -55,17 +57,23 @@ public class Register extends Application{
 	@Override
     public void start(Stage stage) {
 		
-		Font.loadFont(getClass().getResource("/core/DidactGothic-Regular.ttf").toExternalForm(), 10);
-		Font.loadFont(getClass().getResource("/core/FredokaOne-Regular.ttf").toExternalForm(), 10);
+		Font.loadFont("./resources/core/DidactGothic-Regular.ttf", 10);
+		Font.loadFont("./resources/core/FredokaOne-Regular.ttf", 10);
 		stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		
 		AnchorPane registerLayout = new AnchorPane();
+		
+//		File fi = new File(this.allItems.getWelcomeImage());
+//		String f = fi.getAbsolutePath();
+//		System.out.println(f);
+//		System.out.println(fi.exists());
+//		System.out.println(getClass().getResource("/core/haveANiceDay.png").toExternalForm());
         
-        ImageView welcomeImage = new ImageView(new Image(getClass().getResourceAsStream(this.allItems.getWelcomeImage())));
+        ImageView welcomeImage = new ImageView(new Image("file:"+new File(this.allItems.getWelcomeImage()).getAbsolutePath()));
         
         AnchorPane haveNiceDay = new AnchorPane();
-        ImageView haveNDImage = new ImageView(new Image(getClass().getResourceAsStream("/core/haveANiceDay.png")));
-        ImageView haveNDBack = new ImageView(new Image(getClass().getResourceAsStream("/core/backCart.png")));
+        ImageView haveNDImage = new ImageView(new Image("file:"+new File("resources/core/haveANiceDay.png").getAbsolutePath()));
+        ImageView haveNDBack = new ImageView(new Image("file:"+new File("resources/core/backCart.png").getAbsolutePath()));
         
         VBox haveNDBackContainer = new VBox();
         haveNDBackContainer.getChildren().add(haveNDBack);

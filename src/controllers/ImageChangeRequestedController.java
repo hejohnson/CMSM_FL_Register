@@ -73,7 +73,7 @@ public class ImageChangeRequestedController implements EventHandler<ActionEvent>
 			String fileExt = sourceFile.getName().substring(sourceFile.getName().length()-3);
 //			System.out.println(fileExt);
 //			String destPath = "./resources/images/temp.".concat(fileExt);
-//			File destFile = new File(destPath);
+//			File destFile = "file:"+new File(destPath);
 //			try {
 //				Files.copy(sourceFile.toPath(), destFile.toPath());
 //			} catch (IOException e) {

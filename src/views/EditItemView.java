@@ -1,5 +1,7 @@
 package views;
 
+import java.io.File;
+
 import controllers.ButtonImageChangeRequestedController;
 import controllers.DeleteItemController;
 import controllers.ImageChangeRequestedController;
@@ -75,10 +77,10 @@ public class EditItemView extends HBox{
 		this.purchasableCheckbox.setMinWidth(72);
 		this.purchasableCheckbox.setPrefWidth(72);
 		
-		this.updateImage(new Image(getClass().getResourceAsStream(this.item.getImagePath())));
-		this.updateButtonImage(new Image(getClass().getResourceAsStream(this.item.getButtonImgPath())));
+		this.updateImage(new Image("file:"+ new File(this.item.getImagePath()).getAbsolutePath()));
+		this.updateButtonImage(new Image("file:"+ new File(this.item.getButtonImgPath()).getAbsolutePath()));
 		
-		ImageView deleteImage = new ImageView(new Image(getClass().getResourceAsStream("/core/trashcan.jpg")));
+		ImageView deleteImage = new ImageView(new Image("file:"+new File("resources/core/trashcan.jpg").getAbsolutePath()));
 		deleteImage.setPreserveRatio(true);
 		deleteImage.setFitHeight(72);
 		this.deleteItemButton.setGraphic(deleteImage);
@@ -101,9 +103,9 @@ public class EditItemView extends HBox{
 	private void setToggleButtonImage() {
 		ImageView img;
 		if (this.item.isPurchasable()) {
-			img = new ImageView(new Image(getClass().getResourceAsStream("/core/checked.png")));
+			img = new ImageView(new Image("file:"+new File("resources/core/checked.png").getAbsolutePath()));
 		} else {
-			img = new ImageView(new Image(getClass().getResourceAsStream("/core/unchecked.png")));
+			img = new ImageView(new Image("file:"+new File("resources/core/unchecked.png").getAbsolutePath()));
 		}
 		img.setPreserveRatio(true);
 		img.setFitHeight(72);

@@ -1,5 +1,7 @@
 package controllers;
 
+import java.io.File;
+
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -67,7 +69,7 @@ public class ItemPurchasedControllerScenario2 implements EventHandler<MouseEvent
 		
 		this.rv.setActiveBG(this.piv.getItem().getName());
 		
-		Image image = new Image(getClass().getResourceAsStream(this.piv.getItem().getImagePath()));
+		Image image = new Image("file:"+new File(this.piv.getItem().getImagePath()).getAbsolutePath());
 		
 		for (int i = 1; i <= 5; i++) {
 			Canvas button = getCombinedImage(image, imageHeight, i);

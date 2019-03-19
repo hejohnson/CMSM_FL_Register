@@ -1,26 +1,26 @@
-banana,fruit,0.5,/images/banana.jpg,/images/banana.png,true
-orange,fruit,1.5,/images/orange.jpg,/images/orange.png,true
-watermelon slice,fruit,1.0,/images/watermelonSlice.jpg,/images/watermelonSlice.png,true
-fish,other,4.0,/images/fish.jpg,/images/fish.png,true
-egg,other,0.25,/images/egg.jpg,/images/egg.png,true
-baguette,other,2.5,/images/baguette.jpg,/images/baguette.png,true
-carrot,veggies 1,1.0,/images/carrot.jpg,/images/carrot.png,true
-cauliflower,veggies 1,3.0,/images/cauliflower.jpg,/images/cauliflower.png,true
-corn on the cob,veggies 2,1.0,/images/cornOnTheCob.jpg,/images/cornOnTheCob.png,true
-cucumber,veggies 2,1.0,/images/cucumber.jpg,/images/cucumber.png,true
-eggplant,veggies 2,3.0,/images/eggplant.jpg,/images/eggplant.png,true
-green apple,fruit,1.25,/images/greenApple.jpg,/images/greenApple.png,true
-green onion,veggies 1,0.5,/images/greenOnion.jpg,/images/greenOnion.png,true
-lettuce,veggies 1,2.5,/images/lettuce.jpg,/images/lettuce.png,true
-potato,veggies 1,1.0,/images/potato.jpg,/images/potato.png,true
-potato bag,veggies 2,4.5,/images/potatoBag.jpg,/images/potatoBag.png,true
-pumpkin,veggies 1,4.0,/images/pumpkin.jpg,/images/pumpkin.png,true
-red apple,fruit,1.25,/images/redApple.jpg,/images/redApple.png,true
-round loaf,other,4.0,/images/roundLoaf.jpg,/images/roundLoaf.png,true
-soybeans,veggies 2,0.25,/images/soybeans.jpg,/images/soybeans.png,true
-strawberry,fruit,0.5,/images/strawberry.jpg,/images/strawberry.png,true
-sugar beet,veggies 1,2.0,/images/sugarBeet.jpg,/images/sugarBeet.png,true
-tomato,fruit,1.5,/images/tomato.jpg,/images/tomato.png,true
-watermelon,fruit,5.0,/images/watermelon.jpg,/images/watermelon.png,true
-yellow squash,veggies 2,2.0,/images/yellowSquash.jpg,/images/yellowSquash.png,true
-zucchini,veggies 2,2.0,/images/zucchini.jpg,/images/zucchini.png,true
+banana,fruit,0.5,resources/images/banana.jpg,resources/images/banana.png,TRUE
+orange,fruit,1.5,resources/images/orange.jpg,resources/images/orange.png,TRUE
+watermelon slice,fruit,1,resources/images/watermelonSlice.jpg,resources/images/watermelonSlice.png,TRUE
+fish,other,4,resources/images/fish.jpg,resources/images/fish.png,TRUE
+egg,other,0.25,resources/images/egg.jpg,resources/images/egg.png,TRUE
+baguette,other,2.5,resources/images/baguette.jpg,resources/images/baguette.png,TRUE
+carrot,veggies 1,1,resources/images/carrot.jpg,resources/images/carrot.png,TRUE
+cauliflower,veggies 1,3,resources/images/cauliflower.jpg,resources/images/cauliflower.png,TRUE
+corn on the cob,veggies 2,1,resources/images/cornOnTheCob.jpg,resources/images/cornOnTheCob.png,TRUE
+cucumber,veggies 2,1,resources/images/cucumber.jpg,resources/images/cucumber.png,TRUE
+eggplant,veggies 2,3,resources/images/eggplant.jpg,resources/images/eggplant.png,TRUE
+green apple,fruit,1.25,resources/images/greenApple.jpg,resources/images/greenApple.png,TRUE
+green onion,veggies 1,0.5,resources/images/greenOnion.jpg,resources/images/greenOnion.png,TRUE
+lettuce,veggies 1,2.5,resources/images/lettuce.jpg,resources/images/lettuce.png,TRUE
+potato,veggies 1,1,resources/images/potato.jpg,resources/images/potato.png,TRUE
+potato bag,veggies 2,4.5,resources/images/potatoBag.jpg,resources/images/potatoBag.png,TRUE
+pumpkin,veggies 1,4,resources/images/pumpkin.jpg,resources/images/pumpkin.png,TRUE
+red apple,fruit,1.25,resources/images/redApple.jpg,resources/images/redApple.png,TRUE
+round loaf,other,4,resources/images/roundLoaf.jpg,resources/images/roundLoaf.png,TRUE
+soybeans,veggies 2,0.25,resources/images/soybeans.jpg,resources/images/soybeans.png,TRUE
+strawberry,fruit,0.5,resources/images/strawberry.jpg,resources/images/strawberry.png,TRUE
+sugar beet,veggies 1,2,resources/images/sugarBeet.jpg,resources/images/sugarBeet.png,TRUE
+tomato,fruit,1.5,resources/images/tomato.jpg,resources/images/tomato.png,TRUE
+watermelon,fruit,5,resources/images/watermelon.jpg,resources/images/watermelon.png,TRUE
+yellow squash,veggies 2,2,resources/images/yellowSquash.jpg,resources/images/yellowSquash.png,TRUE
+zucchini,veggies 2,2,resources/images/zucchini.jpg,resources/images/zucchini.png,TRUE

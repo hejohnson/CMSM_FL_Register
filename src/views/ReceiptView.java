@@ -1,5 +1,7 @@
 package views;
 
+import java.io.File;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -98,7 +100,7 @@ public class ReceiptView extends AnchorPane{
 		this.container.setCenter(this.items);
 		this.cartImgContainer = new HBox();
 		
-		this.cartImg = new ImageView(new Image(getClass().getResourceAsStream("/core/shoppingCart.png")));
+		this.cartImg = new ImageView(new Image("file:"+new File("resources/core/shoppingCart.png").getAbsolutePath()));
 		this.cartImg.setPreserveRatio(true);
 		this.cartImg.setFitHeight(140);
 		

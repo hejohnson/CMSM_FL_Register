@@ -1,5 +1,5 @@
 /images/deliWelcomeImage.jpg
-drinks,50;128;131,155;189;190,/images/fruitIcon.png,/core/tab1BG.jpg
-wraps,168;207;68,209;229;160,/images/veggies1Icon.png,/core/tab2BG.jpg
-pitas,255;202;16,255;227;153,/images/veggies2Icon.png,/core/tab3BG.jpg
-sides,248;152;28,254;200;138,/images/otherIcon.png,/core/tab4BG.jpg
+drinks,50;128;131,155;189;190,/images/fruitIcon.png,./resources/core/tab1BG.jpg
+wraps,168;207;68,209;229;160,/images/veggies1Icon.png,./resources/core/tab2BG.jpg
+pitas,255;202;16,255;227;153,/images/veggies2Icon.png,./resources/core/tab3BG.jpg
+sides,248;152;28,254;200;138,/images/otherIcon.png,./resources/core/tab4BG.jpg
