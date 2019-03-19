@@ -57,8 +57,8 @@ public class Register extends Application{
 	@Override
     public void start(Stage stage) {
 		
-		Font.loadFont("./resources/core/DidactGothic-Regular.ttf", 10);
-		Font.loadFont("./resources/core/FredokaOne-Regular.ttf", 10);
+		Font.loadFont("file:"+new File("./resources/core/DidactGothic-Regular.ttf").getAbsolutePath(), 10);
+		Font.loadFont("file:"+new File("./resources/core/FredokaOne-Regular.ttf").getAbsolutePath(), 10);
 		stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		
 		AnchorPane registerLayout = new AnchorPane();
