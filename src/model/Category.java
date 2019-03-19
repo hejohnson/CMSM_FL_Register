@@ -27,11 +27,11 @@ public class Category {
 	}
 
 	public String getImg() {
-		return this.imgPath;
+		return "resources"+this.imgPath;
 	}
 	
 	public String getBGImg() {
-		return this.bgPath;
+		return "resources"+this.bgPath;
 	}
 	
 	public Color getBorderColor() {

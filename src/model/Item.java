@@ -56,11 +56,11 @@ public class Item {
 	}
 	
 	public String getButtonImgPath() {
-		return buttonImgPath;
+		return "resources"+buttonImgPath;
 	}
 
 	public String getImagePath() {
-		return imagePath;
+		return "resources"+imagePath;
 	}
 	
 	public void setButtonImgPath(String imgPath) {

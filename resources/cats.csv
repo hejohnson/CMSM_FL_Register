@@ -1,5 +1,5 @@
-resources/images/welcomeImage.jpg
-fruit,50;128;131,155;189;190,resources/images/TABwraps.png,resources/core/tab1BG.jpg
-veggies 1,168;207;68,209;229;160,resources/images/TABpitas.png,resources/core/tab2BG.jpg
-veggies 2,255;202;16,255;227;153,resources/images/TABdrinks.png,resources/core/tab3BG.jpg
-other,248;152;28,254;200;138,resources/images/TABsides.png,resources/core/tab4BG.jpg
+/images/welcomeImage.jpg
+fruit,50;128;131,155;189;190,/images/TABwraps.png,/core/tab1BG.jpg
+veggies 1,168;207;68,209;229;160,/images/TABpitas.png,/core/tab2BG.jpg
+veggies 2,255;202;16,255;227;153,/images/TABdrinks.png,/core/tab3BG.jpg
+other,248;152;28,254;200;138,/images/TABsides.png,/core/tab4BG.jpg

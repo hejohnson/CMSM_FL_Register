@@ -110,7 +110,7 @@ public class AllItems {
 	}
 	
 	public String getWelcomeImage() {
-		return this.welcomeImage;
+		return "resources"+this.welcomeImage;
 	}
 
 	public Item addItem() {
