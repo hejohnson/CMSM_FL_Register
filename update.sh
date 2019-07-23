@@ -1,8 +1,9 @@
 #!/bin/bash
 echo "mv CashRegister_latest.jar CashRegister_old.jar;
-wget https://github.com/hejohnson/CMSM_FL_Register/raw/master/binaries/CashRegister_latest.jar;
+wget https://cmsmcashregister.s3.us-east-2.amazonaws.com/CashRegister_latest.jar;
 cd resources;
-svn export --force https://github.com/hejohnson/CMSM_FL_Register.git/trunk/resources./resources/core" > temp.sh
+wget -r -np -R "index.html*" https://cmsmcashregister.s3.us-east-2.amazonaws.com/resources/core" > temp.sh
+
 chmod +x temp.sh
 gnome-terminal -e ./temp.sh
 rm temp.sh
